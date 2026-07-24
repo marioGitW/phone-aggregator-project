@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: phone-aggregator-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: phone_aggregator_user
+      POSTGRES_PASSWORD: phone_aggregator_password
+      POSTGRES_DB: phone_aggregator_db
+    ports:
+      - "5439:5439"
+    volumes:
+      - phone_aggregator_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  phone_aggregator_postgres_data:
