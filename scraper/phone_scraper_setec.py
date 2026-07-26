@@ -1,10 +1,11 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
 import re
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from utils.phone_utils import remove_voucher, get_brand_from_raw, normalize_price
 
 BASE_URL = "https://setec.mk"
 CATEGORY_URL = (
@@ -27,17 +28,19 @@ NAME_PREFIXES = [
     "mobile phone",
     "smartphone"
 ]
+
 class Phone:
-    def __init__(self, name, brand, price, image_url, url):
-        self.name = name
+
+    def __init__(self, brand, title, rawTitle, siteLink, price):
         self.brand = brand
+        self.title = title
+        self.rawTitle = rawTitle
+        self.siteLink = siteLink
         self.price = price
-        self.image_url = image_url
-        self.url = url
 
     def __repr__(self):
-        return (f"Phone(name={self.name}, brand={self.brand}, "
-                f"price={self.price}, image_url={self.image_url}, url={self.url})")
+        return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
+                f"siteLink={self.siteLink}, price={self.price})")
 
 
 def get_driver():
@@ -63,23 +66,37 @@ def wait_for_cards(driver, timeout=15):
         return False
 
 
-def detect_brand(name):
-    name_lower = name.lower()
-    for brand in BRANDS:
-        if brand.lower() in name_lower:
-            return brand
-    return None
+def detect_brand_from_raw(raw_title):
+    return get_brand_from_raw(raw_title)
+
 
 def clean_name(name):
     name = name.lower().strip()
-    # remove known prefixes anywhere in the name
     for prefix in NAME_PREFIXES:
         name = name.replace(prefix, "").strip()
-    # remove anything inside parentheses including the parentheses themselves
     name = re.sub(r'\(.*?\)', '', name).strip()
-    # clean up any double spaces left behind
     name = re.sub(r'\s+', ' ', name).strip()
     return name
+
+
+def format_title_setec(raw_title, brand):
+
+    if not raw_title:
+        return ""
+
+    tokens = raw_title.lower().strip().split()
+    
+    def is_storage_token(token):
+        return "gb" in token or "tb" in token
+
+    if brand == "samsung":
+        keep = []
+        for token in tokens[:4]:
+            if not is_storage_token(token):
+                keep.append(token)
+        return " ".join(keep).strip()
+
+    return " ".join([t for t in tokens if not is_storage_token(t)]).strip()
 
 def scrape_all_phones():
     driver = get_driver()
@@ -116,14 +133,13 @@ def scrape_all_phones():
                     continue
                 seen_urls.add(link)
 
-                # image
-                image = p.find_element(By.CSS_SELECTOR, "img[alt]").get_attribute("src")
-                name = clean_name(raw_name)
-                # brand detection (name MUST contain one of the brands)
-                brand = detect_brand(name)
-                if brand is None:
+                raw_title = remove_voucher(raw_name).lower()
+
+                brand = get_brand_from_raw(raw_title)
+                if brand is None or brand not in BRANDS:
                     continue
 
+                title = format_title_setec(clean_name(raw_title), brand)
 
                 try:
                     price_container = p.find_element(
@@ -137,17 +153,17 @@ def scrape_all_phones():
                         ".//p[contains(., 'Редовна цена')]"
                     ).text
 
-                price = int(re.sub(r"\D", "", price_text))
+                price = normalize_price(price_text)
 
                 phones.append(Phone(
-                    name=name,
                     brand=brand,
-                    price=price,
-                    image_url=image,
-                    url=link
+                    title=title,
+                    rawTitle=raw_title,
+                    siteLink=(link or "").lower(),
+                    price=price
                 ))
 
-                print(f"  + [{brand}] {name} – {price}")
+                print(f"  + [{brand}] {title} – {price}")
 
             except Exception as e:
                 print("  Skipped a product:", e)

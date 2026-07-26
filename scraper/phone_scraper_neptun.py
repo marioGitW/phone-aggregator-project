@@ -1,17 +1,16 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
 import re
-
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
 
 BASE_URL = "https://www.neptun.mk"
-IMAGE_BASE_URL = "https://www.neptun.mk/ImageCache/Products/140x140/"
 CATEGORY_URL = f"{BASE_URL}/mobilni_telefoni.nspx"
 
-BRANDS = ["Samsung", "Apple", "Xiaomi", "Honor"]
+BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 
 NAME_PREFIXES = [
     "преднарачка -",
@@ -22,17 +21,19 @@ NAME_PREFIXES = [
 ]
 
 
+
+
 class Phone:
-    def __init__(self, name, brand, price, image_url, url):
-        self.name      = name
-        self.brand     = brand
-        self.price     = price
-        self.image_url = image_url
-        self.url       = url
+    def __init__(self, brand, title, rawTitle, siteLink, price):
+        self.brand = brand
+        self.title = title
+        self.rawTitle = rawTitle
+        self.siteLink = siteLink
+        self.price = price
 
     def __repr__(self):
-        return (f"Phone(name={self.name}, brand={self.brand}, "
-                f"price={self.price}, image_url={self.image_url}, url={self.url})")
+        return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
+                f"siteLink={self.siteLink}, price={self.price})")
 
 
 def get_driver():
@@ -60,24 +61,28 @@ def wait_for_cards(driver, timeout=15):
         return False
 
 
-def detect_brand(name):
-    name_lower = name.lower()
-    for brand in BRANDS:
-        if brand.lower() in name_lower:
-            return brand.lower()
-    return None
+def detect_brand_from_raw(raw_title):
+    return get_brand_from_raw(raw_title)
 
 
 def clean_name(name):
     name = name.lower().strip()
-    # remove known prefixes anywhere in the name
     for prefix in NAME_PREFIXES:
         name = name.replace(prefix, "").strip()
-    # remove anything inside parentheses including the parentheses themselves
     name = re.sub(r'\(.*?\)', '', name).strip()
-    # clean up any double spaces left behind
     name = re.sub(r'\s+', ' ', name).strip()
     return name
+
+
+def remove_voucher_prefix(text):
+    """Remove 'ваучер -' prefix from text and return cleaned text."""
+    if not text:
+        return text
+    text_lower = text.lower()
+    if text_lower.startswith("ваучер -"):
+        # Remove "ваучер -" and any extra spaces
+        text = text[8:].strip()
+    return text
 
 
 def scrape_all_phones():
@@ -102,6 +107,8 @@ def scrape_all_phones():
             print(f"Empty page {page}, stopping.")
             break
 
+        page_new_count = 0
+
         page_urls = []
         for card in cards:
             try:
@@ -121,31 +128,21 @@ def scrape_all_phones():
             try:
                 raw_name = card.find_element(By.CSS_SELECTOR, "h2.product-list-item__content--title").text.strip()
 
-                # detect brand before cleaning
-                brand = detect_brand(raw_name)
-                if brand is None:
+                cleaned_after_voucher = remove_voucher_prefix(raw_name).lower()
+
+                brand = get_brand_from_raw(cleaned_after_voucher)
+                if brand is None or brand not in BRANDS:
                     continue
 
-                name = clean_name(raw_name)
+                raw_title = remove_voucher(raw_name).lower()
 
-                # price
+                title = format_title(clean_name(raw_title), brand)
+
                 try:
                     price = card.find_element(By.CSS_SELECTOR, "span.priceNum").text.strip()
+                    price = normalize_price(price)
                 except:
                     price = "N/A"
-
-                # image
-                try:
-                    img = card.find_element(By.CSS_SELECTOR, ".imageWrapper img")
-                    img_src = img.get_attribute("src")
-                    if img_src and not img_src.startswith("http"):
-                        image_url = IMAGE_BASE_URL + img_src
-                    else:
-                        image_url = img_src
-                except:
-                    image_url = "N/A"
-
-                # url
                 try:
                     href = card.find_element(By.CSS_SELECTOR, "a.theLink").get_attribute("href")
                     if href and href.startswith("/"):
@@ -158,16 +155,21 @@ def scrape_all_phones():
 
                 seen_urls.add(href)
                 phones.append(Phone(
-                    name=name,
                     brand=brand,
+                    title=title,
+                    rawTitle=raw_title,
+                    siteLink=(href or "").lower(),
                     price=price,
-                    image_url=image_url,
-                    url=href,
                 ))
-                print(f"  + [{brand}] {name} -> {href}")
+                page_new_count += 1
+                print(f"  + [{brand}] {title} -> {href}")
 
             except Exception as e:
                 print(f"  Skipped a card: {e}")
+
+        if page_new_count == 0:
+            print(f"No new phones on page {page}, stopping.")
+            break
 
         page += 1
 
@@ -183,7 +185,7 @@ if __name__ == "__main__":
     print(f"Total phones scraped: {len(phones)}")
     print(f"{'='*50}")
     for brand in BRANDS:
-        count = len([p for p in phones if p.brand == brand.lower()])
+        count = len([p for p in phones if p.brand == brand])
         print(f"  {brand}: {count} phones")
     print()
     for phone in phones:

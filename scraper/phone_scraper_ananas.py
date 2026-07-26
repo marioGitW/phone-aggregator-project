@@ -1,36 +1,41 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import urllib.parse
 import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
 
 BASE_URL = "https://ananas.mk"
 CATEGORY_URL = f"{BASE_URL}/kategorii/telefoni-foto/mobilni-telefoni/pametni-telefoni"
 
-BRANDS = ["Samsung", "Apple", "Xiaomi", "Honor"]
+BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 
 # words to remove from phone name
 NAME_PREFIXES = [
     "мобилен телефон",
     "паметен телефон",
     "mobile phone",
-    "smartphone"
+    "smartphone","виолетов","син","црн","sandy","purple","ментол",
+    "зелен","полноќно","црно","cool","moonlight","blue","сив","6/128","8/128"
+    "black","тиркизна","боја","златно-песок","-","сина","frost","виолетов","8/256",
+    "midnight","ocean","жолт"
 ]
 
 
+
+
 class Phone:
-    def __init__(self, name, brand, price, image_url, url):
-        self.name      = name
-        self.brand     = brand
-        self.price     = price
-        self.image_url = image_url
-        self.url       = url
+    def __init__(self, brand, title, rawTitle, siteLink, price):
+        self.brand = brand
+        self.title = title
+        self.rawTitle = rawTitle
+        self.siteLink = siteLink
+        self.price = price
 
     def __repr__(self):
-        return (f"Phone(name={self.name}, brand={self.brand}, "
-                f"price={self.price}, image_url={self.image_url}, url={self.url})")
+        return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
+                f"siteLink={self.siteLink}, price={self.price})")
 
 
 def get_driver():
@@ -59,13 +64,9 @@ def wait_for_cards(driver, timeout=15):
         return False
 
 
-def detect_brand(name):
-    # detect on original name before lowercasing
-    name_lower = name.lower()
-    for brand in BRANDS:
-        if brand.lower() in name_lower:
-            return brand.lower()
-    return None
+def detect_brand_from_raw(raw_title):
+    # Kept for backwards compatibility, but use get_brand_from_raw instead
+    return get_brand_from_raw(raw_title)
 
 
 def clean_name(name):
@@ -73,20 +74,6 @@ def clean_name(name):
     for prefix in NAME_PREFIXES:
         name = name.replace(prefix, "").strip()
     return name
-
-
-def get_real_image(img, driver):
-    src = img.get_attribute("src") or ""
-    # if placeholder, wait briefly and re-read after scroll
-    if src.startswith("data:"):
-        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", img)
-        time.sleep(0.5)
-        src = img.get_attribute("src") or ""
-    # unwrap next.js image proxy /_next/image?url=...
-    if "/_next/image?url=" in src:
-        parsed = urllib.parse.parse_qs(urllib.parse.urlparse(src).query)
-        src = urllib.parse.unquote(parsed.get("url", [""])[0])
-    return src if src and not src.startswith("data:") else "N/A"
 
 
 def scrape_all_phones():
@@ -138,41 +125,37 @@ def scrape_all_phones():
                 except:
                     raw_name = "N/A"
 
-                # detect brand from raw name, returns lowercase
-                brand = detect_brand(raw_name)
-                if brand is None:
+                # Remove voucher and lowercase -> rawTitle
+                raw_title = remove_voucher(raw_name).lower()
+
+                # detect brand from raw title (first word)
+                brand = get_brand_from_raw(raw_title)
+                if brand is None or brand not in BRANDS:
                     continue
 
-                # clean and lowercase name
-                name = clean_name(raw_name)
+                # clean and apply brand-specific formatting -> title
+                title = format_title(clean_name(raw_title), brand)
 
-                # price
+                # price - normalize to only digits
                 try:
                     price = "N/A"
                     price_spans = card.find_elements(By.CSS_SELECTOR, "span")
                     for span in reversed(price_spans):
                         clean = span.text.strip().replace(".", "").replace(",", "")
                         if clean.isdigit() and len(clean) >= 3:
-                            price = span.text.strip()
+                            price = normalize_price(span.text.strip())
                             break
                 except:
                     price = "N/A"
 
-                # image — pass driver so we can scrollIntoView for lazy loaded ones
-                try:
-                    img = card.find_element(By.CSS_SELECTOR, "img")
-                    image_url = get_real_image(img, driver)
-                except:
-                    image_url = "N/A"
-
                 phones.append(Phone(
-                    name=name,
                     brand=brand,
+                    title=title,
+                    rawTitle=raw_title,
+                    siteLink=(href or "").lower(),
                     price=price,
-                    image_url=image_url,
-                    url=href,
                 ))
-                print(f"  + [{brand}] {name}")
+                print(f"  + [{brand}] {title}")
 
             except Exception as e:
                 print(f"  Skipped a card: {e}")
@@ -190,7 +173,7 @@ if __name__ == "__main__":
     print(f"Total phones scraped: {len(phones)}")
     print(f"{'='*50}")
     for brand in BRANDS:
-        count = len([p for p in phones if p.brand == brand.lower()])
+        count = len([p for p in phones if p.brand == brand])
         print(f"  {brand}: {count} phones")
     print()
     for phone in phones:

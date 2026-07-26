@@ -1,34 +1,34 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
-
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
 
 BASE_URL = "https://ledikom.mk"
 
 BRAND_URLS = {
-    "Apple": "https://ledikom.mk/c/416/telefoni/apple-iphone",
-    "Samsung": "https://ledikom.mk/c/421/telefoni/samsung",
-    "Xiaomi": "https://ledikom.mk/c/424/telefoni/xiaomi",
-    "Google": "https://ledikom.mk/c/413/telefoni/google",
-    "Honor": "https://ledikom.mk/c/411/telefoni/honor",
-    "OnePlus": "https://ledikom.mk/c/441/telefoni/oneplus",
+    "apple": "https://ledikom.mk/c/416/telefoni/apple-iphone",
+    "samsung": "https://ledikom.mk/c/421/telefoni/samsung",
+    "xiaomi": "https://ledikom.mk/c/424/telefoni/xiaomi",
+    "google": "https://ledikom.mk/c/413/telefoni/google",
+    "honor": "https://ledikom.mk/c/411/telefoni/honor",
+    "oneplus": "https://ledikom.mk/c/441/telefoni/oneplus",
 }
 
-
 class Phone:
-    def __init__(self, name, brand, price, image_url, url):
-        self.name = name
+    def __init__(self, brand, title, rawTitle, siteLink, price):
         self.brand = brand
+        self.title = title
+        self.rawTitle = rawTitle
+        self.siteLink = siteLink
         self.price = price
-        self.image_url = image_url
-        self.url = url
 
     def __repr__(self):
-        return (f"Phone(name={self.name}, brand={self.brand}, "
-                f"price={self.price}, image_url={self.image_url}, url={self.url})")
+        return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
+                f"siteLink={self.siteLink}, price={self.price})")
+
 
 
 def get_driver():
@@ -70,25 +70,17 @@ def scrape_ledikom():
 
         for p in products:
             try:
-                name = p.find_element(By.CSS_SELECTOR, ".item-name a").text.strip().lower()
+                raw_title = remove_voucher(p.find_element(By.CSS_SELECTOR, ".item-name a").text.strip()).lower()
+                brand = get_brand_from_raw(raw_title)
+                title = format_title(raw_title, brand)
 
-                # price
                 try:
                     price_text = p.find_element(By.CSS_SELECTOR, ".grid-new-price").text
                 except:
                     price_text = p.find_element(By.CSS_SELECTOR, ".price").text
 
-                price = (
-                    price_text.replace("ден", "")
-                    .replace(".", "")
-                    .strip()
-                )
-                price = int(price)
+                price = normalize_price(price_text)
 
-                # image
-                image = p.find_element(By.CSS_SELECTOR, ".item-img img").get_attribute("src")
-
-                # link
                 link = p.find_element(By.CSS_SELECTOR, "a[href*='/p/']").get_attribute("href")
 
                 if link in seen_urls:
@@ -96,14 +88,14 @@ def scrape_ledikom():
                 seen_urls.add(link)
 
                 phones.append(Phone(
-                    name=name,
-                    brand=brand.lower(),
+                    brand=brand,
+                    title=title,
+                    rawTitle=raw_title,
+                    siteLink=(link or "").lower(),
                     price=price,
-                    image_url=image,
-                    url=link
                 ))
 
-                print(f"  + {name} – {price}")
+                print(f"  + {title} – {price}")
 
             except Exception as e:
                 print("  Skipped product:", e)
@@ -120,7 +112,7 @@ if __name__ == "__main__":
     print(f"Total phones scraped: {len(phones)}")
     print(f"{'='*50}")
     for brand in BRAND_URLS.keys():
-        count = len([p for p in phones if p.brand == brand.lower()])
+        count = len([p for p in phones if p.brand == brand])
         print(f"  {brand}: {count} phones")
     print()
     for phone in phones:

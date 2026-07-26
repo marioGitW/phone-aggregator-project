@@ -1,4 +1,5 @@
 import json
+
 from phone_scraper_ananas import scrape_all_phones as scrape_ananas
 from phone_scraper_anhoch import scrape_all_phones as scrape_anhoch
 from phone_scraper_ledikom import scrape_ledikom as scrape_ledikom
@@ -10,11 +11,11 @@ OUTPUT_FILE = "phones.json"
 
 def phone_to_dict(phone, source):
     return {
-        "name":phone.name,
-        "brand":phone.brand,
-        "price":str(phone.price).strip() if phone.price is not None else "N/A",
-        "image_url":phone.image_url,
-        "url":phone.url,
+        "brand": phone.brand,
+        "title": phone.title,
+        "rawTitle": phone.rawTitle,
+        "siteLink": phone.siteLink,
+        "price": phone.price,
         "source":source
     }
 
