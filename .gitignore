@@ -1,9 +1,10 @@
 # IDEs and editors
 .idea/
+**/.vscode/*
+!**/.vscode/extensions.json
 *.iml
 *.iws
 *.ipr
-.vscode/
 
 # Operating system files
 .DS_Store
@@ -20,10 +21,28 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Java / Maven / Gradle
-backend/target/
+HELP.md
+.mvn/wrapper/maven-wrapper.jar
 target/
+backend/target/
 build/
 .gradle/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 # Python
 __pycache__/
