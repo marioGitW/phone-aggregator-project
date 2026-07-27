@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: phone_aggregator_password
       POSTGRES_DB: phone_aggregator_db
     ports:
-      - "5439:5439"
+      - "5438:5432"
     volumes:
       - phone_aggregator_postgres_data:/var/lib/postgresql/data
 
