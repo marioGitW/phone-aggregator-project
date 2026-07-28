@@ -1,11 +1,14 @@
 package finki.ukim.mk.phone_aggregator.service;
 
 import finki.ukim.mk.phone_aggregator.dto.PhoneDto;
+import finki.ukim.mk.phone_aggregator.dto.PhoneFilterDto;
 import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
 import finki.ukim.mk.phone_aggregator.model.Phone;
 import finki.ukim.mk.phone_aggregator.repository.PhoneRepository;
+import finki.ukim.mk.phone_aggregator.specification.PhoneSpecifications;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,9 +42,23 @@ public class PhoneService {
         return phone;
     }
 
-    public Page<PhoneResponseDto> getPhones(Pageable pageable) {
-        Page<Phone> page = phoneRepository.findAll(pageable);
+    /**
+     * Get phones with optional filtering
+     * @param filters Optional filter parameters (can be null or have null fields)
+     * @param pageable Pagination and sorting parameters
+     * @return Page of PhoneResponseDto matching the criteria
+     */
+    public Page<PhoneResponseDto> getPhones(PhoneFilterDto filters, Pageable pageable) {
+        Specification<Phone> specification = PhoneSpecifications.fromFilter(filters);
+        Page<Phone> page = phoneRepository.findAll(specification, pageable);
         return page.map(this::convertEntityToResponseDto);
+    }
+
+    /**
+     * Get all phones without filtering (backward compatible)
+     */
+    public Page<PhoneResponseDto> getPhones(Pageable pageable) {
+        return getPhones(null, pageable);
     }
 
     private PhoneResponseDto convertEntityToResponseDto(Phone phone) {
@@ -57,3 +74,5 @@ public class PhoneService {
         );
     }
 }
+
+

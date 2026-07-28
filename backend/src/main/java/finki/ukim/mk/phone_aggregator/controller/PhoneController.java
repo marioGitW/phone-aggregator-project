@@ -1,6 +1,7 @@
 package finki.ukim.mk.phone_aggregator.controller;
 
 import finki.ukim.mk.phone_aggregator.dto.PhoneDto;
+import finki.ukim.mk.phone_aggregator.dto.PhoneFilterDto;
 import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
 import finki.ukim.mk.phone_aggregator.service.PhoneService;
 import org.springframework.data.domain.Page;
@@ -41,8 +42,14 @@ public class PhoneController {
     public ResponseEntity<Page<PhoneResponseDto>> getPhones(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
-            @RequestParam(required = false) String sort
+            @RequestParam(required = false) String sort,
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) List<String> brand,
+            @RequestParam(required = false) List<String> source,
+            @RequestParam(required = false) Integer minPrice,
+            @RequestParam(required = false) Integer maxPrice
     ) {
+        // Build sort object
         Sort sortObj = Sort.unsorted();
         if (sort != null && !sort.isEmpty()) {
             String[] parts = sort.split(",");
@@ -54,7 +61,17 @@ public class PhoneController {
         }
 
         Pageable pageable = PageRequest.of(page, size, sortObj);
-        Page<PhoneResponseDto> result = phoneService.getPhones(pageable);
+
+        // Build filter DTO
+        PhoneFilterDto filters = new PhoneFilterDto(
+                search,
+                brand,
+                source,
+                minPrice,
+                maxPrice
+        );
+
+        Page<PhoneResponseDto> result = phoneService.getPhones(filters, pageable);
         return ResponseEntity.ok(result);
     }
 }
