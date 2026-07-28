@@ -145,4 +145,18 @@
   margin-top: 0.75rem;
 }
 
+.phone-filters__reset {
+  background: #ef4444; /* red */
+  color: white;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.phone-filters__reset:hover {
+  background: #dc2626;
+}
+
 

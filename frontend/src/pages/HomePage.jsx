@@ -111,6 +111,21 @@ export default function HomePage() {
     });
   };
 
+  const handleResetFilters = () => {
+    const reset = {
+      search: '',
+      brands: [],
+      sources: [],
+      minPrice: '',
+      maxPrice: '',
+      sort: ''
+    };
+
+    // clear local search input too
+    setSearchInput('');
+    updateFilters(reset);
+  };
+
   const handleBrandChange = (brand) => {
     const updatedBrands = filters.brands.includes(brand)
       ? filters.brands.filter((currentBrand) => currentBrand !== brand)
@@ -165,6 +180,7 @@ export default function HomePage() {
         setSearchInput={setSearchInput}
         onSearch={handleSearch}
         onClearSearch={handleClearSearch}
+        onResetFilters={handleResetFilters}
       />
       <p className="info">Found {phones.length} phones (Page {page + 1} of {totalPages})</p>
 

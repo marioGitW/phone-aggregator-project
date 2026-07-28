@@ -9,6 +9,7 @@ export default function PhoneFilters({
   setSearchInput,
   onSearch,
   onClearSearch,
+  onResetFilters,
 }) {
   const [priceError, setPriceError] = useState('');
   const [minPriceInput, setMinPriceInput] = useState(filters.minPrice || '');
@@ -129,6 +130,13 @@ export default function PhoneFilters({
           className="phone-filters__button phone-filters__button--secondary"
         >
           Clear
+        </button>
+        <button
+          type="button"
+          onClick={onResetFilters}
+          className="phone-filters__button phone-filters__reset"
+        >
+          Reset Filters
         </button>
       </div>
 
