@@ -189,6 +189,19 @@ export default function PhoneFilters({
         </div>
         {priceError && <p className="phone-filters__price-error">{priceError}</p>}
       </div>
+
+      <div className="phone-filters__section phone-filters__sort-section">
+        <h4 className="phone-filters__section-title">Sort by</h4>
+        <select
+          className="phone-filters__select"
+          value={filters.sort || ''}
+          onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
+        >
+          <option value="">Default</option>
+          <option value="price,asc">Price: Low → High</option>
+          <option value="price,desc">Price: High → Low</option>
+        </select>
+      </div>
     </div>
   );
 }

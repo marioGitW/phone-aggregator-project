@@ -115,4 +115,34 @@
   font-size: 0.9rem;
 }
 
+.phone-filters__select {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #111827; /* dark text for contrast */
+  font-size: 1rem;
+  max-width: 260px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Ensure options are readable in the dropdown list */
+.phone-filters__select option {
+  color: #111827;
+  background-color: #ffffff;
+}
+
+/* Focus state */
+.phone-filters__select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.phone-filters__sort-section {
+  margin-top: 0.75rem;
+}
+
 
