@@ -54,4 +54,65 @@
   background: #4b5563;
 }
 
+.phone-filters__section {
+  margin-top: 1rem;
+}
+
+.phone-filters__section-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.phone-filters__checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.phone-filters__checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phone-filters__price-section {
+  margin-top: 0.75rem;
+}
+
+.phone-filters__price-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.phone-filters__price-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.phone-filters__price-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.phone-filters__input--price {
+  width: 140px;
+  padding: 0.5rem 0.75rem;
+}
+
+.phone-filters__price-currency {
+  color: #374151;
+  font-weight: 600;
+}
+
+.phone-filters__price-error {
+  color: #b91c1c;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
 
