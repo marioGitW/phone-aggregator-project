@@ -4,8 +4,9 @@
  */
 
 import { useState, useEffect } from 'react';
-import { fetchPhones } from '../api/phoneService';
+import { fetchPhones, fetchBrands } from '../api/phoneService';
 import PhoneCard from '../components/PhoneCard';
+import BrandFilter from '../components/BrandFilter';
 import PhoneFilters from '../components/PhoneFilters';
 import './HomePage.css';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(0);
+  const [availableBrands, setAvailableBrands] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
   // Filter state
@@ -53,6 +55,25 @@ export default function HomePage() {
   }, [page, pageSize, filters]);
 
   /**
+   * Load available brands on component mount
+   * This is independent from phone pagination/filtering
+   * so the brand list remains consistent regardless of current filters
+   */
+  useEffect(() => {
+    const loadBrands = async () => {
+      try {
+        const brands = await fetchBrands();
+        setAvailableBrands(brands);
+      } catch (err) {
+        console.error('Failed to load brands:', err);
+        // Don't show error to user for brands; they can still browse without filters
+      }
+    };
+
+    loadBrands();
+  }, []);
+
+  /**
    * Update filters and reset pagination to first page
    * Ensures pagination is valid with new filter results
    */
@@ -74,6 +95,19 @@ export default function HomePage() {
       ...filters,
       search: '',
     });
+  };
+
+  const handleBrandChange = (brand) => {
+    const updatedBrands = filters.brands.includes(brand)
+      ? filters.brands.filter((currentBrand) => currentBrand !== brand)
+      : [...filters.brands, brand];
+
+    setFilters({
+      ...filters,
+      brands: updatedBrands,
+    });
+
+    setPage(0);
   };
 
   const nextPage = () => {
@@ -104,6 +138,11 @@ export default function HomePage() {
   return (
     <div className="home-page">
       <h1>Available Phones</h1>
+      <BrandFilter
+        brands={availableBrands}
+        selectedBrands={filters.brands}
+        onChange={handleBrandChange}
+      />
       <PhoneFilters
         filters={filters}
         searchInput={searchInput}

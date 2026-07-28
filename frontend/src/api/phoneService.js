@@ -74,3 +74,28 @@ export const fetchPhones = async (page = 0, size = 20, filters = {}) => {
   }
 };
 
+/**
+ * Fetch distinct brands from the backend metadata endpoint
+ * @returns {Promise<Array<string>>} List of available brands
+ * @throws {Error} If the request fails
+ */
+export const fetchBrands = async () => {
+  try {
+    const url = `${API_BASE_URL}/api/phones/brands`;
+    console.log(`[phoneService] Fetching brands from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const brands = await response.json();
+    console.log(`[phoneService] Received ${brands.length} brands`);
+    return brands;
+  } catch (error) {
+    console.error('[phoneService] Error fetching brands:', error);
+    throw error;
+  }
+};
+

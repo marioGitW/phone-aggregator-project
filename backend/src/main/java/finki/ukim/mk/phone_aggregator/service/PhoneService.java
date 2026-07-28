@@ -73,6 +73,14 @@ public class PhoneService {
                 phone.getCreatedAt()
         );
     }
+
+    /**
+     * Get all distinct brands from the database
+     * @return List of distinct brand names, sorted alphabetically
+     */
+    public List<String> getAllBrands() {
+        return phoneRepository.findDistinctBrands();
+    }
 }
 
 

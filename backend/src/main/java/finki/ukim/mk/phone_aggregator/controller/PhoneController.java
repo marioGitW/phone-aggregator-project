@@ -74,4 +74,10 @@ public class PhoneController {
         Page<PhoneResponseDto> result = phoneService.getPhones(filters, pageable);
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/brands")
+    public ResponseEntity<List<String>> getBrands() {
+        List<String> brands = phoneService.getAllBrands();
+        return ResponseEntity.ok(brands);
+    }
 }
