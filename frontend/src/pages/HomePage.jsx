@@ -41,6 +41,18 @@ export default function HomePage() {
     loadPhones();
   }, [page, pageSize]);
 
+  const nextPage = () => {
+    if (page < totalPages - 1) {
+      setPage(page + 1);
+    }
+  };
+
+  const previousPage = () => {
+    if (page > 0) {
+      setPage(page - 1);
+    }
+  };
+
   if (loading) {
     return <div className="home-page"><p>Loading phones...</p></div>;
   }
@@ -62,11 +74,35 @@ export default function HomePage() {
       {phones.length === 0 ? (
         <p>No phones found.</p>
       ) : (
-        <div className="phones-list">
-          {phones.map((phone) => (
-            <PhoneCard key={phone.id} phone={phone} />
-          ))}
-        </div>
+        <>
+          <div className="phones-list">
+            {phones.map((phone) => (
+              <PhoneCard key={phone.id} phone={phone} />
+            ))}
+          </div>
+
+          <div className="pagination">
+            <button
+              onClick={previousPage}
+              disabled={page === 0}
+              className="pagination-btn"
+            >
+              ← Previous
+            </button>
+
+            <span className="pagination-info">
+              Page {page + 1} of {totalPages}
+            </span>
+
+            <button
+              onClick={nextPage}
+              disabled={page === totalPages - 1}
+              className="pagination-btn"
+            >
+              Next →
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
