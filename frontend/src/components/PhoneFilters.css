@@ -1,0 +1,57 @@
+.phone-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.phone-filters__search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.phone-filters__label {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.phone-filters__input {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.phone-filters__input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.phone-filters__button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.phone-filters__button:hover {
+  background: #1d4ed8;
+}
+
+.phone-filters__button--secondary {
+  background: #6b7280;
+}
+
+.phone-filters__button--secondary:hover {
+  background: #4b5563;
+}
+
+

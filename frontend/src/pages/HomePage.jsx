@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { fetchPhones } from '../api/phoneService';
 import PhoneCard from '../components/PhoneCard';
+import PhoneFilters from '../components/PhoneFilters';
 import './HomePage.css';
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(0);
+  const [searchInput, setSearchInput] = useState('');
 
   // Filter state
   const [filters, setFilters] = useState({
@@ -59,6 +61,21 @@ export default function HomePage() {
     setPage(0);  // Reset to first page
   };
 
+  const handleSearch = () => {
+    updateFilters({
+      ...filters,
+      search: searchInput,
+    });
+  };
+
+  const handleClearSearch = () => {
+    setSearchInput('');
+    updateFilters({
+      ...filters,
+      search: '',
+    });
+  };
+
   const nextPage = () => {
     if (page < totalPages - 1) {
       setPage(page + 1);
@@ -87,6 +104,13 @@ export default function HomePage() {
   return (
     <div className="home-page">
       <h1>Available Phones</h1>
+      <PhoneFilters
+        filters={filters}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        onSearch={handleSearch}
+        onClearSearch={handleClearSearch}
+      />
       <p className="info">Found {phones.length} phones (Page {page + 1} of {totalPages})</p>
 
       {/* Debug info to verify filters are being sent */}
