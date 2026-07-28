@@ -1,0 +1,71 @@
+/* PhoneCard Styles */
+
+.phone-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.phone-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.phone-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.phone-brand {
+  font-weight: 600;
+  color: #1976d2;
+  font-size: 0.95rem;
+}
+
+.phone-source {
+  font-size: 0.85rem;
+  color: #666;
+  background-color: #e3f2fd;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.phone-card-body {
+  padding: 1rem;
+}
+
+.phone-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.phone-price {
+  margin: 0.75rem 0;
+  font-size: 1.3rem;
+  color: #2e7d32;
+}
+
+.phone-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #1976d2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.phone-link:hover {
+  background-color: #1565c0;
+}
+

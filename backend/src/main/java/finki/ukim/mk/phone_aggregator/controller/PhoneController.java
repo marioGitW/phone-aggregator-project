@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/phones")
+@CrossOrigin(origins = "*")
 public class PhoneController {
 
     private final PhoneService phoneService;
