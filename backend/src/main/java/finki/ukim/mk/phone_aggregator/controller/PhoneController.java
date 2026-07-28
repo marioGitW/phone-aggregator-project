@@ -80,4 +80,10 @@ public class PhoneController {
         List<String> brands = phoneService.getAllBrands();
         return ResponseEntity.ok(brands);
     }
+
+    @GetMapping("/sources")
+    public ResponseEntity<List<String>> getSources() {
+        List<String> sources = phoneService.getAllSources();
+        return ResponseEntity.ok(sources);
+    }
 }

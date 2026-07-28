@@ -18,6 +18,7 @@ export default function HomePage() {
   const [pageSize, setPageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(0);
   const [availableBrands, setAvailableBrands] = useState([]);
+  const [availableSources, setAvailableSources] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
   // Filter state
@@ -71,6 +72,19 @@ export default function HomePage() {
     };
 
     loadBrands();
+
+    // Load available sources for source filter
+    const loadSources = async () => {
+      try {
+        const { fetchSources } = await import('../api/phoneService');
+        const sources = await fetchSources();
+        setAvailableSources(sources);
+      } catch (err) {
+        console.error('Failed to load sources:', err);
+      }
+    };
+
+    loadSources();
   }, []);
 
   /**
@@ -145,6 +159,8 @@ export default function HomePage() {
       />
       <PhoneFilters
         filters={filters}
+        setFilters={updateFilters}
+        availableSources={availableSources}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         onSearch={handleSearch}

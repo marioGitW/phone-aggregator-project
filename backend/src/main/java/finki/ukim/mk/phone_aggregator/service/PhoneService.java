@@ -81,6 +81,14 @@ public class PhoneService {
     public List<String> getAllBrands() {
         return phoneRepository.findDistinctBrands();
     }
+
+    /**
+     * Get all distinct sources (stores) from the database
+     * @return List of distinct source names, sorted alphabetically
+     */
+    public List<String> getAllSources() {
+        return phoneRepository.findDistinctSources();
+    }
 }
 
 

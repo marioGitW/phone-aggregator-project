@@ -13,4 +13,7 @@ public interface PhoneRepository extends JpaRepository<Phone, Long>, JpaSpecific
 
 	@Query("SELECT DISTINCT p.brand FROM Phone p ORDER BY p.brand")
 	List<String> findDistinctBrands();
+
+	@Query("SELECT DISTINCT p.source FROM Phone p ORDER BY p.source")
+	List<String> findDistinctSources();
 }

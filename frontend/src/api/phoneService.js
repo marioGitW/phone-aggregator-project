@@ -99,3 +99,26 @@ export const fetchBrands = async () => {
   }
 };
 
+/**
+ * Fetch distinct sources (stores) from the backend metadata endpoint
+ */
+export const fetchSources = async () => {
+  try {
+    const url = `${API_BASE_URL}/api/phones/sources`;
+    console.log(`[phoneService] Fetching sources from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const sources = await response.json();
+    console.log(`[phoneService] Received ${sources.length} sources`);
+    return sources;
+  } catch (error) {
+    console.error('[phoneService] Error fetching sources:', error);
+    throw error;
+  }
+};
+
