@@ -1,7 +1,6 @@
 /**
  * HomePage
- * Fetches phones from the backend and manages page state
- * Initial version: logs response to console for verification
+ * Fetches phones from the backend and manages page/filter state
  */
 
 import { useState, useEffect } from 'react';
@@ -17,13 +16,23 @@ export default function HomePage() {
   const [pageSize, setPageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(0);
 
+  // Filter state
+  const [filters, setFilters] = useState({
+    search: '',
+    brands: [],
+    sources: [],
+    minPrice: '',
+    maxPrice: '',
+    sort: ''
+  });
+
   useEffect(() => {
     const loadPhones = async () => {
       setLoading(true);
       setError(null);
 
       try {
-        const response = await fetchPhones(page, pageSize);
+        const response = await fetchPhones(page, pageSize, filters);
 
         console.log('Full response from backend:', response);
         console.log('Phones received:', response.content);
@@ -39,7 +48,16 @@ export default function HomePage() {
     };
 
     loadPhones();
-  }, [page, pageSize]);
+  }, [page, pageSize, filters]);
+
+  /**
+   * Update filters and reset pagination to first page
+   * Ensures pagination is valid with new filter results
+   */
+  const updateFilters = (newFilters) => {
+    setFilters(newFilters);
+    setPage(0);  // Reset to first page
+  };
 
   const nextPage = () => {
     if (page < totalPages - 1) {
@@ -70,6 +88,16 @@ export default function HomePage() {
     <div className="home-page">
       <h1>Available Phones</h1>
       <p className="info">Found {phones.length} phones (Page {page + 1} of {totalPages})</p>
+
+      {/* Debug info to verify filters are being sent */}
+      <details style={{ marginBottom: '1rem', padding: '0.5rem', backgroundColor: '#f5f5f5' }}>
+        <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>
+          Debug: Current Filters
+        </summary>
+        <pre style={{ fontSize: '0.85rem', overflow: 'auto' }}>
+          {JSON.stringify(filters, null, 2)}
+        </pre>
+      </details>
 
       {phones.length === 0 ? (
         <p>No phones found.</p>
