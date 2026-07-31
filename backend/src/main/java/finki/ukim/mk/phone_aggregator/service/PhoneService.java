@@ -12,14 +12,17 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PhoneService {
 
     private final PhoneRepository phoneRepository;
+    private final PhoneNormalizationService phoneNormalizationService;
 
-    public PhoneService(PhoneRepository phoneRepository) {
+    public PhoneService(PhoneRepository phoneRepository, PhoneNormalizationService phoneNormalizationService) {
         this.phoneRepository = phoneRepository;
+        this.phoneNormalizationService = phoneNormalizationService;
     }
 
     public long saveAllPhones(List<PhoneDto> phoneDtos) {
@@ -36,6 +39,9 @@ public class PhoneService {
         phone.setBrand(dto.getBrand());
         phone.setTitle(dto.getTitle());
         phone.setRawTitle(dto.getRawTitle());
+        phone.setNormalizedTitle(phoneNormalizationService.normalizeTitle(
+                dto.getRawTitle() != null && !dto.getRawTitle().isBlank() ? dto.getRawTitle() : dto.getTitle()
+        ));
         phone.setSiteLink(dto.getSiteLink());
         phone.setPrice(dto.getPrice());
         phone.setSource(dto.getSource());
@@ -88,6 +94,10 @@ public class PhoneService {
      */
     public List<String> getAllSources() {
         return phoneRepository.findDistinctSources();
+    }
+
+    public Optional<Phone> findPhoneById(Long id) {
+        return phoneRepository.findById(id);
     }
 }
 

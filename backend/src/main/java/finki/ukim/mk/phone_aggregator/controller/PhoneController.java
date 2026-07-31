@@ -3,7 +3,9 @@ package finki.ukim.mk.phone_aggregator.controller;
 import finki.ukim.mk.phone_aggregator.dto.PhoneDto;
 import finki.ukim.mk.phone_aggregator.dto.PhoneFilterDto;
 import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
+import finki.ukim.mk.phone_aggregator.model.Phone;
 import finki.ukim.mk.phone_aggregator.service.PhoneService;
+import finki.ukim.mk.phone_aggregator.service.PhoneSimilarityService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/phones")
@@ -22,9 +25,11 @@ import java.util.Map;
 public class PhoneController {
 
     private final PhoneService phoneService;
+    private final PhoneSimilarityService phoneSimilarityService;
 
-    public PhoneController(PhoneService phoneService) {
+    public PhoneController(PhoneService phoneService, PhoneSimilarityService phoneSimilarityService) {
         this.phoneService = phoneService;
+        this.phoneSimilarityService = phoneSimilarityService;
     }
 
     @PostMapping("/import")
@@ -85,5 +90,30 @@ public class PhoneController {
     public ResponseEntity<List<String>> getSources() {
         List<String> sources = phoneService.getAllSources();
         return ResponseEntity.ok(sources);
+    }
+
+    @GetMapping("/{id}/similar")
+    public ResponseEntity<List<PhoneResponseDto>> getSimilarPhones(@PathVariable Long id) {
+        Optional<Phone> phoneOpt = phoneService.findPhoneById(id);
+
+        if (phoneOpt.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<PhoneResponseDto> result = phoneSimilarityService.findSimilarPhones(phoneOpt.get())
+                .stream()
+                .map(phone -> new PhoneResponseDto(
+                        phone.getId(),
+                        phone.getBrand(),
+                        phone.getTitle(),
+                        phone.getRawTitle(),
+                        phone.getSiteLink(),
+                        phone.getPrice(),
+                        phone.getSource(),
+                        phone.getCreatedAt()
+                ))
+                .toList();
+
+        return ResponseEntity.ok(result);
     }
 }

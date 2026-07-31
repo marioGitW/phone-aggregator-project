@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface PhoneRepository extends JpaRepository<Phone, Long>, JpaSpecificationExecutor<Phone> {
 
+	List<Phone> findByNormalizedTitle(String normalizedTitle);
+
 	@Query("SELECT DISTINCT p.brand FROM Phone p ORDER BY p.brand")
 	List<String> findDistinctBrands();
 

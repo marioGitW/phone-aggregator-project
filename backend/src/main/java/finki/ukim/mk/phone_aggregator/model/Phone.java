@@ -27,6 +27,9 @@ public class Phone {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String rawTitle;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String normalizedTitle;
+
     @Column(nullable = false)
     private String siteLink;
 
