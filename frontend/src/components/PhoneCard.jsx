@@ -5,9 +5,12 @@
  */
 
 import { formatPrice, capitalize } from '../utils/formatters';
+import { useNavigate } from 'react-router-dom';
 import './PhoneCard.css';
 
 export default function PhoneCard({ phone }) {
+  const navigate = useNavigate();
+
   const {
     id,
     brand,
@@ -21,8 +24,25 @@ export default function PhoneCard({ phone }) {
     // imageUrl (will be added later)
   } = phone;
 
+  const openProductPage = () => {
+    navigate(`/product/${id}`);
+  };
+
+  const handleCardKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProductPage();
+    }
+  };
+
   return (
-    <div className="phone-card">
+    <div
+      className="phone-card"
+      role="button"
+      tabIndex={0}
+      onClick={openProductPage}
+      onKeyDown={handleCardKeyDown}
+    >
       <div className="phone-card-header">
         <span className="phone-brand">{capitalize(brand)}</span>
         <span className="phone-source">{capitalize(source)}</span>
@@ -40,6 +60,7 @@ export default function PhoneCard({ phone }) {
           target="_blank"
           rel="noopener noreferrer"
           className="phone-link"
+          onClick={(event) => event.stopPropagation()}
         >
           Visit Store
         </a>

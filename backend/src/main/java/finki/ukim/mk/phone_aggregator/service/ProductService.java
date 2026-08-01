@@ -1,39 +1,45 @@
 package finki.ukim.mk.phone_aggregator.service;
 
-import finki.ukim.mk.phone_aggregator.dto.ProductOfferDto;
+import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
 import finki.ukim.mk.phone_aggregator.model.Phone;
-import finki.ukim.mk.phone_aggregator.repository.PhoneRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.stream.Stream;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 public class ProductService {
 
-    private final PhoneRepository phoneRepository;
-    private final PhoneNormalizationService phoneNormalizationService;
+    private final PhoneService phoneService;
+    private final PhoneSimilarityService phoneSimilarityService;
 
-    public ProductService(PhoneRepository phoneRepository, PhoneNormalizationService phoneNormalizationService) {
-        this.phoneRepository = phoneRepository;
-        this.phoneNormalizationService = phoneNormalizationService;
+    public ProductService(PhoneService phoneService, PhoneSimilarityService phoneSimilarityService) {
+        this.phoneService = phoneService;
+        this.phoneSimilarityService = phoneSimilarityService;
     }
 
-    public List<ProductOfferDto> getOffers(String normalizedTitle) {
-        String normalizedQuery = phoneNormalizationService.normalizeTitle(normalizedTitle);
+    public List<PhoneResponseDto> getOffers(Long id) {
+        Phone basePhone = phoneService.findPhoneById(id)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Phone not found"));
 
-        return phoneRepository.findByNormalizedTitle(normalizedQuery).stream()
+        return Stream.concat(Stream.of(basePhone), phoneSimilarityService.findSimilarPhones(basePhone).stream())
+                .distinct()
                 .map(this::convertToDto)
                 .toList();
     }
 
-    private ProductOfferDto convertToDto(Phone phone) {
-        return new ProductOfferDto(
+    private PhoneResponseDto convertToDto(Phone phone) {
+        return new PhoneResponseDto(
                 phone.getId(),
                 phone.getBrand(),
                 phone.getTitle(),
+                phone.getRawTitle(),
+                phone.getSiteLink(),
                 phone.getPrice(),
                 phone.getSource(),
-                phone.getSiteLink(),
                 phone.getCreatedAt()
         );
     }

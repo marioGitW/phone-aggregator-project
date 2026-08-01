@@ -1,6 +1,6 @@
 package finki.ukim.mk.phone_aggregator.controller;
 
-import finki.ukim.mk.phone_aggregator.dto.ProductOfferDto;
+import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
 import finki.ukim.mk.phone_aggregator.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,9 +22,9 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/{normalizedTitle}/offers")
-    public ResponseEntity<List<ProductOfferDto>> getOffers(@PathVariable String normalizedTitle) {
-        return ResponseEntity.ok(productService.getOffers(normalizedTitle));
+    @GetMapping("/{id}/offers")
+    public ResponseEntity<List<PhoneResponseDto>> getOffers(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getOffers(id));
     }
 }
 

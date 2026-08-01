@@ -122,3 +122,28 @@ export const fetchSources = async () => {
   }
 };
 
+/**
+ * Fetch all matching offers for a selected phone id.
+ * @param {number|string} id
+ * @returns {Promise<Array<Object>>}
+ */
+export const fetchProductOffers = async (id) => {
+  try {
+    const url = `${API_BASE_URL}/api/products/${id}/offers`;
+    console.log(`[phoneService] Fetching product offers from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const offers = await response.json();
+    console.log(`[phoneService] Received ${offers.length} offers`);
+    return offers;
+  } catch (error) {
+    console.error('[phoneService] Error fetching product offers:', error);
+    throw error;
+  }
+};
+
