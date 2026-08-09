@@ -25,34 +25,10 @@
   },
   {
     "brand": "xiaomi",
-    "title": "xiaomi redmi a5,",
-    "rawTitle": "xiaomi мобилен телефон redmi a5, 4/128gb, црн",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-a5-4-128gb-crn/4377188",
-    "price": "5799",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
     "title": "xiaomi redmi 15",
     "rawTitle": "xiaomi мобилен телефон redmi 15 6+128gb sandy purple",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-15-6-128gb-sandy-purple/4836091",
     "price": "8499",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 pro+ 5g, светло",
-    "rawTitle": "xiaomi мобилен телефон redmi note 14 pro+ 5g, 8gb/256gb, светло син",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-note-14-pro-5g-8gb-256gb-svetlo-sin/5504128",
-    "price": "19999",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco m3 pro 5g",
-    "rawTitle": "xiaomi мобилен телефон poco m3 pro 5g 6/128 cool син",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-poco-m3-pro-5g-6-128-cool-sin/3265278",
-    "price": "8590",
     "source": "ananas"
   },
   {
@@ -65,10 +41,26 @@
   },
   {
     "brand": "xiaomi",
-    "title": "xiaomi redmi 15c",
-    "rawTitle": "xiaomi мобилен телефон redmi 15c 4/128gb ментол зелен",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-15c-4-128gb-mentol-zelen/4379861",
-    "price": "6499",
+    "title": "xiaomi poco m3 pro 5g",
+    "rawTitle": "xiaomi мобилен телефон poco m3 pro 5g 6/128 cool син",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-poco-m3-pro-5g-6-128-cool-sin/3265278",
+    "price": "8590",
+    "source": "ananas"
+  },
+  {
+    "brand": "xiaomi",
+    "title": "xiaomi redmi a5,",
+    "rawTitle": "xiaomi мобилен телефон redmi a5, 4/128gb, црн",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-a5-4-128gb-crn/4377188",
+    "price": "5799",
+    "source": "ananas"
+  },
+  {
+    "brand": "xiaomi",
+    "title": "xiaomi redmi note 14 pro+ 5g, светло",
+    "rawTitle": "xiaomi мобилен телефон redmi note 14 pro+ 5g, 8gb/256gb, светло син",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-note-14-pro-5g-8gb-256gb-svetlo-sin/5504128",
+    "price": "19999",
     "source": "ananas"
   },
   {
@@ -76,7 +68,15 @@
     "title": "xiaomi redmi 15c",
     "rawTitle": "xiaomi мобилен телефон redmi 15c 4+128gb moonlight blue",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-15c-4-128gb-moonlight-blue/4423905",
-    "price": "6499",
+    "price": "5999",
+    "source": "ananas"
+  },
+  {
+    "brand": "xiaomi",
+    "title": "xiaomi redmi 15c",
+    "rawTitle": "xiaomi мобилен телефон redmi 15c 4/128gb ментол зелен",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-15c-4-128gb-mentol-zelen/4379861",
+    "price": "5999",
     "source": "ananas"
   },
   {
@@ -85,6 +85,14 @@
     "rawTitle": "xiaomi мобилен телефон redmi note 12s ice blue (8/256)",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-note-12s-ice-blue-8-256/2002034",
     "price": "15499",
+    "source": "ananas"
+  },
+  {
+    "brand": "xiaomi",
+    "title": "xiaomi poco m5 4/64",
+    "rawTitle": "xiaomi мобилен телефон poco m5 4/64 црн",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-poco-m5-4-64-crn/3265269",
+    "price": "9590",
     "source": "ananas"
   },
   {
@@ -105,34 +113,18 @@
   },
   {
     "brand": "xiaomi",
-    "title": "xiaomi poco m5 4/64",
-    "rawTitle": "xiaomi мобилен телефон poco m5 4/64 црн",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-poco-m5-4-64-crn/3265269",
-    "price": "9590",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi a5,",
-    "rawTitle": "xiaomi мобилен телефон redmi a5, 4/128gb, црн",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-a5-4-128gb-crn/5911548",
-    "price": "5999",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 9c 2/32",
-    "rawTitle": "xiaomi мобилен телефон redmi 9c 2/32 midnight сив",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-9c-2-32-midnight-siv/1873522",
-    "price": "7490",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
     "title": "xiaomi 12 lite",
     "rawTitle": "xiaomi мобилен телефон 12 lite 8+128gb, црн",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-12-lite-8-128gb-crn/5480812",
     "price": "19890",
+    "source": "ananas"
+  },
+  {
+    "brand": "xiaomi",
+    "title": "xiaomi redmi 10",
+    "rawTitle": "xiaomi мобилен телефон redmi 10 4/64gb сив",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-10-4-64gb-siv/1873517",
+    "price": "10890",
     "source": "ananas"
   },
   {
@@ -145,18 +137,18 @@
   },
   {
     "brand": "xiaomi",
-    "title": "xiaomi redmi 10",
-    "rawTitle": "xiaomi мобилен телефон redmi 10 4/64gb сив",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-10-4-64gb-siv/1873517",
-    "price": "10890",
+    "title": "xiaomi redmi 9c 2/32",
+    "rawTitle": "xiaomi мобилен телефон redmi 9c 2/32 midnight сив",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-9c-2-32-midnight-siv/1873522",
+    "price": "7490",
     "source": "ananas"
   },
   {
-    "brand": "samsung",
-    "title": "samsung galaxy a16",
-    "rawTitle": "samsung мобилен телефон galaxy a16 4gb/128gb, сив",
-    "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a16-4gb-128gb-siv/3220063",
-    "price": "6499",
+    "brand": "xiaomi",
+    "title": "xiaomi redmi a5,",
+    "rawTitle": "xiaomi мобилен телефон redmi a5, 4/128gb, црн",
+    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-a5-4-128gb-crn/5911548",
+    "price": "5999",
     "source": "ananas"
   },
   {
@@ -169,10 +161,34 @@
   },
   {
     "brand": "samsung",
+    "title": "samsung galaxy a16",
+    "rawTitle": "samsung мобилен телефон galaxy a16 4gb/128gb, сив",
+    "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a16-4gb-128gb-siv/3220063",
+    "price": "6499",
+    "source": "ananas"
+  },
+  {
+    "brand": "samsung",
     "title": "samsung galaxy a26 5g",
     "rawTitle": "samsung мобилен телефон galaxy a26 6/128 5g црно",
     "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a26-6-128-5g-crno/4735648",
     "price": "11999",
+    "source": "ananas"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 12 pro експонат, графит",
+    "rawTitle": "apple паметен телефон iphone 12 pro 128gb експонат, графит",
+    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-12-pro-128gb-eksponat-grafit/6598608",
+    "price": "15799",
+    "source": "ananas"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 15 pro експонат,",
+    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, црн",
+    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-crn/6598601",
+    "price": "41990",
     "source": "ananas"
   },
   {
@@ -188,6 +204,14 @@
     "title": "samsung galaxy a16",
     "rawTitle": "samsung мобилен телефон galaxy a16 4gb/128gb, зелен",
     "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a16-4gb-128gb-zelen/3220057",
+    "price": "6499",
+    "source": "ananas"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy a16",
+    "rawTitle": "samsung мобилен телефон galaxy a16 4gb/128gb, црн",
+    "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a16-4gb-128gb-crn/3220062",
     "price": "6499",
     "source": "ananas"
   },
@@ -216,11 +240,35 @@
     "source": "ananas"
   },
   {
-    "brand": "samsung",
-    "title": "samsung galaxy a16",
-    "rawTitle": "samsung мобилен телефон galaxy a16 4gb/128gb, црн",
-    "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a16-4gb-128gb-crn/3220062",
-    "price": "6499",
+    "brand": "apple",
+    "title": "apple iphone 15 pro експонат, бел",
+    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, бел",
+    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-bel/6598617",
+    "price": "41990",
+    "source": "ananas"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 12 pro max експонат, графит",
+    "rawTitle": "apple паметен телефон iphone 12 pro max 128gb експонат, графит",
+    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-12-pro-max-128gb-eksponat-grafit/6598614",
+    "price": "18999",
+    "source": "ananas"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 15 pro експонат,",
+    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, син",
+    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-sin/6598609",
+    "price": "41990",
+    "source": "ananas"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 15 pro експонат, природен титаниум",
+    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, природен титаниум",
+    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-priroden-titanium/6598616",
+    "price": "41990",
     "source": "ananas"
   },
   {
@@ -229,62 +277,6 @@
     "rawTitle": "samsung мобилен телефон galaxy а05с црн 4/64gb",
     "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a05s-crn-4-64gb/2002003",
     "price": "8590",
-    "source": "ananas"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 pro експонат, бел",
-    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, бел",
-    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-bel/6598617",
-    "price": "56990",
-    "source": "ananas"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 12 pro max експонат, графит",
-    "rawTitle": "apple паметен телефон iphone 12 pro max 128gb експонат, графит",
-    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-12-pro-max-128gb-eksponat-grafit/6598614",
-    "price": "25999",
-    "source": "ananas"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 pro експонат,",
-    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, син",
-    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-sin/6598609",
-    "price": "56990",
-    "source": "ananas"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 12 pro експонат, графит",
-    "rawTitle": "apple паметен телефон iphone 12 pro 128gb експонат, графит",
-    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-12-pro-128gb-eksponat-grafit/6598608",
-    "price": "21999",
-    "source": "ananas"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 pro експонат, природен титаниум",
-    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, природен титаниум",
-    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-priroden-titanium/6598616",
-    "price": "56990",
-    "source": "ananas"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 pro експонат,",
-    "rawTitle": "apple паметен телефон iphone 15 pro 128gb експонат, црн",
-    "siteLink": "https://ananas.mk/proizvod/apple-pameten-telefon-iphone-15-pro-128gb-eksponat-crn/6598601",
-    "price": "56990",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14",
-    "rawTitle": "xiaomi паметен телефон redmi note 14 6gb, 128gb, виолетов",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-pameten-telefon-redmi-note-14-6gb-128gb-violetov/5155082",
-    "price": "8890",
     "source": "ananas"
   },
   {
@@ -309,14 +301,6 @@
     "rawTitle": "xiaomi мобилен телефон redmi note 12 pro 5g 6/128 midnight црн",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-note-12-pro-5g-6-128-midnight-crn/3265274",
     "price": "12890",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 pro 5g,",
-    "rawTitle": "xiaomi мобилен телефон redmi note 14 pro 5g, 8gb/256gb, тиркизна боја",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-note-14-pro-5g-8gb-256gb-tirkizna-boja/5821929",
-    "price": "24499",
     "source": "ananas"
   },
   {
@@ -361,14 +345,6 @@
   },
   {
     "brand": "xiaomi",
-    "title": "xiaomi redmi 15c о",
-    "rawTitle": "xiaomi мобилен телефон redmi 15c 8/256gb полноќно црно",
-    "siteLink": "https://ananas.mk/proizvod/xiaomi-mobilen-telefon-redmi-15c-8-256gb-polnokno-crno/4377408",
-    "price": "7999",
-    "source": "ananas"
-  },
-  {
-    "brand": "xiaomi",
     "title": "xiaomi redmi a5",
     "rawTitle": "xiaomi redmi a5 4+128gb ocean blue",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-redmi-a5-4-128gb-ocean-blue/3854693",
@@ -396,7 +372,7 @@
     "title": "xiaomi redmi note 14",
     "rawTitle": "xiaomi паметен телефон redmi note 14 6gb, 128gb, виолетов",
     "siteLink": "https://ananas.mk/proizvod/xiaomi-pameten-telefon-redmi-note-14-6gb-128gb-violetov/3220098",
-    "price": "9199",
+    "price": "8199",
     "source": "ananas"
   },
   {
@@ -460,7 +436,7 @@
     "title": "samsung galaxy a36 5g",
     "rawTitle": "samsung мобилен телефон galaxy a36 6/128 5g бела",
     "siteLink": "https://ananas.mk/proizvod/samsung-mobilen-telefon-galaxy-a36-6-128-5g-bela/3631415",
-    "price": "15999",
+    "price": "14999",
     "source": "ananas"
   },
   {
@@ -469,14 +445,6 @@
     "rawTitle": "samsung galaxy xcover7 rugged 5g 6gb/128gb black",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-xcover7-rugged-5g-6gb128gb-black-7144",
     "price": "1598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15 titan gray",
-    "rawTitle": "xiaomi redmi 15 8gb/256gb titan gray",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15-8gb256gb-titan-gray-8175",
-    "price": "898000",
     "source": "anhoch"
   },
   {
@@ -501,14 +469,6 @@
     "rawTitle": "samsung galaxy a17 a175 4gb/128gb black",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a17-a175-4gb128gb-black-8193",
     "price": "998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 15 pro titanium",
-    "rawTitle": "xiaomi redmi note 15 pro 8gb/256gb titanium",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-8gb256gb-titanium-8705",
-    "price": "1648000",
     "source": "anhoch"
   },
   {
@@ -548,7 +508,7 @@
     "title": "samsung galaxy a37 5g",
     "rawTitle": "samsung galaxy a37 5g 6gb/128gb dark green",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a37-5g-6gb128gb-dark-green-8776",
-    "price": "2048000",
+    "price": "1998000",
     "source": "anhoch"
   },
   {
@@ -556,7 +516,7 @@
     "title": "samsung galaxy a37 5g",
     "rawTitle": "samsung galaxy a37 5g 6gb/128gb gray",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a37-5g-6gb128gb-gray-8777",
-    "price": "2048000",
+    "price": "1998000",
     "source": "anhoch"
   },
   {
@@ -564,7 +524,7 @@
     "title": "samsung galaxy a37 5g",
     "rawTitle": "samsung galaxy a37 5g 6gb/128gb light violet",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a37-5g-6gb128gb-light-violet-8778",
-    "price": "2048000",
+    "price": "1998000",
     "source": "anhoch"
   },
   {
@@ -572,7 +532,7 @@
     "title": "samsung galaxy a37 5g",
     "rawTitle": "samsung galaxy a37 5g 6gb/128gb white",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a37-5g-6gb128gb-white-8779",
-    "price": "2048000",
+    "price": "1998000",
     "source": "anhoch"
   },
   {
@@ -580,7 +540,7 @@
     "title": "samsung galaxy s25 5g",
     "rawTitle": "samsung galaxy s25 5g 12gb/128gb black",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb128gb-black-8268",
-    "price": "4498000",
+    "price": "4398000",
     "source": "anhoch"
   },
   {
@@ -720,30 +680,6 @@
     "source": "anhoch"
   },
   {
-    "brand": "samsung",
-    "title": "samsung galaxy a16 a165",
-    "rawTitle": "samsung galaxy a16 a165 4gb/128gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a16-a165-4gb128gb-black-7274",
-    "price": "668000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a16 a165",
-    "rawTitle": "samsung galaxy a16 a165 4gb/128gb light green",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a16-a165-4gb128gb-light-green-7275",
-    "price": "668000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a16 a165",
-    "rawTitle": "samsung galaxy a16 a165 4gb/128gb gray",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a16-a165-4gb128gb-gray-7276",
-    "price": "668000",
-    "source": "anhoch"
-  },
-  {
     "brand": "xiaomi",
     "title": "xiaomi redmi a5 midnight black",
     "rawTitle": "xiaomi redmi a5 4gb/128gb midnight black",
@@ -764,7 +700,7 @@
     "title": "xiaomi redmi note 15 black",
     "rawTitle": "xiaomi redmi note 15 6gb/128gb black",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-6gb128gb-black-8560",
-    "price": "998000",
+    "price": "948000",
     "source": "anhoch"
   },
   {
@@ -780,7 +716,7 @@
     "title": "xiaomi redmi note 15 glacier blue",
     "rawTitle": "xiaomi redmi note 15 6gb/128gb glacier blue",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-6gb128gb-glacier-blue-8561",
-    "price": "998000",
+    "price": "948000",
     "source": "anhoch"
   },
   {
@@ -788,7 +724,7 @@
     "title": "xiaomi redmi note 15 purple",
     "rawTitle": "xiaomi redmi note 15 6gb/128gb purple",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-6gb128gb-purple-8562",
-    "price": "998000",
+    "price": "948000",
     "source": "anhoch"
   },
   {
@@ -796,7 +732,7 @@
     "title": "xiaomi redmi note 15 black",
     "rawTitle": "xiaomi redmi note 15 8gb/256gb black",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-8gb256gb-black-8563",
-    "price": "1198000",
+    "price": "1148000",
     "source": "anhoch"
   },
   {
@@ -804,7 +740,7 @@
     "title": "xiaomi redmi note 15 glacier blue",
     "rawTitle": "xiaomi redmi note 15 8gb/256gb glacier blue",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-8gb256gb-glacier-blue-8564",
-    "price": "1198000",
+    "price": "1148000",
     "source": "anhoch"
   },
   {
@@ -812,7 +748,7 @@
     "title": "xiaomi redmi note 15 purple",
     "rawTitle": "xiaomi redmi note 15 8gb/256gb purple",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-8gb256gb-purple-8565",
-    "price": "1198000",
+    "price": "1148000",
     "source": "anhoch"
   },
   {
@@ -820,7 +756,7 @@
     "title": "xiaomi redmi note 15 pro black",
     "rawTitle": "xiaomi redmi note 15 pro 8gb/256gb black",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-8gb256gb-black-8566",
-    "price": "1648000",
+    "price": "1698000",
     "source": "anhoch"
   },
   {
@@ -828,7 +764,7 @@
     "title": "xiaomi redmi note 15 pro glacier blue",
     "rawTitle": "xiaomi redmi note 15 pro 8gb/256gb glacier blue",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-8gb256gb-glacier-blue-8567",
-    "price": "1648000",
+    "price": "1698000",
     "source": "anhoch"
   },
   {
@@ -857,10 +793,26 @@
   },
   {
     "brand": "xiaomi",
+    "title": "xiaomi redmi note 14 pro 5g lavander purple",
+    "rawTitle": "xiaomi redmi note 14 pro 5g 8gb/256gb lavander purple",
+    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-pro-5g-8gb256gb-lavander-purple-9083",
+    "price": "1498000",
+    "source": "anhoch"
+  },
+  {
+    "brand": "xiaomi",
     "title": "xiaomi redmi note 15 pro+ 5g mocha brown",
     "rawTitle": "xiaomi redmi note 15 pro+ 5g 8gb/256gb mocha brown",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-plus--5g-8gb256gb-mocha-brown-8573",
     "price": "2498000",
+    "source": "anhoch"
+  },
+  {
+    "brand": "honor",
+    "title": "honor x6c dual sim ocean cyan",
+    "rawTitle": "honor x6c 6gb/128gb dual sim ocean cyan",
+    "siteLink": "https://www.anhoch.com/products/honor-x6c-6gb128gb-dual-sim-ocean-cyan-9085",
+    "price": "548000",
     "source": "anhoch"
   },
   {
@@ -969,14 +921,6 @@
   },
   {
     "brand": "samsung",
-    "title": "samsung galaxy a26 5g",
-    "rawTitle": "samsung galaxy a26 5g 6gb/128gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a26-5g-6gb128gb-white-7639",
-    "price": "1248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
     "title": "samsung galaxy a36 5g",
     "rawTitle": "samsung galaxy a36 5g 6gb/128gb awesome lime",
     "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a36-5g-6gb128gb-awesome-lime-7643",
@@ -1008,19 +952,19 @@
     "source": "anhoch"
   },
   {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 fe",
-    "rawTitle": "samsung galaxy s25 fe 5g 8gb/256gb dark blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-fe-5g-8gb256gb-dark-blue-8265",
-    "price": "3698000",
+    "brand": "xiaomi",
+    "title": "xiaomi redmi note 15 pro titanium",
+    "rawTitle": "xiaomi redmi note 15 pro 8gb/256gb titanium",
+    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-8gb256gb-titanium-8705",
+    "price": "1698000",
     "source": "anhoch"
   },
   {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 15 pro+ 5g black",
-    "rawTitle": "xiaomi redmi note 15 pro+ 5g 8gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-plus--5g-8gb256gb-black-8571",
-    "price": "2498000",
+    "brand": "samsung",
+    "title": "samsung galaxy a16 a165",
+    "rawTitle": "samsung galaxy a16 a165 4gb/128gb gray",
+    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a16-a165-4gb128gb-gray-7276",
+    "price": "668000",
     "source": "anhoch"
   },
   {
@@ -1029,6 +973,30 @@
     "rawTitle": "xiaomi redmi note 15 pro+ 5g 8gb/256gb glacier blue",
     "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-plus--5g-8gb256gb-glacier-blue-8572",
     "price": "2498000",
+    "source": "anhoch"
+  },
+  {
+    "brand": "honor",
+    "title": "honor magic8 lite 5g ds midnight black",
+    "rawTitle": "honor magic8 lite 5g 8gb/256gb ds midnight black",
+    "siteLink": "https://www.anhoch.com/products/honor-magic8-lite-5g-8gb256gb-ds-midnight-black-9086",
+    "price": "1798000",
+    "source": "anhoch"
+  },
+  {
+    "brand": "honor",
+    "title": "honor magic8 lite 5g ds reddish brown",
+    "rawTitle": "honor magic8 lite 5g 8gb/512gb ds reddish brown",
+    "siteLink": "https://www.anhoch.com/products/honor-magic8-lite-5g-8gb512gb-ds-reddish-brown-9088",
+    "price": "1948000",
+    "source": "anhoch"
+  },
+  {
+    "brand": "honor",
+    "title": "honor 600 lite 5g ds vital green",
+    "rawTitle": "honor 600 lite 5g 8gb/256gb ds vital green",
+    "siteLink": "https://www.anhoch.com/products/honor-600-lite-5g-8gb256gb-ds-vital-green-9090",
+    "price": "1698000",
     "source": "anhoch"
   },
   {
@@ -1048,1083 +1016,11 @@
     "source": "anhoch"
   },
   {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/512gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb512gb-sky-blue-8703",
-    "price": "8998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 fe",
-    "rawTitle": "samsung galaxy s25 fe 5g 8gb/128gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-fe-5g-8gb128gb-black-8195",
-    "price": "3298000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco m8 pro 5g silver",
-    "rawTitle": "xiaomi poco m8 pro 5g 12gb/512gb silver",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-poco-m8-pro-5g-12gb512gb-silver-8806",
-    "price": "2498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/256gb awesome graphite",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb256gb-awesome-graphite-7658",
-    "price": "2398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15 titan gray",
-    "rawTitle": "xiaomi redmi 15 6gb/128gb titan gray",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15-6gb128gb-titan-gray-8172",
-    "price": "848000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15 sandy purple",
-    "rawTitle": "xiaomi redmi 15 6gb/128gb sandy purple",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15-6gb128gb-sandy-purple-8173",
-    "price": "848000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco c85 purple",
-    "rawTitle": "xiaomi poco c85 6gb/128gb purple",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-poco-c85-6gb128gb-purple-8801",
-    "price": "698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/256gb blueblack",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb256gb-blueblack-8076",
-    "price": "4698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a36 5g",
-    "rawTitle": "samsung galaxy a36 5g 8gb/256gb awesome white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a36-5g-8gb256gb-awesome-white-7649",
-    "price": "1898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/512gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb512gb-white-8704",
-    "price": "8998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/128gb silver shadow",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb128gb-silver-shadow-7489",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16e black md1q4",
-    "rawTitle": "apple iphone 16e 128gb black md1q4",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16e-128gb-black-md1q4-9356",
-    "price": "3698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a26 5g",
-    "rawTitle": "samsung galaxy a26 5g 8gb/256gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a26-5g-8gb256gb-white-7642",
-    "price": "1498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a36 5g",
-    "rawTitle": "samsung galaxy a36 5g 8gb/256gb awesome lavander",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a36-5g-8gb256gb-awesome-lavander-7648",
-    "price": "1898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15 midnight black",
-    "rawTitle": "xiaomi redmi 15 6gb/128gb midnight black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15-6gb128gb-midnight-black-8170",
-    "price": "848000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/512gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb512gb-black-8684",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t 5g violet",
-    "rawTitle": "xiaomi 17t 5g 12gb/512gb violet",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-5g-12gb512gb-violet-8944",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/256gb cobalt violet",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb256gb-cobalt-violet-8698",
-    "price": "7898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/128gb navy",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb128gb-navy-7488",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a57 5g",
-    "rawTitle": "samsung galaxy a57 5g 12gb/512gb gray",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a57-5g-12gb512gb-gray-8784",
-    "price": "3798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco c85 green",
-    "rawTitle": "xiaomi poco c85 6gb/128gb green",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-poco-c85-6gb128gb-green-8800",
-    "price": "698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 black",
-    "rawTitle": "apple iphone 17 256gb black",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-256gb-black-7627",
-    "price": "6248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 sage",
-    "rawTitle": "apple iphone 17 256gb sage",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-256gb-sage-7630",
-    "price": "6248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a36 5g",
-    "rawTitle": "samsung galaxy a36 5g 8gb/256gb awesome lime",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a36-5g-8gb256gb-awesome-lime-7647",
-    "price": "1898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/256gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb256gb-white-8683",
-    "price": "5198000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t 5g black",
-    "rawTitle": "xiaomi 17t 5g 12gb/512gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-5g-12gb512gb-black-8942",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/512gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb512gb-white-8687",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t 5g blue",
-    "rawTitle": "xiaomi 17t 5g 12gb/512gb blue",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-5g-12gb512gb-blue-8943",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 edge",
-    "rawTitle": "samsung galaxy s25 edge 5g 12/256gb silver",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-edge-5g-12256gb-silver-8179",
-    "price": "4998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t pro 5g black",
-    "rawTitle": "xiaomi 17t pro 5g 12gb/512gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-pro-5g-12gb512gb-black-8948",
-    "price": "5198000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/256gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb256gb-sky-blue-8699",
-    "price": "7898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/256gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb256gb-white-8700",
-    "price": "7898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/512gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb512gb-black-8701",
-    "price": "8998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 fe",
-    "rawTitle": "samsung galaxy s25 fe 5g 8gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-fe-5g-8gb256gb-black-8196",
-    "price": "3698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco m8 5g green",
-    "rawTitle": "xiaomi poco m8 5g 8gb/256gb green",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-poco-m8-5g-8gb256gb-green-8803",
-    "price": "1498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 mist purple",
-    "rawTitle": "xiaomi redmi note 14 6gb/128gb mist purple",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-6gb128gb-mist-purple-7352",
-    "price": "818000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a36 5g",
-    "rawTitle": "samsung galaxy a36 5g 8gb/256gb awesome black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a36-5g-8gb256gb-awesome-black-7650",
-    "price": "1898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb256gb-black-8680",
-    "price": "5198000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/256gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb256gb-sky-blue-8691",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/256gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb256gb-white-8692",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t pro 5g deep blue",
-    "rawTitle": "xiaomi 17t pro 5g 12gb/512gb deep blue",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-pro-5g-12gb512gb-deep-blue-8949",
-    "price": "5198000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco c85 black",
-    "rawTitle": "xiaomi poco c85 6gb/128gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-poco-c85-6gb128gb-black-8799",
-    "price": "698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi poco m8 pro 5g green",
-    "rawTitle": "xiaomi poco m8 pro 5g 12gb/512gb green",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-poco-m8-pro-5g-12gb512gb-green-8807",
-    "price": "2498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15c blue",
-    "rawTitle": "xiaomi redmi 15c 8gb/256gb blue",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15c-8gb256gb-blue-8118",
-    "price": "798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 pro aurora purple",
-    "rawTitle": "xiaomi redmi note 14 pro 8gb/256gb aurora purple",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-pro-8gb256gb-aurora-purple-7359",
-    "price": "1398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 air space black",
-    "rawTitle": "apple iphone 17 air 256gb space black",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-air-256gb-space-black-7618",
-    "price": "5798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 lavander",
-    "rawTitle": "apple iphone 17 256gb lavander",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-256gb-lavander-7629",
-    "price": "6248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 mist blue",
-    "rawTitle": "apple iphone 17 256gb mist blue",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-256gb-mist-blue-7631",
-    "price": "6248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 pro+ 5g midnight black",
-    "rawTitle": "xiaomi redmi note 14 pro+ 5g 8gb/256gb midnight black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-pro-plus--5g-8gb256gb-midnight-black-7405",
-    "price": "1848000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 pro midnight black",
-    "rawTitle": "xiaomi redmi note 14 pro 8gb/256gb midnight black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-pro-8gb256gb-midnight-black-7406",
-    "price": "1398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/512gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb512gb-sky-blue-8686",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/512gb cobalt violet",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb512gb-cobalt-violet-8694",
-    "price": "7698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/512gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb512gb-sky-blue-8695",
-    "price": "7698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/512gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb512gb-white-8696",
-    "price": "7698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15c blue",
-    "rawTitle": "xiaomi redmi 15c 4gb/128gb blue",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15c-4gb128gb-blue-8296",
-    "price": "598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "honor",
-    "title": "honor magic7 lite 5g ds titanium black",
-    "rawTitle": "honor magic7 lite 5g 8/256gb ds titanium black",
-    "siteLink": "https://www.anhoch.com/products/honor-magic7-lite-5g-8256gb-ds-titanium-black-7036",
-    "price": "1648000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a26 5g",
-    "rawTitle": "samsung galaxy a26 5g 6gb/128gb mint",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a26-5g-6gb128gb-mint-7637",
-    "price": "1248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a26 5g",
-    "rawTitle": "samsung galaxy a26 5g 8gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a26-5g-8gb256gb-black-7641",
-    "price": "1498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16 white",
-    "rawTitle": "apple iphone 16 128gb white",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16-128gb-white-3263",
-    "price": "5098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/256gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb256gb-sky-blue-8682",
-    "price": "5198000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 5g",
-    "rawTitle": "samsung galaxy s26 5g 12gb/512gb cobalt violet",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-5g-12gb512gb-cobalt-violet-8685",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15 midnight black",
-    "rawTitle": "xiaomi redmi 15 8gb/256gb midnight black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15-8gb256gb-midnight-black-8174",
-    "price": "898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 midnight black",
-    "rawTitle": "xiaomi redmi note 14 6gb/128gb midnight black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-6gb128gb-midnight-black-7407",
-    "price": "818000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/256gb cobalt violet",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb256gb-cobalt-violet-8690",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t 5g blue",
-    "rawTitle": "xiaomi 17t 5g 12gb/256gb blue",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-5g-12gb256gb-blue-8946",
-    "price": "3598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15 sandy purple",
-    "rawTitle": "xiaomi redmi 15 8gb/256gb sandy purple",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15-8gb256gb-sandy-purple-8181",
-    "price": "898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 12gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-12gb256gb-black-8697",
-    "price": "7898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16 128 pink",
-    "rawTitle": "apple iphone 16 128 gb pink",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16-128-gb-pink-6712",
-    "price": "5098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro max silver",
-    "rawTitle": "apple iphone 17 pro max 512gb silver",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-max-512gb-silver-9536",
-    "price": "11298000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 fe",
-    "rawTitle": "samsung galaxy s25 fe 5g 8gb/256gb light blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-fe-5g-8gb256gb-light-blue-8266",
-    "price": "3698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 fe",
-    "rawTitle": "samsung galaxy s25 fe 5g 8gb/256gb white",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-fe-5g-8gb256gb-white-8267",
-    "price": "3698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 ultra",
-    "rawTitle": "samsung galaxy s25 ultra 5g 12gb/256gb titanium white silver",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-ultra-5g-12gb256gb-titanium-white-silver-7500",
-    "price": "6798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a57 5g",
-    "rawTitle": "samsung galaxy a57 5g 12gb/512gb light blue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a57-5g-12gb512gb-light-blue-8785",
-    "price": "3798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16 teal myed3hx/a",
-    "rawTitle": "apple iphone 16 128gb teal myed3hx/a",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16-128gb-teal-myed3hxa-8544",
-    "price": "5098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15c green",
-    "rawTitle": "xiaomi redmi 15c 4gb/128gb green",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15c-4gb128gb-green-8297",
-    "price": "598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z flip",
-    "rawTitle": "samsung galaxy z flip 7 5g 12gb/512gb blue shadow",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-flip-7-5g-12gb512gb-blue-shadow-8070",
-    "price": "6598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z flip",
-    "rawTitle": "samsung galaxy z flip 7 5g 12gb/256gb jet black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-flip-7-5g-12gb256gb-jet-black-8075",
-    "price": "5998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z flip",
-    "rawTitle": "samsung galaxy z flip 7 5g 12gb/512gb coral red",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-flip-7-5g-12gb512gb-coral-red-8079",
-    "price": "6598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 ocean blue",
-    "rawTitle": "xiaomi redmi note 14 8gb/256gb ocean blue",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-14-8gb256gb-ocean-blue-7356",
-    "price": "948000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro cosmic orange",
-    "rawTitle": "apple iphone 17 pro 256gb cosmic orange",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-256gb-cosmic-orange-7616",
-    "price": "8598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 air cloud white",
-    "rawTitle": "apple iphone 17 air 256gb cloud white",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-air-256gb-cloud-white-7620",
-    "price": "5798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15c green",
-    "rawTitle": "xiaomi redmi 15c 8gb/256gb green",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15c-8gb256gb-green-8136",
-    "price": "798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z flip",
-    "rawTitle": "samsung galaxy z flip 7 fe 5g 8gb/128gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-flip-7-fe-5g-8gb128gb-black-8140",
-    "price": "4998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z fold",
-    "rawTitle": "samsung galaxy z fold 7 5g 12gb/256gb silver shadow",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-fold-7-5g-12gb256gb-silver-shadow-8141",
-    "price": "8998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z fold",
-    "rawTitle": "samsung galaxy z fold 7 5g 12gb/256gb blue shadow",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-fold-7-5g-12gb256gb-blue-shadow-8142",
-    "price": "8998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy z fold",
-    "rawTitle": "samsung galaxy z fold 7 5g 12gb/256gb jet black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-z-fold-7-5g-12gb256gb-jet-black-8143",
-    "price": "8998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a26 5g",
-    "rawTitle": "samsung galaxy a26 5g 6gb/128gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a26-5g-6gb128gb-black-7638",
-    "price": "1248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a26 5g",
-    "rawTitle": "samsung galaxy a26 5g 8gb/256gb mint",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a26-5g-8gb256gb-mint-7640",
-    "price": "1498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro max cosmic orange",
-    "rawTitle": "apple iphone 17 pro max 512gb cosmic orange",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-max-512gb-cosmic-orange-8416",
-    "price": "11298000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/128gb awesome pink",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb128gb-awesome-pink-7651",
-    "price": "1998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/128gb awesome lightgray",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb128gb-awesome-lightgray-7652",
-    "price": "1998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/128gb awesome olive",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb128gb-awesome-olive-7653",
-    "price": "1998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/128gb awesome graphite",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb128gb-awesome-graphite-7654",
-    "price": "1998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/256gb awesome pink",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb256gb-awesome-pink-7655",
-    "price": "2398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/256gb awesome lightgray",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb256gb-awesome-lightgray-7656",
-    "price": "2398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8gb/256gb awesome olive",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-a56-5g-8gb256gb-awesome-olive-7657",
-    "price": "2398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb256gb-black-8688",
-    "price": "6398000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t 5g black",
-    "rawTitle": "xiaomi 17t 5g 12gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-5g-12gb256gb-black-8945",
-    "price": "3598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 plus",
-    "rawTitle": "samsung galaxy s26 plus 5g 12gb/512gb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-plus-5g-12gb512gb-black-8693",
-    "price": "7698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t pro 5g deep violet",
-    "rawTitle": "xiaomi 17t pro 5g 12gb/512gb deep violet",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-pro-5g-12gb512gb-deep-violet-8950",
-    "price": "5198000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16e white",
-    "rawTitle": "apple iphone 16e 128gb white",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16e-128gb-white-6393",
-    "price": "3698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16e white",
-    "rawTitle": "apple iphone 16e 256gb white",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16e-256gb-white-6395",
-    "price": "4098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 blue mtp43rxa",
-    "rawTitle": "apple iphone 15 128gb blue mtp43rxa",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-15-128gb-blue-mtp43rxa-0484",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/256gb mint",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb256gb-mint-7459",
-    "price": "4698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/256gb icyblue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb256gb-icyblue-7460",
-    "price": "4698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/256gb navy",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb256gb-navy-7461",
-    "price": "4698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16e black",
-    "rawTitle": "apple iphone 16e 256gb black",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16e-256gb-black-6949",
-    "price": "4098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro max deep blue",
-    "rawTitle": "apple iphone 17 pro max 512gb deep blue",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-max-512gb-deep-blue-7737",
-    "price": "11298000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/128gb icyblue",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb128gb-icyblue-7486",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/128gb mint",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb128gb-mint-7487",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 5g",
-    "rawTitle": "samsung galaxy s25 5g 12gb/256gb silver shadow",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-5g-12gb256gb-silver-shadow-7490",
-    "price": "4698000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s25 ultra",
-    "rawTitle": "samsung galaxy s25 ultra 5g 12gb/256gb titanium gray",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s25-ultra-5g-12gb256gb-titanium-gray-7498",
-    "price": "6798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26 ultra",
-    "rawTitle": "samsung galaxy s26 ultra 5g 16gb/1tb black",
-    "siteLink": "https://www.anhoch.com/products/samsung-galaxy-s26-ultra-5g-16gb1tb-black-9055",
-    "price": "11498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "honor",
-    "title": "honor magic7 lite 5g ds titanium purple",
-    "rawTitle": "honor magic7 lite 5g 8/256gb ds titanium purple",
-    "siteLink": "https://www.anhoch.com/products/honor-magic7-lite-5g-8256gb-ds-titanium-purple-7037",
-    "price": "1648000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 15 pro+ 5g black",
-    "rawTitle": "xiaomi redmi note 15 pro+ 5g 12gb/512gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-note-15-pro-plus--5g-12gb512gb-black-8574",
-    "price": "2898000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17e black",
-    "rawTitle": "apple iphone 17e 256gb black",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17e-256gb-black-8855",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17e white",
-    "rawTitle": "apple iphone 17e 256gb white",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17e-256gb-white-8856",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17e pink",
-    "rawTitle": "apple iphone 17e 256gb pink",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17e-256gb-pink-8857",
-    "price": "4498000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16 ultramarine",
-    "rawTitle": "apple iphone 16 128gb ultramarine",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16-128gb-ultramarine-7837",
-    "price": "5098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15c black",
-    "rawTitle": "xiaomi redmi 15c 4gb/128gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15c-4gb128gb-black-8116",
-    "price": "598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi 15c black",
-    "rawTitle": "xiaomi redmi 15c 8gb/256gb black",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-redmi-15c-8gb256gb-black-8117",
-    "price": "798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 black",
-    "rawTitle": "apple iphone 15 128gb black",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-15-128gb-black-0152",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 pink",
-    "rawTitle": "apple iphone 15 128gb pink",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-15-128gb-pink-0153",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 15 blue",
-    "rawTitle": "apple iphone 15 128gb blue",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-15-128gb-blue-0155",
-    "price": "3998000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 air light gold",
-    "rawTitle": "apple iphone 17 air 256gb light gold",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-air-256gb-light-gold-7621",
-    "price": "5798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 air sky blue",
-    "rawTitle": "apple iphone 17 air 256gb sky blue",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-air-256gb-sky-blue-7622",
-    "price": "5798000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro silver",
-    "rawTitle": "apple iphone 17 pro 256gb silver",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-256gb-silver-7623",
-    "price": "8598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro max cosmic orange",
-    "rawTitle": "apple iphone 17 pro max 256gb cosmic orange",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-max-256gb-cosmic-orange-7624",
-    "price": "9598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro max deep blue",
-    "rawTitle": "apple iphone 17 pro max 256gb deep blue",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-max-256gb-deep-blue-7625",
-    "price": "9598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro max silver",
-    "rawTitle": "apple iphone 17 pro max 256gb silver",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-max-256gb-silver-7626",
-    "price": "9598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 white",
-    "rawTitle": "apple iphone 17 256gb white",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-256gb-white-7628",
-    "price": "6248000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi 17t 5g violet",
-    "rawTitle": "xiaomi 17t 5g 12gb/256gb violet",
-    "siteLink": "https://www.anhoch.com/products/xiaomi-17t-5g-12gb256gb-violet-8947",
-    "price": "3598000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 16 black mye73z",
-    "rawTitle": "apple iphone 16 128gb black mye73z",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-16-128gb-black-mye73z-6154",
-    "price": "5098000",
-    "source": "anhoch"
-  },
-  {
-    "brand": "apple",
-    "title": "apple iphone 17 pro deep blue",
-    "rawTitle": "apple iphone 17 pro 256gb deep blue",
-    "siteLink": "https://www.anhoch.com/products/apple-iphone-17-pro-256gb-deep-blue-7617",
-    "price": "8598000",
-    "source": "anhoch"
-  },
-  {
     "brand": "apple",
     "title": "apple iphone 17e",
     "rawTitle": "apple iphone 17e",
     "siteLink": "https://ledikom.mk/p/5778/apple-iphone-17e",
-    "price": "40000",
+    "price": "0",
     "source": "ledikom"
   },
   {
@@ -2132,7 +1028,7 @@
     "title": "apple iphone 17 pro max esim",
     "rawTitle": "apple iphone 17 pro max esim",
     "siteLink": "https://ledikom.mk/p/5046/apple-iphone-17-pro-max-esim",
-    "price": "72590",
+    "price": "70690",
     "source": "ledikom"
   },
   {
@@ -2140,7 +1036,7 @@
     "title": "apple iphone 17 pro esim",
     "rawTitle": "apple iphone 17 pro esim",
     "siteLink": "https://ledikom.mk/p/5045/apple-iphone-17-pro-esim",
-    "price": "66390",
+    "price": "64590",
     "source": "ledikom"
   },
   {
@@ -2268,7 +1164,7 @@
     "title": "samsung galaxy a17",
     "rawTitle": "samsung galaxy a17",
     "siteLink": "https://ledikom.mk/p/4757/samsung-galaxy-a17",
-    "price": "9190",
+    "price": "9790",
     "source": "ledikom"
   },
   {
@@ -2654,6 +1550,110 @@
     "siteLink": "https://ledikom.mk/p/4486/oneplus-13",
     "price": "49190",
     "source": "ledikom"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 5g 12+256gb (sm-f776bligeuc) pink",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122391-samsung-galaxy-z-flip8-5g-12-256gb--sm-f776bligeuc--pink",
+    "price": "77999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 5g 12+256gb (sm-f776bzkgeuc) graphite",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122392-samsung-galaxy-z-flip8-5g-12-256gb--sm-f776bzkgeuc--graphite",
+    "price": "77999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 5g 12+256gb (sm-f776bzwgeuc) cream",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122393-samsung-galaxy-z-flip8-5g-12-256gb--sm-f776bzwgeuc--cream",
+    "price": "77999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 5g 12+512gb (sm-f776bliheuc) pink",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122394-samsung-galaxy-z-flip8-5g-12-512gb--sm-f776bliheuc--pink",
+    "price": "89999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 5g 12+512gb (sm-f776bzkheuc) graphite",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122395-samsung-galaxy-z-flip8-5g-12-512gb--sm-f776bzkheuc--graphite",
+    "price": "89999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 5g 12+512gb (sm-f776bzwheuc) cream",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122396-samsung-galaxy-z-flip8-5g-12-512gb--sm-f776bzwheuc--cream",
+    "price": "89999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 5g 12+256gb (sm-f971bzkbeuc) graphite",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122398-samsung-galaxy-z-fold8-5g-12-256gb--sm-f971bzkbeuc--graphite",
+    "price": "120999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 5g 12+512gb (sm-f971blvceuc) lavender",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122400-samsung-galaxy-z-fold8-5g-12-512gb--sm-f971blvceuc--lavender",
+    "price": "132999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 5g 12+256gb (sm-f976bzkbeuc) graphite",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122403-samsung-galaxy-z-fold8-ultra-5g-12-256gb--sm-f976bzkbeuc--graphite",
+    "price": "132999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 5g 12+256gb (sm-f976bzwbeuc) cream",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122405-samsung-galaxy-z-fold8-ultra-5g-12-256gb--sm-f976bzwbeuc--cream",
+    "price": "132999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 5g 12+512gb (sm-f976bzkceuc) graphite",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122406-samsung-galaxy-z-fold8-ultra-5g-12-512gb--sm-f976bzkceuc--graphite",
+    "price": "143999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 5g 12+512gb (sm-f976bzvceuc) techno violet",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122407-samsung-galaxy-z-fold8-ultra-5g-12-512gb--sm-f976bzvceuc--techno-violet",
+    "price": "143999",
+    "source": "neptun"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 5g 12+512gb (sm-f976bzwceuc) cream",
+    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84122408-samsung-galaxy-z-fold8-ultra-5g-12-512gb--sm-f976bzwceuc--cream",
+    "price": "143999",
+    "source": "neptun"
   },
   {
     "brand": "honor",
@@ -3149,14 +2149,6 @@
     "rawTitle": "xiaomi redmi note 15 8+256gb purple",
     "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84118705-xiaomi-redmi-note-15-8-256gb-purple",
     "price": "15499",
-    "source": "neptun"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 15 pro 5g titanium",
-    "rawTitle": "xiaomi redmi note 15 pro 5g 8+256gb titanium",
-    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84118718-xiaomi-redmi-note-15-pro-5g-8-256gb-titanium",
-    "price": "23999",
     "source": "neptun"
   },
   {
@@ -3801,14 +2793,6 @@
   },
   {
     "brand": "samsung",
-    "title": "samsung galaxy z flip7",
-    "rawTitle": "samsung galaxy z flip7 5g 12+256gb jetblack",
-    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84115722-samsung-galaxy-z-flip7-5g-12-256gb--sm-f766bzkgeuc--jetblack",
-    "price": "71999",
-    "source": "neptun"
-  },
-  {
-    "brand": "samsung",
     "title": "samsung galaxy z fold7",
     "rawTitle": "samsung galaxy z fold7 5g 12+256gb jetblack",
     "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84115727-samsung-galaxy-z-fold7-5g-12-256gb--sm-f966bzkbeuc--jetblack",
@@ -3978,14 +2962,6 @@
   {
     "brand": "samsung",
     "title": "samsung galaxy a56 5g",
-    "rawTitle": "samsung galaxy a56 5g 8/256gb awesome lightgray",
-    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84112102-samsung-galaxy-a56-5g-8-256gb--sm-a566bzaceuc--awesome-lightgray",
-    "price": "30499",
-    "source": "neptun"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy a56 5g",
     "rawTitle": "samsung galaxy a56 5g 8/256gb awesome olive",
     "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/84112107-samsung-galaxy-a56-5g-8-256gb--sm-a566bzgceuc--awesome-olive",
     "price": "30499",
@@ -4109,14 +3085,6 @@
     "rawTitle": "xiaomi redmi note 14 4g 6+128gb ocean blue",
     "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/smartphone-xiaomi-redmi-note-14-4g-6-128gb-ocean-blue",
     "price": "12999",
-    "source": "neptun"
-  },
-  {
-    "brand": "xiaomi",
-    "title": "xiaomi redmi note 14 4g midnight black",
-    "rawTitle": "xiaomi redmi note 14 4g 8+256gb midnight black",
-    "siteLink": "https://www.neptun.mk/categories/mobilni-telefoni/xiaomi-redmi-note-14-4g-8-256gb-midnight-black-",
-    "price": "14499",
     "source": "neptun"
   },
   {
@@ -4268,7 +3236,7 @@
     "title": "honor x5c plus ocean cyan",
     "rawTitle": "honor x5c plus 4gb/64gb ocean cyan",
     "siteLink": "https://setec.mk/products/honor-x5c-plus-4-64-gb-blue",
-    "price": "5199",
+    "price": "4999",
     "source": "setec"
   },
   {
@@ -4276,7 +3244,39 @@
     "title": "honor x5c plus midnight black",
     "rawTitle": "honor x5c plus 4gb/64gb midnight black",
     "siteLink": "https://setec.mk/products/honor-x5c-plus-4-64-gb-black",
-    "price": "5199",
+    "price": "4999",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor x5c plus midnight black",
+    "rawTitle": "honor x5c plus 4gb/128gb midnight black",
+    "siteLink": "https://setec.mk/products/honor-x5c-plus-4-128-gb-black",
+    "price": "5499",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor x5c plus ocean cyan",
+    "rawTitle": "honor x5c plus 4gb/128gb ocean cyan",
+    "siteLink": "https://setec.mk/products/honor-x5c-plus-4-128gb-blue",
+    "price": "5499",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor x6c midnight black",
+    "rawTitle": "honor x6c 6gb/128gb midnight black",
+    "siteLink": "https://setec.mk/products/honor-x6c-6gb-128gb-black",
+    "price": "5499",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor x6c ocean cyan",
+    "rawTitle": "honor x6c 6gb/128gb ocean cyan",
+    "siteLink": "https://setec.mk/products/honor-x6c-6gb-128gb-blue",
+    "price": "5499",
     "source": "setec"
   },
   {
@@ -4285,22 +3285,6 @@
     "rawTitle": "xiaomi redmi 14c 4/128gb blue",
     "siteLink": "https://setec.mk/products/xiaomi-redmi-14c-4-128gb-blue-1",
     "price": "5599",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor x5c plus midnight black",
-    "rawTitle": "honor x5c plus 4gb/128gb midnight black",
-    "siteLink": "https://setec.mk/products/honor-x5c-plus-4-128-gb-black",
-    "price": "5699",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor x5c plus ocean cyan",
-    "rawTitle": "honor x5c plus 4gb/128gb ocean cyan",
-    "siteLink": "https://setec.mk/products/honor-x5c-plus-4-128gb-blue",
-    "price": "5699",
     "source": "setec"
   },
   {
@@ -4324,22 +3308,6 @@
     "title": "xiaomi redmi a5 blue",
     "rawTitle": "xiaomi redmi a5 4/128gb blue",
     "siteLink": "https://setec.mk/products/xiaomi-redmi-a5-4-128gb-blue-1",
-    "price": "5799",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor x6c midnight black",
-    "rawTitle": "honor x6c 6gb/128gb midnight black",
-    "siteLink": "https://setec.mk/products/honor-x6c-6gb-128gb-black",
-    "price": "5799",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor x6c ocean cyan",
-    "rawTitle": "honor x6c 6gb/128gb ocean cyan",
-    "siteLink": "https://setec.mk/products/honor-x6c-6gb-128gb-blue",
     "price": "5799",
     "source": "setec"
   },
@@ -4400,6 +3368,38 @@
     "source": "setec"
   },
   {
+    "brand": "honor",
+    "title": "honor x6c ocean cyan",
+    "rawTitle": "honor x6c 6gb/256gb ocean cyan",
+    "siteLink": "https://setec.mk/products/honor-x6c-6gb-256gb-blue",
+    "price": "7499",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor x6c midnight black",
+    "rawTitle": "honor x6c 6gb/256gb midnight black",
+    "siteLink": "https://setec.mk/products/honor-x6c-6gb-256gb-black",
+    "price": "7499",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor 400 smart 5g meteor silver",
+    "rawTitle": "honor 400 smart 5g 4gb/128gb meteor silver",
+    "siteLink": "https://setec.mk/products/honor-400-smart-4-128gb-meteor-silver",
+    "price": "7499",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor 400 smart 5g velvet black",
+    "rawTitle": "honor 400 smart 5g 4gb/128gb velvet black",
+    "siteLink": "https://setec.mk/products/honor-400-smart-4-128gb-black",
+    "price": "7499",
+    "source": "setec"
+  },
+  {
     "brand": "xiaomi",
     "title": "xiaomi redmi 15c midnight black",
     "rawTitle": "xiaomi redmi 15c 8/256gb midnight black",
@@ -4425,34 +3425,18 @@
   },
   {
     "brand": "honor",
-    "title": "honor x6c ocean cyan",
-    "rawTitle": "honor x6c 6gb/256gb ocean cyan",
-    "siteLink": "https://setec.mk/products/honor-x6c-6gb-256gb-blue",
-    "price": "7999",
+    "title": "honor x7d meteor silver",
+    "rawTitle": "honor x7d 6gb/128gb meteor silver",
+    "siteLink": "https://setec.mk/products/honor-x7d-6-128gb-silver",
+    "price": "8299",
     "source": "setec"
   },
   {
     "brand": "honor",
-    "title": "honor x6c midnight black",
-    "rawTitle": "honor x6c 6gb/256gb midnight black",
-    "siteLink": "https://setec.mk/products/honor-x6c-6gb-256gb-black",
-    "price": "7999",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor 400 smart 5g meteor silver",
-    "rawTitle": "honor 400 smart 5g 4gb/128gb meteor silver",
-    "siteLink": "https://setec.mk/products/honor-400-smart-4-128gb-meteor-silver",
-    "price": "7999",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor 400 smart 5g velvet black",
-    "rawTitle": "honor 400 smart 5g 4gb/128gb velvet black",
-    "siteLink": "https://setec.mk/products/honor-400-smart-4-128gb-black",
-    "price": "7999",
+    "title": "honor x7d velvet black",
+    "rawTitle": "honor x7d 6gb/128gb velvet black",
+    "siteLink": "https://setec.mk/products/honor-x7d-6-128gb-black",
+    "price": "8299",
     "source": "setec"
   },
   {
@@ -4476,22 +3460,6 @@
     "title": "xiaomi redmi 15 purple",
     "rawTitle": "xiaomi redmi 15 6/128gb purple",
     "siteLink": "https://setec.mk/products/xiaomi-redmi-15-6-128gb-purple",
-    "price": "8499",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor x7d meteor silver",
-    "rawTitle": "honor x7d 6gb/128gb meteor silver",
-    "siteLink": "https://setec.mk/products/honor-x7d-6-128gb-silver",
-    "price": "8499",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor x7d velvet black",
-    "rawTitle": "honor x7d 6gb/128gb velvet black",
-    "siteLink": "https://setec.mk/products/honor-x7d-6-128gb-black",
     "price": "8499",
     "source": "setec"
   },
@@ -4628,7 +3596,7 @@
     "title": "honor x7d velvet black",
     "rawTitle": "honor x7d 8gb/256gb velvet black",
     "siteLink": "https://setec.mk/products/honor-x7d-8gb-256gb-black",
-    "price": "10499",
+    "price": "10299",
     "source": "setec"
   },
   {
@@ -4636,7 +3604,7 @@
     "title": "honor x7d meteor silver",
     "rawTitle": "honor x7d 8gb/256gb meteor silver",
     "siteLink": "https://setec.mk/products/honor-x7d-8-256gb-silver",
-    "price": "10499",
+    "price": "10299",
     "source": "setec"
   },
   {
@@ -4700,7 +3668,7 @@
     "title": "honor 400 lite 5g velvet black",
     "rawTitle": "honor 400 lite 5g 8gb/256gb velvet black",
     "siteLink": "https://setec.mk/products/honor-400-lite-5g-8-256gb-black",
-    "price": "13199",
+    "price": "12999",
     "source": "setec"
   },
   {
@@ -4708,7 +3676,7 @@
     "title": "honor 400 lite 5g velvet grey",
     "rawTitle": "honor 400 lite 5g 8gb/256gb velvet grey",
     "siteLink": "https://setec.mk/products/honor-400-lite-5g-8gb-256gb-velvet-gray",
-    "price": "13199",
+    "price": "12999",
     "source": "setec"
   },
   {
@@ -4724,7 +3692,7 @@
     "title": "samsung sm-a266 galaxy a26",
     "rawTitle": "samsung sm-a266 galaxy a26 mint 8/256",
     "siteLink": "https://setec.mk/products/samsung-sm-a266-galaxy-a26-mint-8-256",
-    "price": "15499",
+    "price": "14999",
     "source": "setec"
   },
   {
@@ -4732,7 +3700,7 @@
     "title": "samsung sm-a266 galaxy a26",
     "rawTitle": "samsung sm-a266 galaxy a26 white 8/256",
     "siteLink": "https://setec.mk/products/samsung-sm-a266-galaxy-a26-white-8-256",
-    "price": "15499",
+    "price": "14999",
     "source": "setec"
   },
   {
@@ -4740,7 +3708,7 @@
     "title": "samsung sm-a266 galaxy a26",
     "rawTitle": "samsung sm-a266 galaxy a26 black 8/256",
     "siteLink": "https://setec.mk/products/samsung-sm-a266-galaxy-a26-black-8-256",
-    "price": "15499",
+    "price": "14999",
     "source": "setec"
   },
   {
@@ -4852,7 +3820,7 @@
     "title": "honor 600 lite 5g velvet black",
     "rawTitle": "honor 600 lite 5g 8gb/256gb velvet black",
     "siteLink": "https://setec.mk/products/honor-honor-600-lite-8-256gb-black",
-    "price": "16999",
+    "price": "17499",
     "source": "setec"
   },
   {
@@ -4860,7 +3828,7 @@
     "title": "honor 600 lite 5g velvet grey",
     "rawTitle": "honor 600 lite 5g 8gb/256gb velvet grey",
     "siteLink": "https://setec.mk/products/honor-honor-600-lite-8-256gb-gray",
-    "price": "16999",
+    "price": "17499",
     "source": "setec"
   },
   {
@@ -4868,7 +3836,7 @@
     "title": "honor 600 lite 5g green",
     "rawTitle": "honor 600 lite 5g 8gb/256gb green",
     "siteLink": "https://setec.mk/products/honor-honor-600-lite-8-256gb-green",
-    "price": "16999",
+    "price": "17499",
     "source": "setec"
   },
   {
@@ -4916,6 +3884,30 @@
     "title": "honor magic8 lite 5g reddish brown",
     "rawTitle": "honor magic8 lite 5g 8gb/256gb reddish brown",
     "siteLink": "https://setec.mk/products/honor-magic8-lite-256gb-brown",
+    "price": "18299",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a276 galaxy a27",
+    "rawTitle": "samsung sm-a276 galaxy a27 5g 6gb/128gb light pink",
+    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-6gb-128gb-light-pink",
+    "price": "18299",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a276 galaxy a27",
+    "rawTitle": "samsung sm-a276 galaxy a27 5g 6gb/128gb blue",
+    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-6gb-128gb-blue",
+    "price": "18299",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a276 galaxy a27",
+    "rawTitle": "samsung sm-a276 galaxy a27 5g 6gb/128gb black",
+    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-6gb-128gb-black",
     "price": "18299",
     "source": "setec"
   },
@@ -5017,25 +4009,33 @@
   },
   {
     "brand": "samsung",
-    "title": "samsung sm-a276 galaxy a27",
-    "rawTitle": "samsung sm-a276 galaxy a27 5g 6gb/128gb light pink",
-    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-6gb-128gb-light-pink",
+    "title": "samsung sm-a376 galaxy a37",
+    "rawTitle": "samsung sm-a376 galaxy a37 gray 6/128gb",
+    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-gray-6-128gb",
     "price": "19999",
     "source": "setec"
   },
   {
     "brand": "samsung",
-    "title": "samsung sm-a276 galaxy a27",
-    "rawTitle": "samsung sm-a276 galaxy a27 5g 6gb/128gb blue",
-    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-6gb-128gb-blue",
+    "title": "samsung sm-a376 galaxy a37",
+    "rawTitle": "samsung sm-a376 galaxy a37 white 6/128gb",
+    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-white-6-128gb",
     "price": "19999",
     "source": "setec"
   },
   {
     "brand": "samsung",
-    "title": "samsung sm-a276 galaxy a27",
-    "rawTitle": "samsung sm-a276 galaxy a27 5g 6gb/128gb black",
-    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-6gb-128gb-black",
+    "title": "samsung sm-a376 galaxy a37",
+    "rawTitle": "samsung sm-a376 galaxy a37 lite violet 6/128gb",
+    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-lite-violet-6-128gb-1",
+    "price": "19999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a376 galaxy a37",
+    "rawTitle": "samsung sm-a376 galaxy a37 dark green 6/128gb",
+    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-dark-green-6-128gb-1",
     "price": "19999",
     "source": "setec"
   },
@@ -5044,38 +4044,6 @@
     "title": "xiaomi redmi note 15 pro green",
     "rawTitle": "xiaomi redmi note 15 pro 8/256gb green",
     "siteLink": "https://setec.mk/products/xiaomi-redmi-note-15-pro-8-256gb-green",
-    "price": "20499",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a376 galaxy a37",
-    "rawTitle": "samsung sm-a376 galaxy a37 gray 6/128gb",
-    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-gray-6-128gb",
-    "price": "20499",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a376 galaxy a37",
-    "rawTitle": "samsung sm-a376 galaxy a37 white 6/128gb",
-    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-white-6-128gb",
-    "price": "20499",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a376 galaxy a37",
-    "rawTitle": "samsung sm-a376 galaxy a37 lite violet 6/128gb",
-    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-lite-violet-6-128gb-1",
-    "price": "20499",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a376 galaxy a37",
-    "rawTitle": "samsung sm-a376 galaxy a37 dark green 6/128gb",
-    "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-dark-green-6-128gb-1",
     "price": "20499",
     "source": "setec"
   },
@@ -5109,6 +4077,30 @@
     "rawTitle": "samsung sm-a566 galaxy a56 awesome graphite 8/256gb",
     "siteLink": "https://setec.mk/products/samsung-sm-a566-galaxy-a56-awesome-graphite-8-256g-1",
     "price": "22999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a276 galaxy a27",
+    "rawTitle": "samsung sm-a276 galaxy a27 5g 8gb/256gb blue",
+    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-8gb-256gb-blue",
+    "price": "23499",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a276 galaxy a27",
+    "rawTitle": "samsung sm-a276 galaxy a27 5g 8gb/256gb light pink",
+    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-8gb-256gb-light-pink",
+    "price": "23499",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung sm-a276 galaxy a27",
+    "rawTitle": "samsung sm-a276 galaxy a27 5g 8gb/256gb black",
+    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-8gb-256gb-black",
+    "price": "23499",
     "source": "setec"
   },
   {
@@ -5165,30 +4157,6 @@
     "rawTitle": "samsung sm-a376 galaxy a37 dark green 8/256gb",
     "siteLink": "https://setec.mk/products/samsung-sm-a376-galaxy-a37-dark-green-8-256gb",
     "price": "24999",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a276 galaxy a27",
-    "rawTitle": "samsung sm-a276 galaxy a27 5g 8gb/256gb blue",
-    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-8gb-256gb-blue",
-    "price": "25499",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a276 galaxy a27",
-    "rawTitle": "samsung sm-a276 galaxy a27 5g 8gb/256gb light pink",
-    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-8gb-256gb-light-pink",
-    "price": "25499",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung sm-a276 galaxy a27",
-    "rawTitle": "samsung sm-a276 galaxy a27 5g 8gb/256gb black",
-    "siteLink": "https://setec.mk/products/samsung-sm-a276-galaxy-a27-5g-8gb-256gb-black",
-    "price": "25499",
     "source": "setec"
   },
   {
@@ -5288,6 +4256,22 @@
     "source": "setec"
   },
   {
+    "brand": "honor",
+    "title": "honor 600 5g black",
+    "rawTitle": "honor 600 5g 8gb/256gb black",
+    "siteLink": "https://setec.mk/products/honor-600-5g-8256gb-black",
+    "price": "35999",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor 600 5g orange",
+    "rawTitle": "honor 600 5g 8gb/256gb orange",
+    "siteLink": "https://setec.mk/products/honor-600-5g-8256gb-orange",
+    "price": "35999",
+    "source": "setec"
+  },
+  {
     "brand": "xiaomi",
     "title": "xiaomi 17t black",
     "rawTitle": "xiaomi 17t 12gb/256gb black",
@@ -5309,22 +4293,6 @@
     "rawTitle": "xiaomi 17t 12gb/256gb violet",
     "siteLink": "https://setec.mk/products/xiaomi-17t-12gb-256gb-violet-1",
     "price": "35999",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor 600 5g black",
-    "rawTitle": "honor 600 5g 8gb/256gb black",
-    "siteLink": "https://setec.mk/products/honor-600-5g-8256gb-black",
-    "price": "36499",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor 600 5g orange",
-    "rawTitle": "honor 600 5g 8gb/256gb orange",
-    "siteLink": "https://setec.mk/products/honor-600-5g-8256gb-orange",
-    "price": "36499",
     "source": "setec"
   },
   {
@@ -5396,7 +4364,7 @@
     "title": "honor 600 5g black",
     "rawTitle": "honor 600 5g 8gb/512gb black",
     "siteLink": "https://setec.mk/products/honor-600-5g-8512gb-black",
-    "price": "38499",
+    "price": "37999",
     "source": "setec"
   },
   {
@@ -5404,7 +4372,7 @@
     "title": "honor 600 5g orange",
     "rawTitle": "honor 600 5g 8gb/512gb orange",
     "siteLink": "https://setec.mk/products/honor-600-5g-8512gb-orange",
-    "price": "38499",
+    "price": "37999",
     "source": "setec"
   },
   {
@@ -5452,7 +4420,7 @@
     "title": "apple iphone 17e black",
     "rawTitle": "apple iphone 17e 256gb black",
     "siteLink": "https://setec.mk/products/apple-iphone-17e-256gb-black-1",
-    "price": "44990",
+    "price": "43990",
     "source": "setec"
   },
   {
@@ -5460,7 +4428,7 @@
     "title": "apple iphone 17e soft pink",
     "rawTitle": "apple iphone 17e 256gb soft pink",
     "siteLink": "https://setec.mk/products/apple-iphone-17e-256gb-soft-pink-1",
-    "price": "44990",
+    "price": "43990",
     "source": "setec"
   },
   {
@@ -5468,7 +4436,7 @@
     "title": "apple iphone 17e white",
     "rawTitle": "apple iphone 17e 256gb white",
     "siteLink": "https://setec.mk/products/apple-iphone-17e-256gb-white-1",
-    "price": "44990",
+    "price": "43990",
     "source": "setec"
   },
   {
@@ -5560,6 +4528,30 @@
     "source": "setec"
   },
   {
+    "brand": "honor",
+    "title": "honor 600 pro 5g black",
+    "rawTitle": "honor 600 pro 5g 12gb/512gb black",
+    "siteLink": "https://setec.mk/products/honor-600-pro-5g-12512gb-black",
+    "price": "49999",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor 600 pro 5g golden white",
+    "rawTitle": "honor 600 pro 5g 12gb/512gb golden white",
+    "siteLink": "https://setec.mk/products/honor-600-pro-5g-12512gb-golden-white",
+    "price": "49999",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor 600 pro 5g orange",
+    "rawTitle": "honor 600 pro 5g 12gb/512gb orange",
+    "siteLink": "https://setec.mk/products/honor-600-pro-5g-12gb-512gb-orange",
+    "price": "49999",
+    "source": "setec"
+  },
+  {
     "brand": "apple",
     "title": "apple iphone 16 black",
     "rawTitle": "apple iphone 16 128gb black",
@@ -5632,22 +4624,6 @@
     "source": "setec"
   },
   {
-    "brand": "honor",
-    "title": "honor 600 pro 5g black",
-    "rawTitle": "honor 600 pro 5g 12gb/512gb black",
-    "siteLink": "https://setec.mk/products/honor-600-pro-5g-12512gb-black",
-    "price": "51999",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor 600 pro 5g golden white",
-    "rawTitle": "honor 600 pro 5g 12gb/512gb golden white",
-    "siteLink": "https://setec.mk/products/honor-600-pro-5g-12512gb-golden-white",
-    "price": "51999",
-    "source": "setec"
-  },
-  {
     "brand": "xiaomi",
     "title": "xiaomi 17t pro black",
     "rawTitle": "xiaomi 17t pro 12gb/512gb black",
@@ -5668,14 +4644,6 @@
     "title": "xiaomi 17t pro violet",
     "rawTitle": "xiaomi 17t pro 12gb/512gb violet",
     "siteLink": "https://setec.mk/products/xiaomi-17t-pro-12gb-512gb-violet-1",
-    "price": "51999",
-    "source": "setec"
-  },
-  {
-    "brand": "honor",
-    "title": "honor 600 pro 5g orange",
-    "rawTitle": "honor 600 pro 5g 12gb/512gb orange",
-    "siteLink": "https://setec.mk/products/honor-600-pro-5g-12gb-512gb-orange",
     "price": "51999",
     "source": "setec"
   },
@@ -5801,9 +4769,41 @@
   },
   {
     "brand": "samsung",
+    "title": "samsung galaxy s26",
+    "rawTitle": "samsung galaxy s26 512gb cobalt violet",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-s26-512gb-cobalt-violet",
+    "price": "63999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
     "title": "samsung galaxy s26+",
     "rawTitle": "samsung galaxy s26+ 256gb white",
     "siteLink": "https://setec.mk/products/samsung-galaxy-s26-256gb-white",
+    "price": "63999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy s26",
+    "rawTitle": "samsung galaxy s26 512gb light blue",
+    "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-light-blue",
+    "price": "63999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy s26",
+    "rawTitle": "samsung galaxy s26 512gb black",
+    "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-black-1",
+    "price": "63999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy s26",
+    "rawTitle": "samsung galaxy s26 512gb white",
+    "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-white-1",
     "price": "63999",
     "source": "setec"
   },
@@ -5849,38 +4849,6 @@
   },
   {
     "brand": "samsung",
-    "title": "samsung galaxy s26",
-    "rawTitle": "samsung galaxy s26 512gb cobalt violet",
-    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-s26-512gb-cobalt-violet",
-    "price": "66999",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26",
-    "rawTitle": "samsung galaxy s26 512gb light blue",
-    "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-light-blue",
-    "price": "66999",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26",
-    "rawTitle": "samsung galaxy s26 512gb black",
-    "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-black-1",
-    "price": "66999",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy s26",
-    "rawTitle": "samsung galaxy s26 512gb white",
-    "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-white-1",
-    "price": "66999",
-    "source": "setec"
-  },
-  {
-    "brand": "samsung",
     "title": "samsung galaxy s26+",
     "rawTitle": "samsung galaxy s26+ 512gb white",
     "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-white",
@@ -5909,6 +4877,30 @@
     "rawTitle": "samsung galaxy s26+ 512gb cobalt violet",
     "siteLink": "https://setec.mk/products/samsung-galaxy-s26-512gb-cobalt-violet",
     "price": "76999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 12gb/256gb graphite",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-flip8-12gb-256gb-graphi",
+    "price": "77999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 12gb/256gb cream",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-flip8-12gb-256gb-cream",
+    "price": "77999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 12gb/256gb pink",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-flip8-12gb-256gb-pink",
+    "price": "77999",
     "source": "setec"
   },
   {
@@ -5961,18 +4953,10 @@
   },
   {
     "brand": "apple",
-    "title": "apple iphone 16 pro max natural titanium",
-    "rawTitle": "apple iphone 16 pro max 256gb natural titanium",
-    "siteLink": "https://setec.mk/products/apple-iphone-16-pro-max-256gb-natural-titanium-1",
-    "price": "84995",
-    "source": "setec"
-  },
-  {
-    "brand": "apple",
     "title": "apple iphone 17 pro silver",
     "rawTitle": "apple iphone 17 pro 256gb silver",
     "siteLink": "https://setec.mk/products/apple-iphone-17-pro-256gb-silver-1",
-    "price": "87490",
+    "price": "79990",
     "source": "setec"
   },
   {
@@ -5980,7 +4964,7 @@
     "title": "apple iphone 17 pro cosmic orange",
     "rawTitle": "apple iphone 17 pro 256gb cosmic orange",
     "siteLink": "https://setec.mk/products/apple-iphone-17-pro-256gb-cosmic-orange-1",
-    "price": "87490",
+    "price": "79990",
     "source": "setec"
   },
   {
@@ -5988,7 +4972,15 @@
     "title": "apple iphone 17 pro deep blue",
     "rawTitle": "apple iphone 17 pro 256gb deep blue",
     "siteLink": "https://setec.mk/products/apple-iphone-17-pro-256gb-deep-blue-1",
-    "price": "87490",
+    "price": "79990",
+    "source": "setec"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 16 pro max natural titanium",
+    "rawTitle": "apple iphone 16 pro max 256gb natural titanium",
+    "siteLink": "https://setec.mk/products/apple-iphone-16-pro-max-256gb-natural-titanium-1",
+    "price": "84995",
     "source": "setec"
   },
   {
@@ -6060,6 +5052,30 @@
     "title": "samsung galaxy s26 ultra",
     "rawTitle": "samsung galaxy s26 ultra 512gb light blue",
     "siteLink": "https://setec.mk/products/samsung-galaxy-s26-ultra-512gb-light-blue",
+    "price": "89999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 12gb/512gb graphite",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-flip8-12gb-512gb-graphi",
+    "price": "89999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 12gb/512gb cream",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-flip8-12gb-512gb-cream",
+    "price": "89999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z flip8",
+    "rawTitle": "samsung galaxy z flip8 12gb/512gb pink",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-flip8-12gb-512gb-pink",
     "price": "89999",
     "source": "setec"
   },
@@ -6160,6 +5176,30 @@
     "source": "setec"
   },
   {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 12gb/256gb graphite",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-12gb-256gb-graphi",
+    "price": "120999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 12gb/256gb cream",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-12gb-256gb-cream",
+    "price": "120999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 12gb/256gb lavender",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-12gb-256gb-lavend",
+    "price": "120999",
+    "source": "setec"
+  },
+  {
     "brand": "apple",
     "title": "apple iphone 17 pro max deep blue",
     "rawTitle": "apple iphone 17 pro max 1tb deep blue",
@@ -6176,11 +5216,99 @@
     "source": "setec"
   },
   {
+    "brand": "honor",
+    "title": "honor magic v6 5g black",
+    "rawTitle": "honor magic v6 5g 12gb/512gb black",
+    "siteLink": "https://setec.mk/products/honor-magic-v6-5g-12gb-512gb-black",
+    "price": "129999",
+    "source": "setec"
+  },
+  {
+    "brand": "honor",
+    "title": "honor magic v6 5g red",
+    "rawTitle": "honor magic v6 5g 12gb/512gb red",
+    "siteLink": "https://setec.mk/products/honor-magic-v6-5g-12gb-512gb-red",
+    "price": "129999",
+    "source": "setec"
+  },
+  {
     "brand": "apple",
     "title": "apple iphone 16 pro max black titanium",
     "rawTitle": "apple iphone 16 pro max 1tb black titanium",
     "siteLink": "https://setec.mk/products/apple-iphone-16-pro-max-1tb-black-titanium",
     "price": "131290",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 12gb/512gb graphite",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-12gb-512gb-graphi",
+    "price": "132999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 12gb/512gb cream",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-12gb-512gb-cream",
+    "price": "132999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 12gb/512gb lavender",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-12gb-512gb-lavend",
+    "price": "132999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 12gb/256gb graphite",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-ultra-12gb-256gb",
+    "price": "132999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 12gb/256gb cream",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-ultra-12gb-256gb-1",
+    "price": "132999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 12gb/256gb violet shadow",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-ultra-12gb-256gb-2",
+    "price": "132999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 12gb/512gb graphite",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-ultra-12gb-512gb",
+    "price": "143999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 12gb/512gb cream",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-ultra-12gb-512gb-1",
+    "price": "143999",
+    "source": "setec"
+  },
+  {
+    "brand": "samsung",
+    "title": "samsung galaxy z fold8",
+    "rawTitle": "samsung galaxy z fold8 ultra 12gb/512gb violet shadow",
+    "siteLink": "https://setec.mk/products/pre-order-samsung-galaxy-z-fold8-ultra-12gb-512gb-2",
+    "price": "143999",
     "source": "setec"
   },
   {
@@ -7329,6 +6457,14 @@
   },
   {
     "brand": "apple",
+    "title": "apple iphone 16 white white",
+    "rawTitle": "apple iphone 16 128gb white white",
+    "siteLink": "https://www.tehnomarket.com.mk/product/29401855/apple-iphone-16-128gb-white-white",
+    "price": "63690",
+    "source": "tehnomarket"
+  },
+  {
+    "brand": "apple",
     "title": "apple iphone 16 black",
     "rawTitle": "apple iphone 16 128gb black",
     "siteLink": "https://www.tehnomarket.com.mk/product/29401020/apple-iphone-16-128gb-black",
@@ -7348,6 +6484,14 @@
     "title": "apple iphone 16 white",
     "rawTitle": "apple iphone 16 128gb white",
     "siteLink": "https://www.tehnomarket.com.mk/product/29401021/apple-iphone-16-128gb-white",
+    "price": "63690",
+    "source": "tehnomarket"
+  },
+  {
+    "brand": "apple",
+    "title": "apple iphone 16 black black",
+    "rawTitle": "apple iphone 16 128gb black black",
+    "siteLink": "https://www.tehnomarket.com.mk/product/29536316/apple-iphone-16-128gb-black-black",
     "price": "63690",
     "source": "tehnomarket"
   },
@@ -7713,6 +6857,14 @@
   },
   {
     "brand": "apple",
+    "title": "apple iphone 17 pro deep blue",
+    "rawTitle": "apple iphone 17 pro 512gb deep blue",
+    "siteLink": "https://www.tehnomarket.com.mk/product/29536315/apple-iphone-17-pro-512gb-deep-blue",
+    "price": "112999",
+    "source": "tehnomarket"
+  },
+  {
+    "brand": "apple",
     "title": "apple iphone 17 pro max silver",
     "rawTitle": "apple iphone 17 pro max 512gb silver",
     "siteLink": "https://www.tehnomarket.com.mk/product/29536053/apple-iphone-17-pro-max-512gb-silver",
@@ -7749,14 +6901,6 @@
     "rawTitle": "samsung galaxy fold 8 12/256gb lavander",
     "siteLink": "https://www.tehnomarket.com.mk/product/29536234/vaucher-za-prednarachka-samsung-galaxy-fold-8-12256gb-lavander",
     "price": "120999",
-    "source": "tehnomarket"
-  },
-  {
-    "brand": "samsung",
-    "title": "samsung galaxy fold 7",
-    "rawTitle": "samsung galaxy fold 7 12/256gb jetblack",
-    "siteLink": "https://www.tehnomarket.com.mk/product/29402962/samsung-galaxy-fold-7-12256gb-jetblack",
-    "price": "124999",
     "source": "tehnomarket"
   },
   {

@@ -1,19 +1,11 @@
-import './PhoneFilters.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function PhoneFilters({
   filters,
   setFilters,
   availableSources = [],
-  searchInput,
-  setSearchInput,
-  onSearch,
-  onClearSearch,
-  onResetFilters,
 }) {
   const [priceError, setPriceError] = useState('');
-  const [minPriceInput, setMinPriceInput] = useState(filters.minPrice || '');
-  const [maxPriceInput, setMaxPriceInput] = useState(filters.maxPrice || '');
 
   const handleSourceChange = (source) => {
     const updatedSources = filters.sources && filters.sources.includes(source)
@@ -26,182 +18,125 @@ export default function PhoneFilters({
     });
   };
 
-  // Local input handlers: update local state only while typing
   const handleMinPriceChange = (e) => {
     const value = e.target.value;
     if (value === '') {
-      setMinPriceInput('');
+      setFilters({ ...filters, minPrice: '' });
       setPriceError('');
       return;
     }
     const num = Number(value);
     if (Number.isNaN(num) || num < 0) return;
-    setMinPriceInput(value);
-    setPriceError('');
+
+    const nextFilters = { ...filters, minPrice: value };
+    if (nextFilters.maxPrice !== '' && Number(nextFilters.maxPrice) < num) {
+      setPriceError('Minimum price cannot be greater than maximum price');
+    } else {
+      setPriceError('');
+    }
+
+    setFilters(nextFilters);
   };
 
   const handleMaxPriceChange = (e) => {
     const value = e.target.value;
     if (value === '') {
-      setMaxPriceInput('');
+      setFilters({ ...filters, maxPrice: '' });
       setPriceError('');
       return;
     }
     const num = Number(value);
     if (Number.isNaN(num) || num < 0) return;
-    setMaxPriceInput(value);
-    setPriceError('');
-  };
 
-  // Apply filters when user presses Enter
-  const handleMinPriceEnter = (e) => {
-    if (e.key !== 'Enter') return;
-    if (minPriceInput === '') {
-      setFilters({ ...filters, minPrice: '' });
-      setPriceError('');
-      return;
-    }
-    const num = Number(minPriceInput);
-    if (Number.isNaN(num) || num < 0) {
-      setPriceError('Minimum price must be a non-negative number');
-      return;
-    }
-    if (maxPriceInput !== '' && Number(maxPriceInput) < num) {
+    const nextFilters = { ...filters, maxPrice: value };
+    if (nextFilters.minPrice !== '' && Number(nextFilters.minPrice) > num) {
       setPriceError('Minimum price cannot be greater than maximum price');
-      return;
-    }
-    setPriceError('');
-    setFilters({ ...filters, minPrice: minPriceInput });
-  };
-
-  const handleMaxPriceEnter = (e) => {
-    if (e.key !== 'Enter') return;
-    if (maxPriceInput === '') {
-      setFilters({ ...filters, maxPrice: '' });
+    } else {
       setPriceError('');
-      return;
     }
-    const num = Number(maxPriceInput);
-    if (Number.isNaN(num) || num < 0) {
-      setPriceError('Maximum price must be a non-negative number');
-      return;
-    }
-    if (minPriceInput !== '' && num < Number(minPriceInput)) {
-      setPriceError('Maximum price must be greater than or equal to minimum price');
-      return;
-    }
-    setPriceError('');
-    setFilters({ ...filters, maxPrice: maxPriceInput });
-  };
 
-  // Sync local inputs when external filters change (e.g., Reset)
-  useEffect(() => {
-    setMinPriceInput(filters.minPrice || '');
-    setMaxPriceInput(filters.maxPrice || '');
-  }, [filters.minPrice, filters.maxPrice]);
+    setFilters(nextFilters);
+  };
 
   return (
-    <div className="phone-filters">
-      <label className="phone-filters__label" htmlFor="phone-search">
-        Search phones
-      </label>
-      <div className="phone-filters__search-row">
-        <input
-          id="phone-search"
-          type="text"
-          placeholder="Search phones..."
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              onSearch();
-            }
-          }}
-          className="phone-filters__input"
-        />
-
-        <button type="button" onClick={onSearch} className="phone-filters__button">
-          Search
-        </button>
-
-        <button
-          type="button"
-          onClick={onClearSearch}
-          className="phone-filters__button phone-filters__button--secondary"
-        >
-          Clear
-        </button>
-        <button
-          type="button"
-          onClick={onResetFilters}
-          className="phone-filters__button phone-filters__reset"
-        >
-          Reset Filters
-        </button>
-      </div>
-
-      <div className="phone-filters__section">
-        <h4 className="phone-filters__section-title">Source</h4>
+    <div className="space-y-6">
+      <div>
+        <div className="mb-4">
+          <h3 className="text-sm font-semibold text-neutral-900">Source</h3>
+          <p className="mt-1 text-sm text-neutral-500">Narrow by store or marketplace.</p>
+        </div>
         {availableSources.length === 0 ? (
-          <p className="phone-filters__empty">No sources available.</p>
+          <p className="text-sm text-neutral-500">No sources available.</p>
         ) : (
-          <div className="phone-filters__checkboxes">
+          <div className="flex flex-wrap gap-2">
             {availableSources.map((source) => (
-              <label key={source} className="phone-filters__checkbox-item">
+              <label
+                key={source}
+                className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-2 text-sm transition ${
+                  filters.sources && filters.sources.includes(source)
+                    ? 'border-sky-200 bg-sky-50 text-sky-700'
+                    : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50'
+                }`}
+              >
                 <input
                   type="checkbox"
                   checked={filters.sources && filters.sources.includes(source)}
                   onChange={() => handleSourceChange(source)}
+                  className="h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-500"
                 />
-                <span>{source}</span>
+                <span className="capitalize">{source}</span>
               </label>
             ))}
           </div>
         )}
       </div>
 
-      <div className="phone-filters__section phone-filters__price-section">
-        <h4 className="phone-filters__section-title">Price Range</h4>
-        <div className="phone-filters__price-row">
-          <label className="phone-filters__price-label">
-            Min Price
-            <div className="phone-filters__price-input-row">
+      <div>
+        <div className="mb-4">
+          <h3 className="text-sm font-semibold text-neutral-900">Price range</h3>
+          <p className="mt-1 text-sm text-neutral-500">Set a minimum and maximum price.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <label className="space-y-2 text-sm font-medium text-neutral-700">
+            <span>Min price</span>
+            <div className="flex items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-sky-100">
               <input
                 type="number"
                 min="0"
-                placeholder="Min price"
-                value={minPriceInput}
+                placeholder="0"
+                value={filters.minPrice || ''}
                 onChange={handleMinPriceChange}
-                onKeyDown={handleMinPriceEnter}
-                className="phone-filters__input phone-filters__input--price"
+                className="w-full border-0 bg-transparent p-0 text-sm text-neutral-900 focus:outline-none focus:ring-0"
               />
-              <span className="phone-filters__price-currency">MKD</span>
+              <span className="shrink-0 text-sm font-medium text-neutral-500">MKD</span>
             </div>
           </label>
 
-          <label className="phone-filters__price-label">
-            Max Price
-            <div className="phone-filters__price-input-row">
+          <label className="space-y-2 text-sm font-medium text-neutral-700">
+            <span>Max price</span>
+            <div className="flex items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-sky-100">
               <input
                 type="number"
                 min="0"
-                placeholder="Max price"
-                value={maxPriceInput}
+                placeholder="0"
+                value={filters.maxPrice || ''}
                 onChange={handleMaxPriceChange}
-                onKeyDown={handleMaxPriceEnter}
-                className="phone-filters__input phone-filters__input--price"
+                className="w-full border-0 bg-transparent p-0 text-sm text-neutral-900 focus:outline-none focus:ring-0"
               />
-              <span className="phone-filters__price-currency">MKD</span>
+              <span className="shrink-0 text-sm font-medium text-neutral-500">MKD</span>
             </div>
           </label>
         </div>
-        {priceError && <p className="phone-filters__price-error">{priceError}</p>}
+        {priceError && <p className="mt-2 text-sm text-rose-600">{priceError}</p>}
       </div>
 
-      <div className="phone-filters__section phone-filters__sort-section">
-        <h4 className="phone-filters__section-title">Sort by</h4>
+      <div>
+        <div className="mb-4">
+          <h3 className="text-sm font-semibold text-neutral-900">Sort by</h3>
+          <p className="mt-1 text-sm text-neutral-500">Choose how results should be ordered.</p>
+        </div>
         <select
-          className="phone-filters__select"
+          className="w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900 shadow-sm outline-none transition focus:ring-2 focus:ring-sky-100"
           value={filters.sort || ''}
           onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
         >
