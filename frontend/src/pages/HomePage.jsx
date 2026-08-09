@@ -3,6 +3,7 @@ import { fetchPhones, fetchBrands, fetchSources } from '../api/phoneService';
 import PhoneCard from '../components/PhoneCard';
 import BrandFilter from '../components/BrandFilter';
 import PhoneFilters from '../components/PhoneFilters';
+import banner from "../assets/banner.jpg";
 
 const createFilters = () => ({
   search: '',
@@ -263,65 +264,80 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        <header className="rounded-4xl border border-neutral-200 bg-white px-5 py-6 shadow-sm sm:px-8 sm:py-8">
-          <div className="flex flex-col gap-5">
-            <div className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">
+        <header className="relative overflow-hidden rounded-4xl border border-neutral-200 shadow-sm">
+          {/* Background image */}
+          <div
+              className="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
+              style={{ backgroundImage: `url(${banner})` }}
+          />
+
+          {/* Overlay - makes text readable */}
+          <div className="absolute inset-0 bg-white/75" />
+
+          {/* Hero content */}
+          <div className="relative px-6 py-12 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
+            <div className="mx-auto max-w-4xl text-center">
+
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-sky-600">
                 Phone comparison
               </p>
-              <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-neutral-950 sm:text-5xl">
+
+              <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
                 Find the best phone price with less noise.
               </h1>
-              <p className="max-w-2xl text-sm leading-6 text-neutral-600 sm:text-base">
-                Compare offers across stores with calm, minimal browsing. Search directly,
-                then refine by brand, store, price, and sort order.
+
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-neutral-600 sm:text-lg">
+                Compare offers across stores with calm, minimal browsing.
+                Search directly, then refine by brand, store, price, and sort order.
               </p>
-            </div>
 
-            <form
-              className="flex flex-col gap-3 lg:flex-row lg:items-center"
-              onSubmit={(event) => {
-                event.preventDefault();
-                handleSearch();
-              }}
-            >
-              <div className="flex-1 rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 shadow-sm transition focus-within:ring-2 focus-within:ring-sky-100">
-                <label htmlFor="phone-search" className="sr-only">
-                  Search phones
-                </label>
-                <input
-                  id="phone-search"
-                  type="search"
-                  value={searchInput}
-                  onChange={(event) => setSearchInput(event.target.value)}
-                  placeholder="Search phones, brands, or models"
-                  className="w-full border-0 bg-transparent text-sm text-neutral-900 focus:outline-none focus:ring-0 sm:text-base"
-                />
-              </div>
+              {/* Search */}
+              <form
+                  className="mx-auto mt-9 flex max-w-3xl flex-col gap-3 sm:flex-row"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    handleSearch();
+                  }}
+              >
+                <div className="flex flex-1 items-center rounded-2xl border border-white/80 bg-white/80 px-5 py-4 shadow-lg shadow-neutral-900/5 backdrop-blur-md transition focus-within:ring-4 focus-within:ring-sky-100/70">
+                  <label htmlFor="phone-search" className="sr-only">
+                    Search phones
+                  </label>
 
-              <div className="flex items-center gap-3">
+                  <input
+                      id="phone-search"
+                      type="search"
+                      value={searchInput}
+                      onChange={(event) => setSearchInput(event.target.value)}
+                      placeholder="Search phones, brands, or models"
+                      className="w-full border-0 bg-transparent text-base outline-none placeholder:text-neutral-400 focus:ring-0"
+                  />
+                </div>
+
                 <button
-                  type="submit"
-                  className="inline-flex items-center justify-center rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700"
+                    type="submit"
+                    className="inline-flex min-h-14 items-center justify-center rounded-2xl bg-sky-600 px-7 text-sm font-semibold text-white shadow-lg shadow-sky-600/20 transition hover:bg-sky-700 hover:shadow-xl"
                 >
                   Search
                 </button>
+
                 <button
-                  type="button"
-                  onClick={handleClearSearch}
-                  className="inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 py-3 text-sm font-medium text-neutral-700 transition hover:border-neutral-300 hover:bg-neutral-50"
+                    type="button"
+                    onClick={handleClearSearch}
+                    className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-white/80 bg-white/70 px-6 text-sm font-medium text-neutral-700 backdrop-blur-md transition hover:bg-sky-100 shadow-lg shadow-sky-600/20 "
                 >
                   Clear
                 </button>
+
                 <button
-                  type="button"
-                  onClick={openMobileFilters}
-                  className="inline-flex items-center justify-center rounded-full border border-neutral-200 px-5 py-3 text-sm font-medium text-neutral-700 transition hover:border-neutral-300 hover:bg-neutral-50 lg:hidden"
+                    type="button"
+                    onClick={openMobileFilters}
+                    className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-white/80 bg-white/70 px-6 text-sm font-medium text-neutral-700 backdrop-blur-md transition hover:bg-white lg:hidden"
                 >
                   Filters
                 </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </header>
 

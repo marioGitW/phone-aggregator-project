@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import OfferCard from '../components/OfferCard';
 import { fetchProductOffers } from '../api/phoneService';
-import { formatPrice } from '../utils/formatters';
+import { formatPrice,capitalize } from '../utils/formatters';
 
 const PLACEHOLDER_IMAGE =
   "data:image/svg+xml;charset=UTF-8," +
@@ -169,7 +169,7 @@ export default function ProductPage() {
                 <img
                   src={heroImage}
                   alt={productTitle}
-                  className="h-full w-full object-contain p-6"
+                  className="h-full w-full object-cover"
                   onError={(event) => {
                     event.currentTarget.onerror = null;
                     event.currentTarget.src = PLACEHOLDER_IMAGE;
@@ -180,7 +180,7 @@ export default function ProductPage() {
               <div className="sm:col-span-2 flex flex-col justify-between">
                 <div>
                   <h1 className="text-3xl font-semibold tracking-tight text-neutral-950 sm:text-4xl">
-                    {productTitle}
+                    {capitalize(productTitle)}
                   </h1>
                   <p className="mt-4 text-sm text-neutral-600">
                     Found {offers.length} offer{offers.length === 1 ? '' : 's'} from across our partner stores.
