@@ -32,7 +32,50 @@ def save_to_json(phones, filepath):
     print(f"\nSaved {len(phones)} phones to {filepath}")
 
 
+def send_to_backend_from_file(filepath=OUTPUT_FILE):
+    """Read phones from JSON file and send to backend independently of scraping."""
+    print(f"\nReading phones from {filepath}...")
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            phones = json.load(f)
+        print(f"Loaded {len(phones)} phones from {filepath}")
+    except FileNotFoundError:
+        print(f"ERROR: {filepath} not found.")
+        return
+    except json.JSONDecodeError:
+        print(f"ERROR: {filepath} is not valid JSON.")
+        return
+
+    print("Sending phones to Spring Boot backend...")
+
+    try:
+        response = requests.post(
+            BACKEND_URL,
+            json=phones,
+            timeout=30
+        )
+
+        if response.status_code == 201:
+            print("Backend import successful!")
+            print(response.json())
+        else:
+            print("Backend import failed!")
+            print("Status code:", response.status_code)
+            print("Response:", response.text)
+
+    except requests.exceptions.ConnectionError:
+        print("Could not connect to Spring Boot backend.")
+        print("Make sure the backend is running on port 8083.")
+
+    except requests.exceptions.Timeout:
+        print("Backend request timed out.")
+
+    except Exception as e:
+        print("Unexpected error while sending to backend:", e)
+
+
 def send_to_backend(phones):
+    """Legacy: send phones data from in-memory list (kept for backward compatibility)."""
     print("\nSending phones to Spring Boot backend...")
 
     try:
@@ -104,6 +147,6 @@ if __name__ == "__main__":
 
 
     if all_phones:
-        send_to_backend(all_phones)
+        send_to_backend_from_file(OUTPUT_FILE)
     else:
         print("No phones scraped. Skipping backend import.")

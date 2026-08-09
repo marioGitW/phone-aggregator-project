@@ -9,6 +9,7 @@ public record ProductOfferDto(
         Integer price,
         String source,
         String siteLink,
+        String imageUrl,
         LocalDateTime createdAt
 ) {
 }

@@ -44,6 +44,7 @@ public class PhoneService {
         ));
         phone.setSiteLink(dto.getSiteLink());
         phone.setPrice(dto.getPrice());
+        phone.setImageUrl(dto.getImageUrl());
         phone.setSource(dto.getSource());
         return phone;
     }
@@ -75,6 +76,7 @@ public class PhoneService {
                 phone.getRawTitle(),
                 phone.getSiteLink(),
                 phone.getPrice(),
+                phone.getImageUrl(),
                 phone.getSource(),
                 phone.getCreatedAt()
         );

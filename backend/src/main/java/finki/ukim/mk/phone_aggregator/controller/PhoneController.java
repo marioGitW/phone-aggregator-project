@@ -109,6 +109,7 @@ public class PhoneController {
                         phone.getRawTitle(),
                         phone.getSiteLink(),
                         phone.getPrice(),
+                        phone.getImageUrl(),
                         phone.getSource(),
                         phone.getCreatedAt()
                 ))

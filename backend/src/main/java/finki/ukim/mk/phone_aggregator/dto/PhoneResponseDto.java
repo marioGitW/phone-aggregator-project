@@ -23,6 +23,8 @@ public class PhoneResponseDto {
 
     private Integer price;
 
+    private String imageUrl;
+
     private String source;
 
     private LocalDateTime createdAt;

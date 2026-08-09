@@ -19,6 +19,8 @@ public class PhoneDto {
 
     private Integer price;
 
+    private String imageUrl;
+
     private String source;
 }
 

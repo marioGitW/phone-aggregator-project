@@ -36,6 +36,9 @@ public class Phone {
     @Column(nullable = false)
     private Integer price;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @Column(nullable = false)
     private String source;
 

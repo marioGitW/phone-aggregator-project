@@ -1,6 +1,6 @@
 package finki.ukim.mk.phone_aggregator.service;
 
-import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
+import finki.ukim.mk.phone_aggregator.dto.ProductOfferDto;
 import finki.ukim.mk.phone_aggregator.model.Phone;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,7 +21,7 @@ public class ProductService {
         this.phoneSimilarityService = phoneSimilarityService;
     }
 
-    public List<PhoneResponseDto> getOffers(Long id) {
+    public List<ProductOfferDto> getOffers(Long id) {
         Phone basePhone = phoneService.findPhoneById(id)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Phone not found"));
 
@@ -31,15 +31,15 @@ public class ProductService {
                 .toList();
     }
 
-    private PhoneResponseDto convertToDto(Phone phone) {
-        return new PhoneResponseDto(
+    private ProductOfferDto convertToDto(Phone phone) {
+        return new ProductOfferDto(
                 phone.getId(),
                 phone.getBrand(),
                 phone.getTitle(),
-                phone.getRawTitle(),
-                phone.getSiteLink(),
                 phone.getPrice(),
                 phone.getSource(),
+                phone.getSiteLink(),
+                phone.getImageUrl(),
                 phone.getCreatedAt()
         );
     }

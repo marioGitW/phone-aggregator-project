@@ -17,6 +17,9 @@ const PLACEHOLDER_IMAGE =
     </svg>
   `);
 
+const getImageSrc = (imageUrl) =>
+  typeof imageUrl === 'string' && imageUrl.trim() ? imageUrl : PLACEHOLDER_IMAGE;
+
 function SkeletonRow() {
   return (
     <div className="flex items-center justify-between gap-4 rounded-2xl border border-neutral-200 bg-white px-4 py-4 sm:px-6">
@@ -68,7 +71,7 @@ export default function ProductPage() {
   const lowestPrice = sortedOffers.length > 0 ? formatPrice(sortedOffers[0].price) : null;
 
   // Get first non-null image for hero
-  const heroImage = offers.find((offer) => offer.imageUrl)?.imageUrl || PLACEHOLDER_IMAGE;
+  const heroImage = getImageSrc(offers.find((offer) => offer.imageUrl)?.imageUrl);
 
   const productTitle = offers[0]?.title || 'Product offers';
 
@@ -127,7 +130,7 @@ export default function ProductPage() {
         {loading ? (
           <div className="mt-8 space-y-6">
             <div className="grid gap-6 sm:grid-cols-3">
-              <div className="aspect-4/3 animate-pulse rounded-4xl bg-neutral-200" />
+              <div className="aspect-square animate-pulse rounded-4xl bg-neutral-200" />
               <div className="sm:col-span-2 space-y-4">
                 <div className="h-8 w-3/4 animate-pulse rounded-full bg-neutral-200" />
                 <div className="h-6 w-1/2 animate-pulse rounded-full bg-neutral-200" />
@@ -162,7 +165,7 @@ export default function ProductPage() {
         ) : (
           <>
             <section className="mt-8 grid gap-6 rounded-4xl border border-neutral-200 bg-white p-6 shadow-sm sm:grid-cols-3">
-              <div className="aspect-4/3 overflow-hidden rounded-3xl bg-neutral-100">
+              <div className="aspect-square overflow-hidden rounded-3xl bg-neutral-100">
                 <img
                   src={heroImage}
                   alt={productTitle}

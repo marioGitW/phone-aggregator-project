@@ -20,6 +20,9 @@ const PLACEHOLDER_IMAGE =
     </svg>
   `);
 
+const getImageSrc = (imageUrl) =>
+  typeof imageUrl === 'string' && imageUrl.trim() ? imageUrl : PLACEHOLDER_IMAGE;
+
 export default function PhoneCard({ phone }) {
   const navigate = useNavigate();
 
@@ -53,9 +56,9 @@ export default function PhoneCard({ phone }) {
       onKeyDown={handleCardKeyDown}
       aria-label={`Open details for ${title}`}
     >
-      <div className="relative aspect-4/3 overflow-hidden border-b border-neutral-100 bg-neutral-100">
+      <div className="relative aspect-square overflow-hidden border-b border-neutral-100 bg-neutral-100">
         <img
-          src={imageUrl || PLACEHOLDER_IMAGE}
+          src={getImageSrc(imageUrl)}
           alt={title}
           className="h-full w-full object-contain p-6 transition duration-300 group-hover:scale-[1.03]"
           loading="lazy"
