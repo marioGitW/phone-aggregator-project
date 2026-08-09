@@ -5,10 +5,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, clean_price, extract_image_url
 
 BASE_URL = "https://www.tehnomarket.com.mk"
 CATEGORY_URL = f"{BASE_URL}/category/4109/mobilni-telefoni"
+IMAGE_SELECTOR = "#category > div > div.box-content > div > div.products.scroll > ul > li:nth-child(1) > div > div > div.span12.text-center > a > div > img"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 
@@ -22,12 +23,13 @@ NAME_PREFIXES = [
 
 
 class Phone:
-    def __init__(self, brand, title, rawTitle, siteLink, price):
+    def __init__(self, brand, title, rawTitle, siteLink, price, imageUrl=None):
         self.brand = brand
         self.title = title
         self.rawTitle = rawTitle
         self.siteLink = siteLink
         self.price = price
+        self.imageUrl = imageUrl
 
     def __repr__(self):
         return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
@@ -46,28 +48,6 @@ def get_driver():
     )
     driver = webdriver.Chrome(options=options)
     return driver
-
-
-NAME_PREFIXES = [
-    "преднарачка -",
-    "мобилен телефон",
-    "паметен телефон",
-    "smartphone",
-    "mobile phone"
-]
-
-
-class Phone:
-    def __init__(self, brand, title, rawTitle, siteLink, price):
-        self.brand = brand
-        self.title = title
-        self.rawTitle = rawTitle
-        self.siteLink = siteLink
-        self.price = price
-
-    def __repr__(self):
-        return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
-                f"siteLink={self.siteLink}, price={self.price})")
 
 
 def wait_for_cards(driver, timeout=15):
@@ -151,9 +131,14 @@ def scrape_all_phones():
                 try:
                     price_text = card.find_element(By.CSS_SELECTOR, ".nm").text.strip()
                 except:
-                    price_text = "N/A"
+                    price_text = ""
 
-                price = normalize_price(price_text)
+                print(f"[price] raw={price_text!r}")
+                price = clean_price(price_text)
+                print(f"[price] cleaned={price}")
+                if not price_text:
+                    print("[price] raw=''" )
+                    print("[price] cleaned=0")
 
                 try:
                     href = card.find_element(By.CSS_SELECTOR, ".product-name a").get_attribute("href")
@@ -161,6 +146,11 @@ def scrape_all_phones():
                         href = BASE_URL + href
                 except:
                     href = "N/A"
+
+                try:
+                    imageUrl = extract_image_url(card, IMAGE_SELECTOR, BASE_URL)
+                except:
+                    imageUrl = None
 
                 if href in seen_urls:
                     continue
@@ -172,6 +162,7 @@ def scrape_all_phones():
                     rawTitle=raw_title,
                     siteLink=(href or "").lower(),
                     price=price,
+                    imageUrl=imageUrl,
                 ))
                 print(f"  + [{brand}] {name}")
 

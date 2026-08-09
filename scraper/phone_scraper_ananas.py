@@ -4,10 +4,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, clean_price, extract_image_url
 
 BASE_URL = "https://ananas.mk"
 CATEGORY_URL = f"{BASE_URL}/kategorii/telefoni-foto/mobilni-telefoni/pametni-telefoni"
+IMAGE_SELECTOR = "#__next > div.sc-1f6z3vw-0.CSEYd > div.sc-1k1vhoz-0.huxjgP > div > div.sc-1iekrn-3.fVCVGx > div.ais-Hits > div > div:nth-child(2) > div > a > div.sc-v9wo15-5.kNjFky > span > img"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 
@@ -26,12 +27,13 @@ NAME_PREFIXES = [
 
 
 class Phone:
-    def __init__(self, brand, title, rawTitle, siteLink, price):
+    def __init__(self, brand, title, rawTitle, siteLink, price, imageUrl=None):
         self.brand = brand
         self.title = title
         self.rawTitle = rawTitle
         self.siteLink = siteLink
         self.price = price
+        self.imageUrl = imageUrl
 
     def __repr__(self):
         return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
@@ -138,15 +140,26 @@ def scrape_all_phones():
 
                 # price - normalize to only digits
                 try:
-                    price = "N/A"
+                    raw_price = ""
+                    price = 0
                     price_spans = card.find_elements(By.CSS_SELECTOR, "span")
                     for span in reversed(price_spans):
-                        clean = span.text.strip().replace(".", "").replace(",", "")
+                        raw_price = span.text.strip()
+                        clean = raw_price.replace(".", "").replace(",", "")
                         if clean.isdigit() and len(clean) >= 3:
-                            price = normalize_price(span.text.strip())
                             break
+                    print(f"[price] raw={raw_price!r}")
+                    price = clean_price(raw_price)
+                    print(f"[price] cleaned={price}")
                 except:
-                    price = "N/A"
+                    print("[price] raw=''" )
+                    print("[price] cleaned=0")
+                    price = 0
+
+                try:
+                    imageUrl = extract_image_url(card, IMAGE_SELECTOR, BASE_URL)
+                except:
+                    imageUrl = None
 
                 phones.append(Phone(
                     brand=brand,
@@ -154,6 +167,7 @@ def scrape_all_phones():
                     rawTitle=raw_title,
                     siteLink=(href or "").lower(),
                     price=price,
+                    imageUrl=imageUrl,
                 ))
                 print(f"  + [{brand}] {title}")
 

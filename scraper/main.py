@@ -20,6 +20,7 @@ def phone_to_dict(phone, source):
         "rawTitle": phone.rawTitle,
         "siteLink": phone.siteLink,
         "price": phone.price,
+        "imageUrl": getattr(phone, "imageUrl", None),
         "source": source
     }
 

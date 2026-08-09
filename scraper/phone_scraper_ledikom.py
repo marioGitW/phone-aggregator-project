@@ -4,9 +4,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, clean_price, extract_image_url
 
 BASE_URL = "https://ledikom.mk"
+IMAGE_SELECTOR = "#content > section > div > div > div:nth-child(2) > div > div > a > img"
 
 BRAND_URLS = {
     "apple": "https://ledikom.mk/c/416/telefoni/apple-iphone",
@@ -18,12 +19,13 @@ BRAND_URLS = {
 }
 
 class Phone:
-    def __init__(self, brand, title, rawTitle, siteLink, price):
+    def __init__(self, brand, title, rawTitle, siteLink, price, imageUrl=None):
         self.brand = brand
         self.title = title
         self.rawTitle = rawTitle
         self.siteLink = siteLink
         self.price = price
+        self.imageUrl = imageUrl
 
     def __repr__(self):
         return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
@@ -79,9 +81,19 @@ def scrape_ledikom():
                 except:
                     price_text = p.find_element(By.CSS_SELECTOR, ".price").text
 
-                price = normalize_price(price_text)
+                print(f"[price] raw={price_text!r}")
+                price = clean_price(price_text)
+                print(f"[price] cleaned={price}")
+                if not price_text:
+                    print("[price] raw=''" )
+                    print("[price] cleaned=0")
 
                 link = p.find_element(By.CSS_SELECTOR, "a[href*='/p/']").get_attribute("href")
+
+                try:
+                    imageUrl = extract_image_url(p, IMAGE_SELECTOR, BASE_URL)
+                except:
+                    imageUrl = None
 
                 if link in seen_urls:
                     continue
@@ -93,6 +105,7 @@ def scrape_ledikom():
                     rawTitle=raw_title,
                     siteLink=(link or "").lower(),
                     price=price,
+                    imageUrl=imageUrl,
                 ))
 
                 print(f"  + {title} – {price}")

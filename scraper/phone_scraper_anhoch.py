@@ -4,10 +4,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, normalize_price
+from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, clean_price, extract_image_url
 
 BASE_URL = "https://www.anhoch.com"
 CATEGORY_URL = f"{BASE_URL}/categories/mobilni-telefoni/products?brand=&attribute=&toPrice=349980&inStockOnly=2&sort=latest&perPage=30&page="
+IMAGE_SELECTOR = "#app > section.product-search-wrap > div > div > div.product-search-right > div > div.search-result-middle > div > div:nth-child(1) > div > div.product-card-top > a > img"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 
@@ -19,12 +20,13 @@ NAME_PREFIXES = [
 ]
 
 class Phone:
-    def __init__(self, brand, title, rawTitle, siteLink, price):
+    def __init__(self, brand, title, rawTitle, siteLink, price, imageUrl=None):
         self.brand = brand
         self.title = title
         self.rawTitle = rawTitle
         self.siteLink = siteLink
         self.price = price
+        self.imageUrl = imageUrl
 
     def __repr__(self):
         return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
@@ -121,9 +123,13 @@ def scrape_all_phones():
                 try:
                     price_element = card.find_element(By.CSS_SELECTOR, ".product-price")
                     raw_price = driver.execute_script("return arguments[0].innerText;", price_element).strip()
-                    price = normalize_price(raw_price)
+                    print(f"[price] raw={raw_price!r}")
+                    price = clean_price(raw_price)
+                    print(f"[price] cleaned={price}")
                 except:
-                    price = "N/A"
+                    print("[price] raw=''" )
+                    print("[price] cleaned=0")
+                    price = 0
 
                 try:
                     href = card.find_element(By.CSS_SELECTOR, "a.product-image").get_attribute("href")
@@ -131,6 +137,11 @@ def scrape_all_phones():
                         href = BASE_URL + href
                 except:
                     href = "N/A"
+
+                try:
+                    imageUrl = extract_image_url(card, IMAGE_SELECTOR, BASE_URL)
+                except:
+                    imageUrl = None
 
                 if href in seen_urls:
                     continue
@@ -142,6 +153,7 @@ def scrape_all_phones():
                     rawTitle=raw_title,
                     siteLink=(href or "").lower(),
                     price=price,
+                    imageUrl=imageUrl,
                 ))
                 print(f"  + [{brand}] {title}")
 
