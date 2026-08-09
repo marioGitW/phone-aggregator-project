@@ -8,7 +8,7 @@ from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, 
 
 BASE_URL = "https://www.anhoch.com"
 CATEGORY_URL = f"{BASE_URL}/categories/mobilni-telefoni/products?brand=&attribute=&toPrice=349980&inStockOnly=2&sort=latest&perPage=30&page="
-IMAGE_SELECTOR = "#app > section.product-search-wrap > div > div > div.product-search-right > div > div.search-result-middle > div > div:nth-child(1) > div > div.product-card-top > a > img"
+IMAGE_SELECTOR = "#app > section.product-search-wrap > div > div > div.product-search-right > div > div.search-result-middle > div > div:nth-child(3) > div > div.product-card-top > a > img"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 

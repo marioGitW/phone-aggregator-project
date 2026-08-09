@@ -1,5 +1,6 @@
 """Shared utilities for phone scrapers."""
 import re
+import time
 from urllib.parse import urljoin
 
 from selenium.webdriver.common.by import By
@@ -103,31 +104,169 @@ def clean_price(raw_price_text):
     return value
 
 
-def extract_image_url(element, image_selector, base_url):
-    if not element or not image_selector:
+IMAGE_ATTRIBUTE_NAMES = (
+    "currentSrc",
+    "src",
+    "data-src",
+    "data-lazy-src",
+    "data-original",
+    "data-zoom-image",
+    "data-image",
+    "data-url",
+    "data-srcset",
+    "srcset",
+)
+
+
+def _read_element_value(element, attribute_name):
+    if not element:
+        return ""
+
+    for accessor_name in ("get_attribute", "get_property"):
+        try:
+            accessor = getattr(element, accessor_name)
+        except Exception:
+            continue
+
+        try:
+            value = accessor(attribute_name)
+        except Exception:
+            continue
+
+        if value:
+            return str(value).strip()
+
+    return ""
+
+
+def _normalize_image_candidate(candidate):
+    if not candidate:
         return None
 
-    try:
-        image_element = element.find_element(By.CSS_SELECTOR, image_selector)
-    except Exception:
-        try:
-            image_element = element.find_element(By.CSS_SELECTOR, "img")
-        except Exception:
-            return None
-
-    src = (image_element.get_attribute("src") or "").strip()
-    data_src = (image_element.get_attribute("data-src") or "").strip()
-
-    candidate = src
-    if not candidate or "placeholder" in candidate.lower() or candidate.startswith("data:"):
-        candidate = data_src
-
+    candidate = str(candidate).strip()
     if not candidate:
+        return None
+
+    lower_candidate = candidate.lower()
+    if lower_candidate.startswith(("data:", "blob:")):
+        return None
+    if "placeholder" in lower_candidate or "svg+xml" in lower_candidate:
         return None
 
     if candidate.startswith("//"):
         candidate = "https:" + candidate
 
-    return urljoin(base_url, candidate)
+    return candidate
+
+
+def _extract_from_srcset(srcset_value):
+    srcset_value = (srcset_value or "").strip()
+    if not srcset_value:
+        return None
+
+    candidates = []
+    for part in srcset_value.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        url = part.split()[0].strip()
+        url = _normalize_image_candidate(url)
+        if url:
+            candidates.append(url)
+
+    return candidates[-1] if candidates else None
+
+
+def _extract_from_style(style_value):
+    style_value = (style_value or "").strip()
+    if not style_value:
+        return None
+
+    match = re.search(r"url\(['\"]?(.*?)['\"]?\)", style_value, flags=re.IGNORECASE)
+    if not match:
+        return None
+
+    return _normalize_image_candidate(match.group(1))
+
+
+def _collect_image_candidates(image_element):
+    candidates = []
+
+    for attribute_name in IMAGE_ATTRIBUTE_NAMES:
+        value = _read_element_value(image_element, attribute_name)
+        if not value:
+            continue
+
+        if attribute_name in {"srcset", "data-srcset"}:
+            candidate = _extract_from_srcset(value)
+        else:
+            candidate = _normalize_image_candidate(value)
+
+        if candidate:
+            candidates.append(candidate)
+
+    style_candidate = _extract_from_style(_read_element_value(image_element, "style"))
+    if style_candidate:
+        candidates.append(style_candidate)
+
+    return candidates
+
+
+def _resolve_image_url_from_element(image_element):
+    if not image_element:
+        return None
+
+    candidates = _collect_image_candidates(image_element)
+    if candidates:
+        return candidates[-1]
+
+    for nested_selector in ("img", "picture source", "source", "[style*='url(']"):
+        try:
+            nested_element = image_element.find_element(By.CSS_SELECTOR, nested_selector)
+        except Exception:
+            continue
+
+        candidates = _collect_image_candidates(nested_element)
+        if candidates:
+            return candidates[-1]
+
+    return None
+
+
+def _try_scroll_into_view(image_element):
+    if not image_element:
+        return
+
+    try:
+        image_element.location_once_scrolled_into_view
+        time.sleep(0.2)
+    except Exception:
+        pass
+
+
+def extract_image_url(element, image_selector, base_url):
+    if not element or not image_selector:
+        return None
+
+    selectors_to_try = [image_selector]
+    if image_selector != "img":
+        selectors_to_try.extend(["img", "picture source", "source"])
+
+    for selector in selectors_to_try:
+        try:
+            image_element = element.find_element(By.CSS_SELECTOR, selector)
+        except Exception:
+            continue
+
+        candidate = _resolve_image_url_from_element(image_element)
+        if candidate:
+            return urljoin(base_url, candidate)
+
+        _try_scroll_into_view(image_element)
+        candidate = _resolve_image_url_from_element(image_element)
+        if candidate:
+            return urljoin(base_url, candidate)
+
+    return None
 
 

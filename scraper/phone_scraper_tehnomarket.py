@@ -9,7 +9,7 @@ from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, 
 
 BASE_URL = "https://www.tehnomarket.com.mk"
 CATEGORY_URL = f"{BASE_URL}/category/4109/mobilni-telefoni"
-IMAGE_SELECTOR = "#category > div > div.box-content > div > div.products.scroll > ul > li:nth-child(1) > div > div > div.span12.text-center > a > div > img"
+IMAGE_SELECTOR = "#category > div > div.box-content > div > div > div.products > ul > li:nth-child(2) > div > a > figure"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 
