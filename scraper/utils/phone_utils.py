@@ -69,6 +69,15 @@ def clean_price(raw_price_text):
         print(f"[clean_price] raw={raw_text!r} -> 0")
         return 0
 
+    # Strip trailing separators with nothing after them - leftover punctuation from
+    # currency text like "ден." (e.g. "15.980,00 ден." -> "15.980,00." after stripping
+    # letters, leaving a stray trailing dot that breaks decimal/thousands detection)
+    candidate = candidate.rstrip(",.")
+    if not candidate:
+        print(f"[clean_price] raw={raw_text!r} -> 0")
+        return 0
+
+
     comma_count = candidate.count(",")
     dot_count = candidate.count(".")
 
@@ -81,8 +90,17 @@ def clean_price(raw_price_text):
     elif comma_count or dot_count:
         sep = "," if comma_count else "."
         parts = candidate.split(sep)
+
+        # if len(parts) > 2:
+        #     digits = "".join(parts)
+
         if len(parts) > 2:
-            digits = "".join(parts)
+            if len(parts[-1]) == 2:
+                # last chunk is a decimal remainder (e.g. "39.980.00" -> cents), drop it
+                digits = "".join(parts[:-1])
+            else:
+                digits = "".join(parts)
+
         else:
             left, right = parts
             left = left or "0"
