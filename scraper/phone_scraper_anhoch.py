@@ -202,8 +202,11 @@ IMAGE_SELECTOR = "a.product-image img"
 
 # anhoch blocks hotlinked images, so we download them locally and serve them
 # from our own backend instead of linking directly to anhoch's CDN.
-IMAGES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "backend", "product-images")
-BACKEND_IMAGE_BASE_URL = "http://localhost:8083/images"
+IMAGES_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "backend",
+    "src", "main", "resources", "static", "product-images"
+)
+BACKEND_IMAGE_BASE_URL = "http://localhost:8083/product-images"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
 

@@ -18,8 +18,7 @@ CATEGORY_URL = (
     "&%D0%91%D1%80%D0%B5%D0%BD%D0%B4=Honor"
     "&%D0%91%D1%80%D0%B5%D0%BD%D0%B4=Xiaomi"
 )
-IMAGE_SELECTOR = "#product-card-prod_01KWV6TQJWD4T9KG9JBYFH8PDJ > div > a > div > img"
-
+IMAGE_SELECTOR = "img.object-cover"
 BRANDS = ["apple", "samsung", "xiaomi", "honor"]
 
 NAME_PREFIXES = [
@@ -42,7 +41,7 @@ class Phone:
 
     def __repr__(self):
         return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
-                f"siteLink={self.siteLink}, price={self.price})")
+                f"siteLink={self.siteLink}, price={self.price}), imageUrl={self.imageUrl}")
 
 
 def get_driver():
