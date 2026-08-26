@@ -1,8 +1,6 @@
 package finki.ukim.mk.phone_aggregator.service;
 
-import finki.ukim.mk.phone_aggregator.dto.PhoneDto;
-import finki.ukim.mk.phone_aggregator.dto.PhoneFilterDto;
-import finki.ukim.mk.phone_aggregator.dto.PhoneResponseDto;
+import finki.ukim.mk.phone_aggregator.dto.*;
 import finki.ukim.mk.phone_aggregator.model.Phone;
 import finki.ukim.mk.phone_aggregator.repository.PhoneRepository;
 import finki.ukim.mk.phone_aggregator.specification.PhoneSpecifications;
@@ -101,6 +99,25 @@ public class PhoneService {
     public Optional<Phone> findPhoneById(Long id) {
         return phoneRepository.findById(id);
     }
+
+    // Analytics methods
+    public List<BrandAveragePriceDto> getAveragePriceByBrand() {
+        return phoneRepository.getAveragePriceByBrand();
+    }
+
+    public List<SourceCountDto> getListingsPerSource() {
+        return phoneRepository.getListingsPerSource();
+    }
+
+    public List<SourcePriceDto> getPricesBySourceForPhone(String normalizedTitle) {
+        return phoneRepository.getPricesBySourceForPhone(normalizedTitle);
+    }
+
+    public List<CheapestPhoneDto> getCheapestPhoneByBrand(String brand) {
+        return phoneRepository.getCheapestPhoneByBrand(brand);
+    }
+
+    public List<PriceDistributionDto> getPriceDistribution() {
+        return phoneRepository.getPriceDistribution();
+    }
 }
-
-

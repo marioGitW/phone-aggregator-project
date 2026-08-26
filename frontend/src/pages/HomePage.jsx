@@ -4,6 +4,7 @@ import PhoneCard from '../components/PhoneCard';
 import BrandFilter from '../components/BrandFilter';
 import PhoneFilters from '../components/PhoneFilters';
 import banner from "../assets/banner.jpg";
+import { Link } from 'react-router-dom';
 
 const createFilters = () => ({
   search: '',
@@ -336,6 +337,14 @@ export default function HomePage() {
                 >
                   Filters
                 </button>
+
+                <Link
+                    to="/analytics"
+                    className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/80 bg-white/70 px-6 text-sm font-medium text-neutral-700 backdrop-blur-md transition hover:bg-sky-100 shadow-lg shadow-sky-600/20"
+                >
+                  {/* bar-chart icon */}
+                  View analytics
+                </Link>
               </form>
             </div>
           </div>
