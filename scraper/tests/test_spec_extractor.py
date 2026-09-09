@@ -550,3 +550,73 @@ def test_ananas_srebren_color():
     assert r["ram_gb"] == 12
     assert r["storage_gb"] == 256
     assert r["color_raw"] == "сребрен"
+
+
+# --- remaining ananas gaps: "и" separator, missing colors ------------------
+# Real ananas rawTitle values (from the fresh 108-record scrape) that were
+# still null on ramGb or colorRaw after the redmi/comma fixes.
+
+def test_ananas_i_separator():
+    # Macedonian "и" ("and") used in place of "/", "+" or "," between the
+    # RAM and storage numbers.
+    r = extract_specs("xiaomi мобилен телефон, redmi note 15 pro, 8 gb и 256 gb, син")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "син"
+
+
+def test_ananas_zlaten_color():
+    r = extract_specs("xiaomi мобилен телефон, redmi a5, mzb0jtmeu, 3/64gb, златен")
+    assert r["ram_gb"] == 3
+    assert r["storage_gb"] == 64
+    assert r["color_raw"] == "златен"
+
+
+def test_ananas_tirkizen_color():
+    r = extract_specs("xiaomi мобилен телефон, redmi 15c, 8gb/256gb, тиркизен")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "тиркизен"
+
+
+def test_ananas_zlatno_pesocen_wins_over_zlaten():
+    # "златно-песочен" (14 chars) must be checked before bare "златен"
+    # (6 chars) via the length-descending sort, even though both start with
+    # the same "злат-" root.
+    r = extract_specs("xiaomi мобилен телефон, redmi a5, 4+128gb, златно-песочен")
+    assert r["ram_gb"] == 4
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "златно-песочен"
+
+
+def test_ananas_zlaten_alone_still_matches():
+    # Sanity check the reverse: bare "златен" still matches on its own when
+    # the longer compound isn't present.
+    r = extract_specs("xiaomi телефон 4gb/128gb, златен")
+    assert r["color_raw"] == "златен"
+
+
+def test_ananas_jetblack_color():
+    r = extract_specs("samsung мобилен телефон, galaxy s25 fe, 8gb/128gb, jetblack")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "jetblack"
+
+
+# --- DEBUG logging on rejected validation candidates -----------------------
+
+def test_rejected_pair_candidate_logs_debug(caplog):
+    import logging
+    with caplog.at_level(logging.DEBUG, logger="utils.spec_extractor"):
+        extract_specs("xiaomi мобилен телефон, redmi 15, 8/256gb, полноќно црн")
+    debug_messages = [r.message for r in caplog.records if r.levelname == "DEBUG"]
+    assert any("rejected pair candidate" in m for m in debug_messages)
+
+
+def test_rejected_lone_candidate_logs_debug(caplog):
+    import logging
+    with caplog.at_level(logging.DEBUG, logger="utils.spec_extractor"):
+        r = extract_specs("apple iphone 17 pro max 2049gb cosmic orange")
+    assert r["storage_gb"] is None
+    debug_messages = [rec.message for rec in caplog.records if rec.levelname == "DEBUG"]
+    assert any("rejected lone storage candidate" in m for m in debug_messages)

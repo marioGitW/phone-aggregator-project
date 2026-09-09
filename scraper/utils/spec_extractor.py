@@ -1,11 +1,15 @@
 """Extract structured specs (RAM, storage, color, 5G, model code) from a scraped rawTitle."""
+import logging
 import re
+
+logger = logging.getLogger(__name__)
 
 RAM_VALID = {1, 2, 3, 4, 6, 8, 12, 16}
 STORAGE_VALID = {16, 32, 64, 128, 256, 512, 1024, 2048}
 
-# number [unit]? separator number [unit]?  e.g. "8gb/256gb", "6+128gb", "128gb + 6gb", "8/128"
-_PAIR_RE = re.compile(r"(\d+)\s*(gb|tb)?\s*[/+,]\s*(\d+)\s*(gb|tb)?", re.IGNORECASE)
+# number [unit]? separator number [unit]?  e.g. "8gb/256gb", "6+128gb", "128gb + 6gb",
+# "8/128", "8 gb и 256 gb" (Macedonian "и" = "and", seen on ananas).
+_PAIR_RE = re.compile(r"(\d+)\s*(gb|tb)?\s*(?:[/+,]|\bи\b)\s*(\d+)\s*(gb|tb)?", re.IGNORECASE)
 
 # a single number with an explicit unit, e.g. "128gb", "1tb"
 _LONE_RE = re.compile(r"(\d+)\s*(gb|tb)", re.IGNORECASE)
@@ -22,6 +26,7 @@ _COLOR_WORDS_RAW = sorted(
         "црн", "црно", "бел", "бела", "син", "сина", "светло син",
         "сив", "зелен", "жолт", "виолетова", "виолетов", "графит",
         "природен титаниум", "тегет", "сребрен",
+        "златно-песочен", "златен", "тиркизен",
 
         # Compound / marketing color names actually seen in scraped titles
         # (Samsung "awesome X" line, Apple, Xiaomi, Honor), longest-first so
@@ -45,7 +50,7 @@ _COLOR_WORDS_RAW = sorted(
         "black", "white", "gray", "grey", "blue", "silver", "green", "pink",
         "purple", "violet", "orange", "cream", "graphite", "mint", "navy",
         "teal", "sage", "gold", "red", "coral", "cyan", "titanium",
-        "ultramarine", "lavander", "lavender",
+        "ultramarine", "lavander", "lavender", "jetblack",
     ],
     key=len,
     reverse=True,
@@ -88,12 +93,17 @@ def _extract_ram_storage(text):
         ram_gb, storage_gb = min(num1, num2), max(num1, num2)
         if ram_gb in RAM_VALID and storage_gb in STORAGE_VALID and storage_gb >= ram_gb:
             return ram_gb, storage_gb
+        logger.debug(f"rejected pair candidate {match.group(0)!r}: "
+                     f"ram_gb={ram_gb} (valid={ram_gb in RAM_VALID}), "
+                     f"storage_gb={storage_gb} (valid={storage_gb in STORAGE_VALID})")
 
     for match in _LONE_RE.finditer(text):
         raw, unit = match.groups()
         storage_gb = _to_gb(raw, unit)
         if storage_gb in STORAGE_VALID:
             return None, storage_gb
+        logger.debug(f"rejected lone storage candidate {match.group(0)!r}: "
+                     f"storage_gb={storage_gb} not in STORAGE_VALID")
 
     return None, None
 

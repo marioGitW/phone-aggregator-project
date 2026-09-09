@@ -181,6 +181,7 @@ def _parse_gb_number(*texts):
             if m.group(2).lower() == "tb":
                 value *= 1024
             return value
+    logger.debug(f"_parse_gb_number: no <number>GB/TB found in {texts!r}")
     return None
 
 
@@ -366,6 +367,10 @@ def parse_variant_groups(driver):
             elif all(n in STORAGE_VALID for n in numeric_options):
                 kind = "storage"
             else:
+                for n in numeric_options:
+                    if n not in RAM_VALID and n not in STORAGE_VALID:
+                        logger.debug(f"rejected variant group value {n} "
+                                     f"(not in RAM_VALID or STORAGE_VALID)")
                 logger.warning(f"ambiguous variant group values={numeric_options}; skipping axis")
                 continue
 
