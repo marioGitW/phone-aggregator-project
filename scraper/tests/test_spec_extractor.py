@@ -49,10 +49,14 @@ def test_ananas_plus_storage_has_gb_suffix():
 
 
 def test_ananas_plus_storage_has_gb_suffix_moonlight():
+    # Word-boundary matching means "light blue" no longer falsely matches
+    # inside "moonlight blue" (the "light" in "moonlight" has no boundary
+    # before it) — falls through to bare "blue" instead, which is a real
+    # word in the title rather than a coincidental cross-morpheme match.
     r = extract_specs("xiaomi мобилен телефон redmi 15c 4+128gb moonlight blue")
     assert r["ram_gb"] == 4
     assert r["storage_gb"] == 128
-    assert r["color_raw"] == "light blue"
+    assert r["color_raw"] == "blue"
 
 
 def test_ananas_plus_ocean_blue():
@@ -141,7 +145,7 @@ def test_anhoch_sandy_purple_not_sandy_gold():
     r = extract_specs("xiaomi redmi 15 8gb/256gb sandy purple")
     assert r["ram_gb"] == 8
     assert r["storage_gb"] == 256
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "sandy purple"
 
 
 def test_anhoch_16gb_1tb():
@@ -150,11 +154,11 @@ def test_anhoch_16gb_1tb():
     assert r["storage_gb"] == 1024
 
 
-def test_anhoch_unlisted_color_returns_none():
+def test_anhoch_bare_blue_color():
     r = extract_specs("apple iphone 15 128gb blue mtp43rxa")
     assert r["ram_gb"] is None
     assert r["storage_gb"] == 128
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "blue"
 
 
 def test_anhoch_4gb_128gb_light_blue():
@@ -254,12 +258,12 @@ def test_setec_midnight_black():
     assert r["color_raw"] == "midnight black"
 
 
-def test_setec_model_code_olive_unknown_color():
+def test_setec_model_code_awesome_olive_color():
     r = extract_specs("samsung sm-a566 galaxy a56 awesome olive 8/256gb")
     assert r["ram_gb"] == 8
     assert r["storage_gb"] == 256
     assert r["model_code"] == "SM-A566"
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "awesome olive"
 
 
 def test_setec_model_code_6gb_slash_128gb():
@@ -281,21 +285,21 @@ def test_setec_fully_unitless_pair():
     assert r["storage_gb"] == 256
 
 
-def test_setec_iphone_lone_storage_light_gold_unknown():
+def test_setec_iphone_lone_storage_light_gold():
     r = extract_specs("apple iphone air 256gb light gold")
     assert r["ram_gb"] is None
     assert r["storage_gb"] == 256
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "light gold"
 
 
 # --- tehnomarket ------------------------------------------------------
 
-def test_tehnomarket_parens_plus_dark_blue_unknown():
+def test_tehnomarket_parens_plus_dark_blue_color():
     r = extract_specs("samsung galaxy a57 5g (8+128gb) dark blue")
     assert r["ram_gb"] == 8
     assert r["storage_gb"] == 128
     assert r["has_5g"] is True
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "dark blue"
 
 
 def test_tehnomarket_slash_unit_storage_only():
@@ -304,11 +308,13 @@ def test_tehnomarket_slash_unit_storage_only():
     assert r["storage_gb"] == 256
 
 
-def test_tehnomarket_mint_green_unknown():
+def test_tehnomarket_mint_green_matches_bare_green():
+    # "green" (5 chars) sorts before "mint" (4 chars) in the length-descending
+    # word list, so the longer bare color wins the substring match here.
     r = extract_specs("xiaomi redmi 15c 4/128gb mint green")
     assert r["ram_gb"] == 4
     assert r["storage_gb"] == 128
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "green"
 
 
 def test_tehnomarket_unitless_pair_ultra():
@@ -317,11 +323,11 @@ def test_tehnomarket_unitless_pair_ultra():
     assert r["storage_gb"] == 512
 
 
-def test_tehnomarket_lone_storage_sky_blue_unknown():
+def test_tehnomarket_lone_storage_sky_blue_color():
     r = extract_specs("apple iphone air 256gb sky blue")
     assert r["ram_gb"] is None
     assert r["storage_gb"] == 256
-    assert r["color_raw"] is None
+    assert r["color_raw"] == "sky blue"
 
 
 def test_tehnomarket_5g_gb_slash_gb():
@@ -378,3 +384,169 @@ def test_svetlo_sin_preferred_over_sin_substring():
     assert r["ram_gb"] == 8
     assert r["storage_gb"] == 256
     assert r["color_raw"] == "светло син"
+
+
+# --- extended color dictionary (anhoch colorRaw gap: 20% -> 100%) ---------
+# All titles below are real rawTitle values from anhoch (fetched via git
+# history since the live site's title text is what drove this gap — see
+# scraper/utils/spec_extractor.py's _COLOR_WORDS extension).
+
+def test_anhoch_bare_black():
+    r = extract_specs("samsung galaxy xcover7 rugged 5g 6gb/128gb black")
+    assert r["ram_gb"] == 6
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "black"
+
+
+def test_anhoch_bare_gray():
+    r = extract_specs("samsung galaxy a17 a175 4gb/128gb gray")
+    assert r["ram_gb"] == 4
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "gray"
+
+
+def test_anhoch_cobalt_violet():
+    r = extract_specs("samsung galaxy s26 5g 12gb/256gb cobalt violet")
+    assert r["ram_gb"] == 12
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "cobalt violet"
+
+
+def test_anhoch_glacier_blue():
+    r = extract_specs("xiaomi redmi note 15 pro 8gb/256gb glacier blue")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "glacier blue"
+
+
+def test_anhoch_titan_gray():
+    r = extract_specs("xiaomi redmi 15 6gb/128gb titan gray")
+    assert r["ram_gb"] == 6
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "titan gray"
+
+
+def test_anhoch_reddish_brown():
+    r = extract_specs("honor magic8 lite 5g 8gb/512gb ds reddish brown")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 512
+    assert r["has_5g"] is True
+    assert r["color_raw"] == "reddish brown"
+
+
+def test_anhoch_awesome_graphite():
+    r = extract_specs("samsung galaxy a56 5g 8gb/256gb awesome graphite")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "awesome graphite"
+
+
+def test_anhoch_silver_shadow():
+    r = extract_specs("samsung galaxy z fold 7 5g 12gb/256gb silver shadow")
+    assert r["ram_gb"] == 12
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "silver shadow"
+
+
+def test_anhoch_jet_black():
+    r = extract_specs("samsung galaxy z fold 7 5g 12gb/256gb jet black")
+    assert r["ram_gb"] == 12
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "jet black"
+
+
+def test_anhoch_icyblue_no_space():
+    r = extract_specs("samsung galaxy s25 5g 12gb/256gb icyblue")
+    assert r["ram_gb"] == 12
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "icyblue"
+
+
+def test_anhoch_blueblack():
+    r = extract_specs("samsung galaxy s25 5g 12gb/256gb blueblack")
+    assert r["ram_gb"] == 12
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "blueblack"
+
+
+def test_anhoch_bare_lavander_misspelling():
+    r = extract_specs("apple iphone 17 256gb lavander")
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "lavander"
+
+
+def test_anhoch_mocha_brown():
+    r = extract_specs("xiaomi redmi note 15 pro+ 5g 8gb/256gb mocha brown")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "mocha brown"
+
+
+def test_anhoch_vital_green():
+    r = extract_specs("honor 600 lite 5g 8gb/256gb ds vital green")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "vital green"
+
+
+def test_anhoch_ultramarine():
+    r = extract_specs("apple iphone 16 128gb ultramarine")
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "ultramarine"
+
+
+def test_anhoch_ocean_cyan():
+    r = extract_specs("honor x6c 6gb/128gb dual sim ocean cyan")
+    assert r["ram_gb"] == 6
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "ocean cyan"
+
+
+def test_color_still_unknown_returns_none():
+    # A color word genuinely absent from the dictionary should still yield
+    # None rather than a wrong guess — the extractor never invents values.
+    r = extract_specs("samsung galaxy a11 burgundy")
+    assert r["color_raw"] is None
+
+
+# --- word-boundary color matching (ananas ramGb/colorRaw gap) -------------
+# Real ananas rawTitle values that exposed two bugs: bare "red" matching as
+# a substring inside "redmi" (brand name, not a color), and a spurious
+# comma-adjacent number pairing eating the real RAM digit. Fixed in
+# spec_extractor.py's _extract_color (word boundaries) and
+# _extract_ram_storage (per-digit-position pair matching).
+
+def test_redmi_bare_name_has_no_false_color_match():
+    r = extract_specs("xiaomi redmi 15")
+    assert r["color_raw"] is None
+
+
+def test_ananas_comma_after_model_number_no_longer_eats_ram_digit():
+    r = extract_specs("xiaomi мобилен телефон, redmi 15, 8/256gb, полноќно црн")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "црн"
+
+
+def test_ananas_violetov_masculine_no_false_red_match():
+    # Before the word-boundary fix, this fell through to a false "red"
+    # match (substring of "redmi") since "виолетов" wasn't recognized and
+    # ram_gb was also lost to the comma bug.
+    r = extract_specs("xiaomi мобилен телефон, redmi 15, 6/128gb, виолетов")
+    assert r["ram_gb"] == 6
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "виолетов"
+
+
+def test_ananas_teget_color():
+    r = extract_specs("samsung мобилен телефон, galaxy a57 5g, 8gb/128gb, тегет")
+    assert r["ram_gb"] == 8
+    assert r["storage_gb"] == 128
+    assert r["color_raw"] == "тегет"
+
+
+def test_ananas_srebren_color():
+    r = extract_specs("samsung мобилен телефон, galaxy s25 edge, 12gb/256gb, сребрен")
+    assert r["ram_gb"] == 12
+    assert r["storage_gb"] == 256
+    assert r["color_raw"] == "сребрен"

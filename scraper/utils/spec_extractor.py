@@ -10,19 +10,54 @@ _PAIR_RE = re.compile(r"(\d+)\s*(gb|tb)?\s*[/+,]\s*(\d+)\s*(gb|tb)?", re.IGNOREC
 # a single number with an explicit unit, e.g. "128gb", "1tb"
 _LONE_RE = re.compile(r"(\d+)\s*(gb|tb)", re.IGNORECASE)
 
+_DIGIT_RUN_RE = re.compile(r"\d+")
+
 _MODEL_CODE_RE = re.compile(r"\bsm-[a-z0-9]+\b", re.IGNORECASE)
 _5G_RE = re.compile(r"\b5g\b", re.IGNORECASE)
 
-_COLOR_WORDS = sorted(
+_COLOR_WORDS_RAW = sorted(
     [
         "midnight black", "ocean blue", "sandy gold", "light blue",
         "space gray", "cool blue", "frost blue", "forest green",
         "црн", "црно", "бел", "бела", "син", "сина", "светло син",
-        "сив", "зелен", "жолт", "виолетова", "графит", "природен титаниум",
+        "сив", "зелен", "жолт", "виолетова", "виолетов", "графит",
+        "природен титаниум", "тегет", "сребрен",
+
+        # Compound / marketing color names actually seen in scraped titles
+        # (Samsung "awesome X" line, Apple, Xiaomi, Honor), longest-first so
+        # e.g. "sky blue" wins over bare "blue".
+        "sky blue", "glacier blue", "cobalt violet", "light violet",
+        "deep blue", "dark blue", "dark green", "light pink", "light green",
+        "light gold", "mocha brown", "reddish brown", "titan gray",
+        "titanium gray", "titanium black", "titanium purple",
+        "titanium white silver", "sandy purple", "awesome lime",
+        "awesome lavander", "awesome lavender", "awesome white", "awesome black",
+        "awesome pink", "awesome graphite", "awesome olive", "awesome lightgray",
+        "violet shadow", "blue shadow", "silver shadow", "jet black",
+        "icy blue", "icyblue", "lavander purple", "lavender purple",
+        "vital green", "velvet gray", "velvet black", "blueblack",
+        "mist purple", "mist blue", "space black", "aurora purple",
+        "cosmic orange", "coral red", "cloud white", "deep violet",
+        "golden white", "ocean cyan",
+
+        # Bare single-word colors — kept last/shortest so any compound above
+        # always matches first via the length-descending sort.
+        "black", "white", "gray", "grey", "blue", "silver", "green", "pink",
+        "purple", "violet", "orange", "cream", "graphite", "mint", "navy",
+        "teal", "sage", "gold", "red", "coral", "cyan", "titanium",
+        "ultramarine", "lavander", "lavender",
     ],
     key=len,
     reverse=True,
 )
+
+# Word-boundary matched (not plain substring) so a short bare color like
+# "red" can't false-positive match inside an unrelated word — e.g. "red" is
+# a substring of the Xiaomi "Redmi" brand name, which isn't a color at all.
+_COLOR_WORDS = [
+    (word, re.compile(r"\b" + re.escape(word) + r"\b", re.IGNORECASE))
+    for word in _COLOR_WORDS_RAW
+]
 
 
 def _to_gb(value, unit):
@@ -33,7 +68,20 @@ def _to_gb(value, unit):
 
 
 def _extract_ram_storage(text):
-    for match in _PAIR_RE.finditer(text):
+    # Try a pair match anchored at *every* digit run's start position, not
+    # just re.finditer's non-overlapping matches. A model number followed by
+    # a comma (e.g. "redmi 15, 8/256gb") forms a spurious "(15, 8)" pair
+    # candidate that finditer tries first; it correctly gets rejected
+    # (15 isn't a valid storage size) but finditer then resumes scanning
+    # *after* that consumed "8", so it never retries "8/256gb" as a fresh
+    # pair starting at "8" — silently losing a real, valid pair later in the
+    # string. Anchoring at every digit position instead means each digit
+    # always gets its own attempt regardless of what an earlier, invalid
+    # candidate consumed.
+    for digit_run in _DIGIT_RUN_RE.finditer(text):
+        match = _PAIR_RE.match(text, digit_run.start())
+        if not match:
+            continue
         raw1, unit1, raw2, unit2 = match.groups()
         num1 = _to_gb(raw1, unit1)
         num2 = _to_gb(raw2, unit2)
@@ -51,8 +99,8 @@ def _extract_ram_storage(text):
 
 
 def _extract_color(text):
-    for word in _COLOR_WORDS:
-        if word in text:
+    for word, pattern in _COLOR_WORDS:
+        if pattern.search(text):
             return word
     return None
 

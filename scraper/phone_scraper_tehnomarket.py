@@ -1,3 +1,4 @@
+import logging
 import re
 import time
 from selenium import webdriver
@@ -6,12 +7,22 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, clean_price, extract_image_url
+from utils.spec_extractor import extract_specs
 
 BASE_URL = "https://www.tehnomarket.com.mk"
 CATEGORY_URL = f"{BASE_URL}/category/4109/mobilni-telefoni"
 IMAGE_SELECTOR = ".product-figure"
+PRODUCT_CARD_SELECTOR = "li.product-fix"
 
 BRANDS = ["samsung", "apple", "xiaomi", "honor"]
+
+logger = logging.getLogger(__name__)
+
+# Roughly half of this source's typical full-run yield. A full run (no
+# --limit) coming in under this means PRODUCT_CARD_SELECTOR likely stopped
+# matching the live markup — log loudly instead of silently importing a
+# partial dataset.
+MIN_EXPECTED_PRODUCTS = 103
 
 NAME_PREFIXES = [
     "преднарачка -",
@@ -23,17 +34,24 @@ NAME_PREFIXES = [
 
 
 class Phone:
-    def __init__(self, brand, title, rawTitle, siteLink, price, imageUrl=None):
+    def __init__(self, brand, title, rawTitle, siteLink, price, imageUrl=None,
+                 ram_gb=None, storage_gb=None, color_raw=None, model_code=None):
         self.brand = brand
         self.title = title
         self.rawTitle = rawTitle
         self.siteLink = siteLink
         self.price = price
         self.imageUrl = imageUrl
+        self.ram_gb = ram_gb
+        self.storage_gb = storage_gb
+        self.color_raw = color_raw
+        self.model_code = model_code
 
     def __repr__(self):
         return (f"Phone(brand={self.brand}, title={self.title}, rawTitle={self.rawTitle}, "
-                f"siteLink={self.siteLink}, price={self.price})")
+                f"siteLink={self.siteLink}, price={self.price}, ram_gb={self.ram_gb}, "
+                f"storage_gb={self.storage_gb}, color_raw={self.color_raw}, "
+                f"model_code={self.model_code})")
 
 
 def get_driver():
@@ -53,7 +71,7 @@ def get_driver():
 def wait_for_cards(driver, timeout=15):
     try:
         WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "li.product-fix")) # .product-card .col
+            EC.presence_of_element_located((By.CSS_SELECTOR, PRODUCT_CARD_SELECTOR)) # .product-card .col
         )
         time.sleep(1)
         return True
@@ -78,7 +96,7 @@ def clean_name(name):
     return name
 
 
-def scrape_all_phones():
+def scrape_all_phones(limit=None):
     driver = get_driver()
     phones = []
     seen_urls = set()
@@ -89,18 +107,18 @@ def scrape_all_phones():
             url = CATEGORY_URL
         else:
             url = f"{CATEGORY_URL}/page/{page}"
-        print(f"Scraping page {page} -> {url}")
+        logger.info(f"Scraping page {page} -> {url}")
         driver.get(url)
 
         loaded = wait_for_cards(driver)
         if not loaded:
-            print(f"No cards on page {page}, stopping.")
+            logger.info(f"No cards on page {page}, stopping.")
             break
 
-        cards = driver.find_elements(By.CSS_SELECTOR, "li.product-fix") # .product-card .col
+        cards = driver.find_elements(By.CSS_SELECTOR, PRODUCT_CARD_SELECTOR) # .product-card .col
 
         if not cards:
-            print(f"Empty page {page}, stopping.")
+            logger.info(f"Empty page {page}, stopping.")
             break
 
         page_urls = []
@@ -113,10 +131,10 @@ def scrape_all_phones():
 
         new_urls = [u for u in page_urls if u not in seen_urls]
         if not new_urls:
-            print(f"Page {page} is a duplicate, stopping.")
+            logger.info(f"Page {page} is a duplicate, stopping.")
             break
 
-        print(f"Found {len(cards)} products on page {page}, filtering by brand...")
+        logger.info(f"Found {len(cards)} products on page {page}, filtering by brand...")
 
         for card in cards:
             try:
@@ -133,12 +151,12 @@ def scrape_all_phones():
                 except:
                     price_text = ""
 
-                print(f"[price] raw={price_text!r}")
+                logger.debug(f"[price] raw={price_text!r}")
                 price = clean_price(price_text)
-                print(f"[price] cleaned={price}")
+                logger.debug(f"[price] cleaned={price}")
                 if not price_text:
-                    print("[price] raw=''" )
-                    print("[price] cleaned=0")
+                    logger.debug("[price] raw=''")
+                    logger.debug("[price] cleaned=0")
 
                 try:
                     href = card.find_element(By.CSS_SELECTOR, ".product-name a").get_attribute("href")
@@ -156,6 +174,7 @@ def scrape_all_phones():
                     continue
 
                 seen_urls.add(href)
+                specs = extract_specs(raw_title)
                 phones.append(Phone(
                     brand=brand,
                     title=format_title(name, brand),
@@ -163,28 +182,42 @@ def scrape_all_phones():
                     siteLink=(href or "").lower(),
                     price=price,
                     imageUrl=imageUrl,
+                    ram_gb=specs["ram_gb"],
+                    storage_gb=specs["storage_gb"],
+                    color_raw=specs["color_raw"],
+                    model_code=specs["model_code"],
                 ))
-                print(f"  + [{brand}] {name}")
+                logger.debug(f"+ [{brand}] {name}")
+
+                if limit is not None and len(phones) >= limit:
+                    break
 
             except Exception as e:
-                print(f"  Skipped a card: {e}")
+                logger.warning(f"Skipped a card: {e}")
+
+        if limit is not None and len(phones) >= limit:
+            break
 
         page += 1
 
     driver.quit()
+
+    if limit is None and len(seen_urls) < MIN_EXPECTED_PRODUCTS:
+        logger.error(f"tehnomarket found only {len(seen_urls)} products "
+                     f"(expected at least {MIN_EXPECTED_PRODUCTS}) using selector "
+                     f"{PRODUCT_CARD_SELECTOR!r} — it may no longer match the live markup.")
+
     return phones
 
 
 if __name__ == "__main__":
-    print("Starting tehnomarket.mk phone scraper...\n")
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    logger.info("Starting tehnomarket.mk phone scraper...")
     phones = scrape_all_phones()
 
-    print(f"\n{'='*50}")
-    print(f"Total phones scraped: {len(phones)}")
-    print(f"{'='*50}")
+    logger.info(f"Total phones scraped: {len(phones)}")
     for brand in BRANDS:
         count = len([p for p in phones if p.brand == brand])
-        print(f"  {brand}: {count} phones")
-    print()
+        logger.info(f"  {brand}: {count} phones")
     for phone in phones:
-        print(phone)
+        logger.debug(phone)

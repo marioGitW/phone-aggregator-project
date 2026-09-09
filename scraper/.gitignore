@@ -1,0 +1,3 @@
+# Local variant-scrape cache — regenerated per run, never a deliverable.
+# Filename is versioned by CACHE_SCHEMA_VERSION in phone_scraper_ledikom.py.
+ledikom_variant_cache*.json
