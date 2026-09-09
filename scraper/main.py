@@ -57,7 +57,8 @@ def save_to_json(phones, filepath):
 
 
 def send_to_backend_from_file(filepath=OUTPUT_FILE):
-    """Read phones from JSON file and send to backend independently of scraping."""
+    """Read phones from JSON file and send to backend independently of scraping.
+    Returns True on a successful import, False otherwise."""
     print(f"\nReading phones from {filepath}...")
     try:
         with open(filepath, "r", encoding="utf-8") as f:
@@ -65,10 +66,10 @@ def send_to_backend_from_file(filepath=OUTPUT_FILE):
         print(f"Loaded {len(phones)} phones from {filepath}")
     except FileNotFoundError:
         logger.error(f"{filepath} not found.")
-        return
+        return False
     except json.JSONDecodeError:
         logger.error(f"{filepath} is not valid JSON.")
-        return
+        return False
 
     print("Sending phones to Spring Boot backend...")
 
@@ -82,19 +83,24 @@ def send_to_backend_from_file(filepath=OUTPUT_FILE):
         if response.status_code == 201:
             print("Backend import successful!")
             print(response.json())
-        else:
-            logger.error(f"Backend import failed! Status code: {response.status_code}")
-            logger.error(f"Response: {response.text}")
+            return True
+
+        logger.error(f"Backend import failed! Status code: {response.status_code}")
+        logger.error(f"Response: {response.text}")
+        return False
 
     except requests.exceptions.ConnectionError:
         logger.error("Could not connect to Spring Boot backend. "
                       "Make sure the backend is running on port 8083.")
+        return False
 
     except requests.exceptions.Timeout:
         logger.error("Backend request timed out.")
+        return False
 
     except Exception as e:
         logger.error(f"Unexpected error while sending to backend: {e}")
+        return False
 
 
 def send_to_backend(phones):
@@ -137,6 +143,12 @@ if __name__ == "__main__":
         help="Don't POST the scraped results to the backend import endpoint."
     )
     parser.add_argument(
+        "--send-only", action="store_true",
+        help=f"Don't scrape at all — just POST the existing {OUTPUT_FILE} to "
+             "the backend import endpoint and exit. Mutually exclusive with "
+             "--skip-backend."
+    )
+    parser.add_argument(
         "--no-cache", action="store_true",
         help="Bypass ledikom's variant cache (the only scraper that has one) "
              "and force a fully fresh scrape."
@@ -153,6 +165,13 @@ if __name__ == "__main__":
         level=logging.DEBUG if args.verbose else logging.INFO,
         format="%(levelname)s %(name)s: %(message)s",
     )
+
+    if args.send_only and args.skip_backend:
+        parser.error("--send-only and --skip-backend are mutually exclusive.")
+
+    if args.send_only:
+        ok = send_to_backend_from_file(OUTPUT_FILE)
+        sys.exit(0 if ok else 1)
 
     all_phones = []
     failed_sources = []
