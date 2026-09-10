@@ -4,7 +4,7 @@ import PhoneCard from '../components/PhoneCard';
 import BrandFilter from '../components/BrandFilter';
 import PhoneFilters from '../components/PhoneFilters';
 import banner from "../assets/banner.jpg";
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const createFilters = () => ({
   search: '',
@@ -37,6 +37,44 @@ const hasActiveFilters = (filters) =>
   filters.ram.length > 0 ||
   Boolean(filters.minPrice) ||
   Boolean(filters.maxPrice);
+
+// Filters (applied, not draft) live in the URL query string so browser back/forward and
+// copied links reproduce the same result set. Param names/repetition mirror exactly what
+// fetchPhones sends the API (repeatable brand/source/color/storage/ram) rather than some
+// separate URL-only encoding.
+const parseFiltersFromParams = (params) => ({
+  search: params.get('search') || '',
+  brands: params.getAll('brand'),
+  sources: params.getAll('source'),
+  colors: params.getAll('color'),
+  storage: params.getAll('storage').map(Number),
+  ram: params.getAll('ram').map(Number),
+  minPrice: params.get('minPrice') || '',
+  maxPrice: params.get('maxPrice') || '',
+  sort: params.get('sort') || '',
+});
+
+const parsePageFromParams = (params) => {
+  const page = Number(params.get('page'));
+  return Number.isInteger(page) && page > 0 ? page : 0;
+};
+
+const buildSearchParams = (filters, page) => {
+  const params = new URLSearchParams();
+
+  if (filters.search) params.set('search', filters.search);
+  filters.brands.forEach((brand) => params.append('brand', brand));
+  filters.sources.forEach((source) => params.append('source', source));
+  filters.colors.forEach((color) => params.append('color', color));
+  filters.storage.forEach((storage) => params.append('storage', storage));
+  filters.ram.forEach((ram) => params.append('ram', ram));
+  if (filters.minPrice) params.set('minPrice', filters.minPrice);
+  if (filters.maxPrice) params.set('maxPrice', filters.maxPrice);
+  if (filters.sort) params.set('sort', filters.sort);
+  if (page > 0) params.set('page', page);
+
+  return params;
+};
 
 function SkeletonCard() {
   return (
@@ -124,10 +162,12 @@ function FiltersPanel({
 }
 
 export default function HomePage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [phones, setPhones] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(() => parsePageFromParams(searchParams));
   const [pageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(0);
   const [availableBrands, setAvailableBrands] = useState([]);
@@ -135,12 +175,14 @@ export default function HomePage() {
   const [availableColors, setAvailableColors] = useState([]);
   const [availableStorage, setAvailableStorage] = useState([]);
   const [availableRam, setAvailableRam] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState(() => searchParams.get('search') || '');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
 
-  const [filters, setFilters] = useState(createFilters);
-  const [draftFilters, setDraftFilters] = useState(createFilters);
+  // Hydrated straight from the URL on mount, so a fresh load or a back-navigation back to
+  // "/" starts already showing the filters the query string encodes.
+  const [filters, setFilters] = useState(() => parseFiltersFromParams(searchParams));
+  const [draftFilters, setDraftFilters] = useState(() => cloneFilters(parseFiltersFromParams(searchParams)));
 
   useEffect(() => {
     const loadPhones = async () => {
@@ -225,6 +267,7 @@ export default function HomePage() {
     setFilters(nextFilters);
     setPage(0);
     setMobileFiltersOpen(false);
+    setSearchParams(buildSearchParams(nextFilters, 0), { replace: true });
   };
 
   const resetAllFilters = () => {
@@ -234,6 +277,7 @@ export default function HomePage() {
     setSearchInput('');
     setPage(0);
     setMobileFiltersOpen(false);
+    setSearchParams(buildSearchParams(reset, 0), { replace: true });
   };
 
   const handleSearch = () => {
@@ -248,6 +292,7 @@ export default function HomePage() {
       search: searchInput.trim(),
     }));
     setPage(0);
+    setSearchParams(buildSearchParams(nextFilters, 0), { replace: true });
   };
 
   const handleClearSearch = () => {
@@ -263,17 +308,22 @@ export default function HomePage() {
       search: '',
     }));
     setPage(0);
+    setSearchParams(buildSearchParams(nextFilters, 0), { replace: true });
   };
 
   const nextPage = () => {
     if (page < totalPages - 1) {
-      setPage(page + 1);
+      const newPage = page + 1;
+      setPage(newPage);
+      setSearchParams(buildSearchParams(filters, newPage), { replace: true });
     }
   };
 
   const previousPage = () => {
     if (page > 0) {
-      setPage(page - 1);
+      const newPage = page - 1;
+      setPage(newPage);
+      setSearchParams(buildSearchParams(filters, newPage), { replace: true });
     }
   };
 

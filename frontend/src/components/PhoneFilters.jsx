@@ -1,5 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Check } from 'lucide-react';
+import { ChevronDown, Check, X } from 'lucide-react';
+
+// 2GB devices are effectively unusable today and clutter the filter for little benefit -
+// still fully supported by the API/matching, just not offered as a UI choice.
+const HIDDEN_RAM_OPTIONS = [2];
 
 const SORT_OPTIONS = [
   { value: '', label: 'Default' },
@@ -98,6 +102,118 @@ function SortDropdown({ value, onChange }) {
   );
 }
 
+function ColorDropdown({ colors = [], selected = [], onToggle }) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const filteredColors = colors.filter((color) =>
+      color.toLowerCase().includes(search.trim().toLowerCase())
+  );
+
+  const triggerLabel =
+      selected.length === 0
+          ? 'All colors'
+          : selected.length === 1
+              ? <span className="capitalize">{selected[0]}</span>
+              : `${selected.length} colors selected`;
+
+  return (
+      <div>
+        <div className="relative" ref={ref}>
+          <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              className="flex w-full items-center justify-between rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900 shadow-sm outline-none transition focus:border-sky-300 focus:ring-2 focus:ring-sky-100"
+          >
+            <span>{triggerLabel}</span>
+            <ChevronDown
+                className={`h-4 w-4 text-neutral-400 transition-transform ${open ? 'rotate-180' : ''}`}
+            />
+          </button>
+
+          {open && (
+              <div className="absolute z-10 mt-2 w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-lg">
+                <div className="border-b border-neutral-100 p-2">
+                  <input
+                      type="text"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Search colors..."
+                      className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm text-neutral-900 outline-none transition focus:border-sky-300 focus:ring-2 focus:ring-sky-100"
+                  />
+                </div>
+
+                <div className="max-h-64 overflow-y-auto p-1.5">
+                  {filteredColors.length === 0 ? (
+                      <p className="px-3 py-2.5 text-sm text-neutral-500">No colors match.</p>
+                  ) : (
+                      filteredColors.map((color) => {
+                        const isSelected = selected.includes(color);
+                        return (
+                            <button
+                                key={color}
+                                type="button"
+                                onClick={() => onToggle(color)}
+                                className={`flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left text-sm transition ${
+                                    isSelected
+                                        ? 'bg-sky-50 text-sky-900'
+                                        : 'text-neutral-700 hover:bg-neutral-50'
+                                }`}
+                            >
+                              <span
+                                  aria-hidden="true"
+                                  className="h-3 w-3 shrink-0 rounded-full border border-neutral-300"
+                                  style={{ backgroundColor: COLOR_SWATCHES[color] || FALLBACK_SWATCH }}
+                              />
+                              <span className="flex-1 capitalize">{color}</span>
+                              {isSelected && <Check className="h-4 w-4 text-sky-600" />}
+                            </button>
+                        );
+                      })
+                  )}
+                </div>
+              </div>
+          )}
+        </div>
+
+        {selected.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {selected.map((color) => (
+                  <span
+                      key={color}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-sky-200 bg-sky-50 py-1.5 pl-3 pr-2 text-xs font-medium text-sky-700"
+                  >
+                    <span
+                        aria-hidden="true"
+                        className="h-2.5 w-2.5 shrink-0 rounded-full border border-sky-300"
+                        style={{ backgroundColor: COLOR_SWATCHES[color] || FALLBACK_SWATCH }}
+                    />
+                    <span className="capitalize">{color}</span>
+                    <button
+                        type="button"
+                        onClick={() => onToggle(color)}
+                        className="rounded-full p-0.5 text-sky-600 transition hover:bg-sky-100"
+                        aria-label={`Remove ${color} filter`}
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </span>
+              ))}
+            </div>
+        )}
+      </div>
+  );
+}
+
 export default function PhoneFilters({
                                        filters,
                                        setFilters,
@@ -107,6 +223,7 @@ export default function PhoneFilters({
                                        availableRam = [],
                                      }) {
   const [priceError, setPriceError] = useState('');
+  const visibleRamOptions = availableRam.filter((ram) => !HIDDEN_RAM_OPTIONS.includes(ram));
 
   const handleSourceChange = (source) => {
     const updatedSources = filters.sources && filters.sources.includes(source)
@@ -233,31 +350,11 @@ export default function PhoneFilters({
           {availableColors.length === 0 ? (
               <p className="text-sm text-neutral-500">No colors available.</p>
           ) : (
-              <div className="flex flex-wrap gap-2">
-                {availableColors.map((color) => (
-                    <label
-                        key={color}
-                        className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-2 text-sm transition ${
-                            filters.colors && filters.colors.includes(color)
-                                ? 'border-sky-200 bg-sky-50 text-sky-700'
-                                : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50'
-                        }`}
-                    >
-                      <input
-                          type="checkbox"
-                          checked={filters.colors && filters.colors.includes(color)}
-                          onChange={() => handleColorChange(color)}
-                          className="h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-500"
-                      />
-                      <span
-                          aria-hidden="true"
-                          className="h-3 w-3 shrink-0 rounded-full border border-neutral-300"
-                          style={{ backgroundColor: COLOR_SWATCHES[color] || FALLBACK_SWATCH }}
-                      />
-                      <span className="capitalize">{color}</span>
-                    </label>
-                ))}
-              </div>
+              <ColorDropdown
+                  colors={availableColors}
+                  selected={filters.colors || []}
+                  onToggle={handleColorChange}
+              />
           )}
         </div>
 
@@ -297,11 +394,11 @@ export default function PhoneFilters({
             <h3 className="text-sm font-semibold text-neutral-900">RAM</h3>
             <p className="mt-1 text-sm text-neutral-500">Narrow by memory size.</p>
           </div>
-          {availableRam.length === 0 ? (
+          {visibleRamOptions.length === 0 ? (
               <p className="text-sm text-neutral-500">No RAM options available.</p>
           ) : (
               <div className="flex flex-wrap gap-2">
-                {availableRam.map((ram) => (
+                {visibleRamOptions.map((ram) => (
                     <label
                         key={ram}
                         className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-2 text-sm transition ${
