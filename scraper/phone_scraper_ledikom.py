@@ -12,7 +12,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from utils.phone_utils import remove_voucher, get_brand_from_raw, format_title, clean_price, extract_image_url
+from utils.phone_utils import remove_voucher, format_title, clean_price, extract_image_url
 from utils.spec_extractor import RAM_VALID, STORAGE_VALID
 
 BASE_URL = "https://ledikom.mk"
@@ -526,8 +526,11 @@ def collect_products_from_grid(driver, brand, url):
     for p in grid_items:
         try:
             raw_title = remove_voucher(p.find_element(By.CSS_SELECTOR, ".item-name a").text.strip()).lower()
-            item_brand = get_brand_from_raw(raw_title)
-            title = format_title(raw_title, item_brand)
+            # Use the category-scoped brand (from BRAND_URLS), not a first-word guess off
+            # raw_title - ledikom's own titles for Samsung foldables/Xiaomi sub-lines start
+            # with "galaxy"/"redmi" rather than "samsung"/"xiaomi", so guessing from the raw
+            # title alone previously mis-tagged those listings with a brand of their own.
+            title = format_title(raw_title, brand)
 
             try:
                 price_text = p.find_element(By.CSS_SELECTOR, ".grid-new-price").text
@@ -543,7 +546,7 @@ def collect_products_from_grid(driver, brand, url):
                 imageUrl = None
 
             products.append({
-                "brand": item_brand,
+                "brand": brand,
                 "title": title,
                 "raw_title": raw_title,
                 "link": (link or "").lower(),
