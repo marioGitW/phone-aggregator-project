@@ -100,9 +100,9 @@ public class DemoExportService {
         List<Long> modelIds = selectRepresentativeModelIds(allListings);
         Set<Long> modelIdSet = new HashSet<>(modelIds);
 
-        List<OfferListing> selectedListings = allListings.stream()
+        List<OfferListing> selectedListings = dedupeListings(allListings.stream()
                 .filter(listing -> modelIdSet.contains(listing.getPhoneModelId()))
-                .toList();
+                .toList());
 
         Map<Long, PhoneModel> modelsById = phoneModelRepository.findAllById(modelIds).stream()
                 .collect(Collectors.toMap(PhoneModel::getId, m -> m));
@@ -148,6 +148,35 @@ public class DemoExportService {
         writer.writeValue(outputDir.resolve("meta.json").toFile(), meta);
 
         return new ExportResult(modelIds.size(), selectedListings.size(), outputDir.toAbsolutePath().normalize().toString());
+    }
+
+    /**
+     * Collapses offers that would render as visually identical cards in the listing (same
+     * source, title, price and image - nothing else shows up there, not even color) down to
+     * one, keeping the lowest id for determinism. This is a demo-fixture-only cleanup - the
+     * live database and API are untouched. A known ledikom scraper quirk (its per-color
+     * variant-URL resolution sometimes falls back to the base product page for more than one
+     * color in the same run, and/or the matching pipeline occasionally splits one real
+     * product into two PhoneModel rows) creates dozens of these in the live data; fixing
+     * that at the source is a separate, riskier change, so for now the fixture just hides
+     * the symptom. Deliberately not keyed on phoneModelId or color - two rows that look
+     * identical in the list should collapse even if they came from different underlying
+     * models/colors, since the list view never shows either.
+     */
+    private List<OfferListing> dedupeListings(List<OfferListing> listings) {
+        Map<String, OfferListing> bestByKey = new LinkedHashMap<>();
+        for (OfferListing listing : listings) {
+            String key = String.join("|",
+                    listing.getSource(),
+                    String.valueOf(listing.getTitle()),
+                    String.valueOf(listing.getPrice()),
+                    String.valueOf(listing.getImageUrl()));
+            OfferListing existing = bestByKey.get(key);
+            if (existing == null || listing.getId() < existing.getId()) {
+                bestByKey.put(key, listing);
+            }
+        }
+        return new ArrayList<>(bestByKey.values());
     }
 
     /**
