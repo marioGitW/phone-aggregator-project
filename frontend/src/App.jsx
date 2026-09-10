@@ -14,13 +14,17 @@ function App() {
     return (
         <BrowserRouter>
             <main>
-                {isDemoMode && <DemoBadge/>}
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/product/:id" element={<ProductPage/>}/>
                     <Route path="/analytics"  element={<PhoneAnalyticsPage/>}/>
                 </Routes>
-                {isDemoMode && <DemoModeNotice/>}
+                {isDemoMode && (
+                    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
+                        <DemoModeNotice/>
+                        <DemoBadge/>
+                    </div>
+                )}
             </main>
         </BrowserRouter>
     )
