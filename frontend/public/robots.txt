@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phone-aggregator-project.vercel.app/sitemap.xml
