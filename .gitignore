@@ -67,6 +67,7 @@ coverage/
 # Environment files
 .env
 .env.*
+!.env.example
 
 # Misc generated files
 *.sw?

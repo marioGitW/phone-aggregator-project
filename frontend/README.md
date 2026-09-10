@@ -1,3 +1,9 @@
+# Phone Aggregator - Frontend
+
+Runs against the live backend by default, or standalone against static demo fixtures with
+`VITE_DATA_MODE=static` (e.g. for Vercel). See the [root README](../README.md#frontend) for
+both modes, how to regenerate the demo fixtures, and Vercel deployment.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
