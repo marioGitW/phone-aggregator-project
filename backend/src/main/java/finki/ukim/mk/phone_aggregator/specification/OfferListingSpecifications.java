@@ -1,7 +1,7 @@
 package finki.ukim.mk.phone_aggregator.specification;
 
 import finki.ukim.mk.phone_aggregator.dto.PhoneFilterDto;
-import finki.ukim.mk.phone_aggregator.model.Phone;
+import finki.ukim.mk.phone_aggregator.model.OfferListing;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -9,16 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Specifications for dynamic Phone entity queries
- * Converts PhoneFilterDto into database WHERE clauses
+ * Specifications for dynamic queries against the offer_listings view (every active
+ * offer joined to its phone model and latest price).
+ * Converts PhoneFilterDto into database WHERE clauses.
  */
-public class PhoneSpecifications {
+public class OfferListingSpecifications {
 
     /**
      * Build a specification from filter DTO
      * Combines all active filters with AND logic
      */
-    public static Specification<Phone> fromFilter(PhoneFilterDto filters) {
+    public static Specification<OfferListing> fromFilter(PhoneFilterDto filters) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -75,7 +76,7 @@ public class PhoneSpecifications {
     /**
      * Search filter: case-insensitive search in title and rawTitle
      */
-    public static Specification<Phone> searchByTitle(String search) {
+    public static Specification<OfferListing> searchByTitle(String search) {
         return (root, query, criteriaBuilder) -> {
             if (search == null || search.isEmpty()) {
                 return criteriaBuilder.conjunction();
@@ -92,7 +93,7 @@ public class PhoneSpecifications {
     /**
      * Filter by brand names (IN list)
      */
-    public static Specification<Phone> filterByBrands(List<String> brands) {
+    public static Specification<OfferListing> filterByBrands(List<String> brands) {
         return (root, query, criteriaBuilder) -> {
             if (brands == null || brands.isEmpty()) {
                 return criteriaBuilder.conjunction();
@@ -104,7 +105,7 @@ public class PhoneSpecifications {
     /**
      * Filter by source names (IN list)
      */
-    public static Specification<Phone> filterBySources(List<String> sources) {
+    public static Specification<OfferListing> filterBySources(List<String> sources) {
         return (root, query, criteriaBuilder) -> {
             if (sources == null || sources.isEmpty()) {
                 return criteriaBuilder.conjunction();
@@ -116,7 +117,7 @@ public class PhoneSpecifications {
     /**
      * Filter by price range
      */
-    public static Specification<Phone> filterByPriceRange(Integer minPrice, Integer maxPrice) {
+    public static Specification<OfferListing> filterByPriceRange(Integer minPrice, Integer maxPrice) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -136,5 +137,3 @@ public class PhoneSpecifications {
         };
     }
 }
-
-

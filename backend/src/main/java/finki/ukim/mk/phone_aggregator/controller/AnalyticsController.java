@@ -5,7 +5,6 @@ import finki.ukim.mk.phone_aggregator.service.PhoneService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,8 +40,11 @@ public class AnalyticsController {
     }
 
     /**
-     * Get price comparison across sources for a specific phone
-     * @param normalizedTitle The normalized title of the phone to compare
+     * Get price comparison across sources for a specific phone.
+     * The parameter is kept as "normalizedTitle" for API compatibility, but is now
+     * matched against PhoneModel.modelKey (built by the same normalization function
+     * the old Phone.normalizedTitle column used).
+     * @param normalizedTitle The normalized model key of the phone to compare
      * @return List of sources with prices for the specified phone
      */
     @GetMapping("/price-comparison")
@@ -59,18 +61,9 @@ public class AnalyticsController {
      */
     @GetMapping("/cheapest-per-brand")
     public ResponseEntity<Map<String, CheapestPhoneDto>> getCheapestPerBrand() {
-        List<String> brands = phoneService.getAllBrands();
-        Map<String, CheapestPhoneDto> result = new HashMap<>();
-
-        for (String brand : brands) {
-            List<CheapestPhoneDto> cheapest = phoneService.getCheapestPhoneByBrand(brand);
-            if (!cheapest.isEmpty()) {
-                result.put(brand, cheapest.get(0));
-            }
-        }
-
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(phoneService.getCheapestPerBrand());
     }
+
     /**
      * Get phone counts bucketed into price ranges
      * @return List of price ranges with their phone counts
