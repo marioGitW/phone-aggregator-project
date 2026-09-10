@@ -51,4 +51,10 @@ public class OfferListing {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "color_raw")
+    private String colorRaw;
+
+    @Column(name = "color_canonical")
+    private String colorCanonical;
 }

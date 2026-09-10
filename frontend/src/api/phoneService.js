@@ -147,3 +147,28 @@ export const fetchProductOffers = async (id) => {
   }
 };
 
+/**
+ * Fetch price-over-time history for a phone model, grouped by source.
+ * @param {number|string} phoneModelId
+ * @returns {Promise<Array<{source: string, points: Array<{scrapedAt: string, price: number}>}>>}
+ */
+export const fetchPriceHistory = async (phoneModelId) => {
+  try {
+    const url = `${API_BASE_URL}/api/models/${phoneModelId}/price-history`;
+    console.log(`[phoneService] Fetching price history from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const history = await response.json();
+    console.log(`[phoneService] Received price history for ${history.length} sources`);
+    return history;
+  } catch (error) {
+    console.error('[phoneService] Error fetching price history:', error);
+    throw error;
+  }
+};
+

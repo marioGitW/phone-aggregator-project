@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import OfferCard from '../components/OfferCard';
-import { fetchProductOffers } from '../api/phoneService';
-import { formatPrice,capitalize } from '../utils/formatters';
+import StoreOfferGroup from '../components/StoreOfferGroup';
+import PriceHistoryChart from '../components/PriceHistoryChart';
+import { fetchProductOffers, fetchPriceHistory } from '../api/phoneService';
+import { formatPrice, capitalize } from '../utils/formatters';
 
 const PLACEHOLDER_IMAGE =
   "data:image/svg+xml;charset=UTF-8," +
@@ -33,10 +34,14 @@ function SkeletonRow() {
 export default function ProductPage() {
   const { id } = useParams();
 
-  const [offers, setOffers] = useState([]);
+  // Each entry is a store: { source, minPrice, maxPrice, availableColors, colors }.
+  const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [retryToken, setRetryToken] = useState(0);
+
+  // Price-over-time series, one entry per source: { source, points }.
+  const [priceHistory, setPriceHistory] = useState([]);
 
   useEffect(() => {
     const loadOffers = async () => {
@@ -45,7 +50,7 @@ export default function ProductPage() {
 
       try {
         const data = await fetchProductOffers(id);
-        setOffers(data || []);
+        setGroups(data || []);
       } catch {
         setError('Failed to load product offers.');
       } finally {
@@ -58,22 +63,33 @@ export default function ProductPage() {
     }
   }, [id, retryToken]);
 
-  // Parse price string: remove non-digits and convert to number for sorting
-  const parsePrice = (priceStr) => {
-    const cleaned = String(priceStr).replace(/\D/g, '');
-    return parseInt(cleaned, 10) || 0;
-  };
+  const phoneModelId = groups[0]?.phoneModelId;
 
-  // Sort offers by price ascending
-  const sortedOffers = [...offers].sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+  useEffect(() => {
+    if (!phoneModelId) {
+      return;
+    }
+
+    fetchPriceHistory(phoneModelId)
+      .then((data) => setPriceHistory(data || []))
+      .catch(() => setPriceHistory([]));
+  }, [phoneModelId]);
+
+  // Sort stores by their cheapest color, ascending
+  const sortedGroups = [...groups].sort((a, b) => a.minPrice - b.minPrice);
 
   // Get lowest price for badge
-  const lowestPrice = sortedOffers.length > 0 ? formatPrice(sortedOffers[0].price) : null;
+  const lowestPrice = sortedGroups.length > 0 ? formatPrice(sortedGroups[0].minPrice) : null;
 
-  // Get first non-null image for hero
-  const heroImage = getImageSrc(offers.find((offer) => offer.imageUrl)?.imageUrl);
+  // Total individual color listings, across every store
+  const totalListings = groups.reduce((sum, group) => sum + (group.colors?.length || 0), 0);
 
-  const productTitle = offers[0]?.title || 'Product offers';
+  // Get first non-null image for hero, from any store's color variants
+  const heroImage = getImageSrc(
+    groups.flatMap((group) => group.colors || []).find((color) => color.imageUrl)?.imageUrl
+  );
+
+  const productTitle = groups[0]?.title || 'Product offers';
 
   const handleRetry = () => {
     setRetryToken((current) => current + 1);
@@ -145,7 +161,7 @@ export default function ProductPage() {
               ))}
             </div>
           </div>
-        ) : offers.length === 0 ? (
+        ) : groups.length === 0 ? (
           <div className="mt-12 flex min-h-[50vh] items-center justify-center rounded-4xl border border-dashed border-neutral-200 bg-white">
             <div className="w-full max-w-md px-6 py-12 text-center">
               <h2 className="text-2xl font-semibold tracking-tight text-neutral-950">
@@ -183,7 +199,8 @@ export default function ProductPage() {
                     {capitalize(productTitle)}
                   </h1>
                   <p className="mt-4 text-sm text-neutral-600">
-                    Found {offers.length} offer{offers.length === 1 ? '' : 's'} from across our partner stores.
+                    Found at {groups.length} store{groups.length === 1 ? '' : 's'}
+                    {totalListings > groups.length ? ` — ${totalListings} listings across all colors` : ''}.
                   </p>
                 </div>
 
@@ -207,15 +224,18 @@ export default function ProductPage() {
               </div>
 
               <div className="space-y-3">
-                {sortedOffers.map((offer, index) => (
-                  <OfferCard
-                    key={offer.id}
-                    offer={offer}
+                {sortedGroups.map((group, index) => (
+                  <StoreOfferGroup
+                    key={group.source}
+                    group={group}
                     isLowest={index === 0}
-                    price={formatPrice(offer.price)}
                   />
                 ))}
               </div>
+            </section>
+
+            <section className="mt-12">
+              <PriceHistoryChart history={priceHistory} />
             </section>
           </>
         )}
