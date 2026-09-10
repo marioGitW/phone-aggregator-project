@@ -57,4 +57,10 @@ public class OfferListing {
 
     @Column(name = "color_canonical")
     private String colorCanonical;
+
+    @Column(name = "storage_gb")
+    private Integer storageGb;
+
+    @Column(name = "ram_gb")
+    private Integer ramGb;
 }

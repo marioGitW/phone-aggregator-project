@@ -47,7 +47,10 @@ public class PhoneController {
             @RequestParam(required = false) List<String> brand,
             @RequestParam(required = false) List<String> source,
             @RequestParam(required = false) Integer minPrice,
-            @RequestParam(required = false) Integer maxPrice
+            @RequestParam(required = false) Integer maxPrice,
+            @RequestParam(required = false) List<String> color,
+            @RequestParam(required = false) List<Integer> storage,
+            @RequestParam(required = false) List<Integer> ram
     ) {
         // Build sort object
         Sort sortObj = Sort.unsorted();
@@ -68,7 +71,10 @@ public class PhoneController {
                 brand,
                 source,
                 minPrice,
-                maxPrice
+                maxPrice,
+                color,
+                storage,
+                ram
         );
 
         Page<PhoneResponseDto> result = phoneService.getPhones(filters, pageable);
@@ -85,6 +91,24 @@ public class PhoneController {
     public ResponseEntity<List<String>> getSources() {
         List<String> sources = phoneService.getAllSources();
         return ResponseEntity.ok(sources);
+    }
+
+    @GetMapping("/colors")
+    public ResponseEntity<List<String>> getColors() {
+        List<String> colors = phoneService.getAllColors();
+        return ResponseEntity.ok(colors);
+    }
+
+    @GetMapping("/storage")
+    public ResponseEntity<List<Integer>> getStorageOptions() {
+        List<Integer> storageOptions = phoneService.getAllStorageOptions();
+        return ResponseEntity.ok(storageOptions);
+    }
+
+    @GetMapping("/ram")
+    public ResponseEntity<List<Integer>> getRamOptions() {
+        List<Integer> ramOptions = phoneService.getAllRamOptions();
+        return ResponseEntity.ok(ramOptions);
     }
 
     @GetMapping("/{id}/similar")

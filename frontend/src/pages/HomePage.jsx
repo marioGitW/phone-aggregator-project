@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchPhones, fetchBrands, fetchSources } from '../api/phoneService';
+import { fetchPhones, fetchBrands, fetchSources, fetchColors, fetchStorageOptions, fetchRamOptions } from '../api/phoneService';
 import PhoneCard from '../components/PhoneCard';
 import BrandFilter from '../components/BrandFilter';
 import PhoneFilters from '../components/PhoneFilters';
@@ -10,6 +10,9 @@ const createFilters = () => ({
   search: '',
   brands: [],
   sources: [],
+  colors: [],
+  storage: [],
+  ram: [],
   minPrice: '',
   maxPrice: '',
   sort: '',
@@ -19,7 +22,21 @@ const cloneFilters = (filters) => ({
   ...filters,
   brands: [...filters.brands],
   sources: [...filters.sources],
+  colors: [...filters.colors],
+  storage: [...filters.storage],
+  ram: [...filters.ram],
 });
+
+// Any of these being non-empty means the user has something to clear.
+const hasActiveFilters = (filters) =>
+  Boolean(filters.search) ||
+  filters.brands.length > 0 ||
+  filters.sources.length > 0 ||
+  filters.colors.length > 0 ||
+  filters.storage.length > 0 ||
+  filters.ram.length > 0 ||
+  Boolean(filters.minPrice) ||
+  Boolean(filters.maxPrice);
 
 function SkeletonCard() {
   return (
@@ -45,12 +62,25 @@ function FiltersPanel({
   setFilters,
   availableBrands,
   availableSources,
+  availableColors,
+  availableStorage,
+  availableRam,
   onBrandToggle,
   onApply,
   onReset,
 }) {
   return (
     <div className="space-y-6">
+      {hasActiveFilters(filters) && (
+        <button
+          type="button"
+          onClick={onReset}
+          className="text-sm font-medium text-sky-600 transition hover:text-sky-700 hover:underline"
+        >
+          Clear all filters
+        </button>
+      )}
+
       <BrandFilter
         brands={availableBrands}
         selectedBrands={filters.brands}
@@ -61,6 +91,9 @@ function FiltersPanel({
         filters={filters}
         setFilters={setFilters}
         availableSources={availableSources}
+        availableColors={availableColors}
+        availableStorage={availableStorage}
+        availableRam={availableRam}
       />
 
       <div className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm">
@@ -99,6 +132,9 @@ export default function HomePage() {
   const [totalPages, setTotalPages] = useState(0);
   const [availableBrands, setAvailableBrands] = useState([]);
   const [availableSources, setAvailableSources] = useState([]);
+  const [availableColors, setAvailableColors] = useState([]);
+  const [availableStorage, setAvailableStorage] = useState([]);
+  const [availableRam, setAvailableRam] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
@@ -128,13 +164,25 @@ export default function HomePage() {
   useEffect(() => {
     const loadMetadata = async () => {
       try {
-        const [brands, sources] = await Promise.all([fetchBrands(), fetchSources()]);
+        const [brands, sources, colors, storageOptions, ramOptions] = await Promise.all([
+          fetchBrands(),
+          fetchSources(),
+          fetchColors(),
+          fetchStorageOptions(),
+          fetchRamOptions(),
+        ]);
         setAvailableBrands(brands || []);
         setAvailableSources(sources || []);
+        setAvailableColors(colors || []);
+        setAvailableStorage(storageOptions || []);
+        setAvailableRam(ramOptions || []);
       } catch {
         // Keep browsing functional even if metadata endpoints fail.
         setAvailableBrands([]);
         setAvailableSources([]);
+        setAvailableColors([]);
+        setAvailableStorage([]);
+        setAvailableRam([]);
       }
     };
 
@@ -357,6 +405,9 @@ export default function HomePage() {
               setFilters={setDraftFilters}
               availableBrands={availableBrands}
               availableSources={availableSources}
+              availableColors={availableColors}
+              availableStorage={availableStorage}
+              availableRam={availableRam}
               onBrandToggle={updateBrandDraft}
               onApply={applyDraftFilters}
               onReset={resetAllFilters}
@@ -481,6 +532,9 @@ export default function HomePage() {
                 setFilters={setDraftFilters}
                 availableBrands={availableBrands}
                 availableSources={availableSources}
+                availableColors={availableColors}
+                availableStorage={availableStorage}
+                availableRam={availableRam}
                 onBrandToggle={updateBrandDraft}
                 onApply={applyDraftFilters}
                 onReset={resetAllFilters}

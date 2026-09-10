@@ -51,13 +51,19 @@ export default function PriceHistoryChart({ history = [] }) {
       source: entry.source,
       color: SOURCE_COLORS[index % SOURCE_COLORS.length],
       data: entry.points.map((point) => ({
-        timestamp: new Date(point.scrapedAt).getTime(),
+        timestamp: new Date(point.date).getTime(),
         price: point.price,
       })),
     }));
 
   const hasData = series.length > 0;
-  const hasTrend = series.some((entry) => entry.data.length > 1);
+
+  // Distinct calendar days across every source combined - a chart with a single day's
+  // worth of points is just dots at one x position, not a trend.
+  const distinctDates = new Set(
+    series.flatMap((entry) => entry.data.map((point) => new Date(point.timestamp).toDateString()))
+  );
+  const hasEnoughHistory = distinctDates.size >= 2;
 
   return (
     <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
@@ -66,15 +72,19 @@ export default function PriceHistoryChart({ history = [] }) {
           Price history
         </h2>
         <p className="mt-2 text-sm text-neutral-600">
-          {hasTrend
+          {hasEnoughHistory
             ? "How each store's price has moved over time."
             : 'Only one price check so far — the trend fills in as new scrapes come in.'}
         </p>
       </div>
 
-      {!hasData ? (
-        <div className="flex h-64 items-center justify-center text-neutral-500">
-          <p>No price history yet</p>
+      {!hasEnoughHistory ? (
+        <div className="flex h-64 items-center justify-center text-center text-neutral-500">
+          <p>
+            {hasData
+              ? "We've only seen one price check so far. History is still being collected — check back after the next scrape."
+              : 'No price history yet.'}
+          </p>
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={320}>

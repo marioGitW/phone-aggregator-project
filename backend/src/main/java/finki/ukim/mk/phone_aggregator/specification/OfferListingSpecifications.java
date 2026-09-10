@@ -54,6 +54,21 @@ public class OfferListingSpecifications {
                 predicates.add(root.get("source").in(filters.getSources()));
             }
 
+            // Color filter: IN list
+            if (filters.getColors() != null && !filters.getColors().isEmpty()) {
+                predicates.add(root.get("colorCanonical").in(filters.getColors()));
+            }
+
+            // Storage filter: IN list
+            if (filters.getStorage() != null && !filters.getStorage().isEmpty()) {
+                predicates.add(root.get("storageGb").in(filters.getStorage()));
+            }
+
+            // RAM filter: IN list
+            if (filters.getRam() != null && !filters.getRam().isEmpty()) {
+                predicates.add(root.get("ramGb").in(filters.getRam()));
+            }
+
             // Minimum price filter
             if (filters.getMinPrice() != null) {
                 predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), filters.getMinPrice()));

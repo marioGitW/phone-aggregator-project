@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { LineChart as LineChartIcon } from 'lucide-react';
 import StoreOfferGroup from '../components/StoreOfferGroup';
 import PriceHistoryChart from '../components/PriceHistoryChart';
 import { fetchProductOffers, fetchPriceHistory } from '../api/phoneService';
@@ -40,8 +41,12 @@ export default function ProductPage() {
   const [error, setError] = useState(null);
   const [retryToken, setRetryToken] = useState(0);
 
-  // Price-over-time series, one entry per source: { source, points }.
+  // Price-over-time series, one entry per source: { source, points }. Fetched lazily,
+  // only once the user expands the price history section.
   const [priceHistory, setPriceHistory] = useState([]);
+  const [historyExpanded, setHistoryExpanded] = useState(false);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
 
   useEffect(() => {
     const loadOffers = async () => {
@@ -65,15 +70,29 @@ export default function ProductPage() {
 
   const phoneModelId = groups[0]?.phoneModelId;
 
-  useEffect(() => {
-    if (!phoneModelId) {
+  const handleToggleHistory = async () => {
+    if (historyExpanded) {
+      setHistoryExpanded(false);
       return;
     }
 
-    fetchPriceHistory(phoneModelId)
-      .then((data) => setPriceHistory(data || []))
-      .catch(() => setPriceHistory([]));
-  }, [phoneModelId]);
+    setHistoryExpanded(true);
+
+    if (historyLoaded || !phoneModelId) {
+      return;
+    }
+
+    setHistoryLoading(true);
+    try {
+      const data = await fetchPriceHistory(phoneModelId);
+      setPriceHistory(data || []);
+      setHistoryLoaded(true);
+    } catch {
+      setPriceHistory([]);
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
 
   // Sort stores by their cheapest color, ascending
   const sortedGroups = [...groups].sort((a, b) => a.minPrice - b.minPrice);
@@ -235,7 +254,26 @@ export default function ProductPage() {
             </section>
 
             <section className="mt-12">
-              <PriceHistoryChart history={priceHistory} />
+              <button
+                type="button"
+                onClick={handleToggleHistory}
+                className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-700 transition hover:border-neutral-300 hover:bg-neutral-50"
+              >
+                <LineChartIcon className="h-4 w-4" />
+                {historyExpanded ? 'Hide price history' : 'Show price history'}
+              </button>
+
+              {historyExpanded && (
+                <div className="mt-4">
+                  {historyLoading ? (
+                    <div className="flex h-64 items-center justify-center rounded-3xl border border-neutral-200 bg-white shadow-sm">
+                      <div className="h-6 w-40 animate-pulse rounded-full bg-neutral-100" />
+                    </div>
+                  ) : (
+                    <PriceHistoryChart history={priceHistory} />
+                  )}
+                </div>
+              )}
             </section>
           </>
         )}

@@ -24,5 +24,11 @@ public class PhoneFilterDto {
     private Integer minPrice;        // Minimum price filter
 
     private Integer maxPrice;        // Maximum price filter
+
+    private List<String> colors;     // Filter by canonical color names
+
+    private List<Integer> storage;   // Filter by storage (GB)
+
+    private List<Integer> ram;       // Filter by RAM (GB)
 }
 

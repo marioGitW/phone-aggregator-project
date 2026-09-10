@@ -178,6 +178,27 @@ public class PhoneService {
     }
 
     /**
+     * Get all distinct canonical colors with at least one active listing, sorted alphabetically
+     */
+    public List<String> getAllColors() {
+        return offerListingRepository.findDistinctColors();
+    }
+
+    /**
+     * Get all distinct storage sizes (GB) with at least one active listing, sorted ascending
+     */
+    public List<Integer> getAllStorageOptions() {
+        return offerListingRepository.findDistinctStorageOptions();
+    }
+
+    /**
+     * Get all distinct RAM sizes (GB) with at least one active listing, sorted ascending
+     */
+    public List<Integer> getAllRamOptions() {
+        return offerListingRepository.findDistinctRamOptions();
+    }
+
+    /**
      * Other active listings of the same phone model as the given offer, excluding itself.
      * Empty Optional means no active offer exists with that id.
      */

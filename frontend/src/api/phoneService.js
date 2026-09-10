@@ -13,6 +13,9 @@ import { API_BASE_URL, API_ENDPOINTS } from './config';
  * @param {string} filters.search - Search term (searches title and rawTitle)
  * @param {Array<string>} filters.brands - List of brand names to filter by
  * @param {Array<string>} filters.sources - List of source/store names to filter by
+ * @param {Array<string>} filters.colors - List of canonical color names to filter by
+ * @param {Array<number>} filters.storage - List of storage sizes (GB) to filter by
+ * @param {Array<number>} filters.ram - List of RAM sizes (GB) to filter by
  * @param {number} filters.minPrice - Minimum price filter
  * @param {number} filters.maxPrice - Maximum price filter
  * @param {string} filters.sort - Sort parameter (e.g., "price,asc")
@@ -41,6 +44,24 @@ export const fetchPhones = async (page = 0, size = 20, filters = {}) => {
     if (filters.sources && filters.sources.length > 0) {
       filters.sources.forEach(source => {
         url.searchParams.append('source', source);
+      });
+    }
+
+    if (filters.colors && filters.colors.length > 0) {
+      filters.colors.forEach(color => {
+        url.searchParams.append('color', color);
+      });
+    }
+
+    if (filters.storage && filters.storage.length > 0) {
+      filters.storage.forEach(storage => {
+        url.searchParams.append('storage', storage);
+      });
+    }
+
+    if (filters.ram && filters.ram.length > 0) {
+      filters.ram.forEach(ram => {
+        url.searchParams.append('ram', ram);
       });
     }
 
@@ -123,6 +144,75 @@ export const fetchSources = async () => {
 };
 
 /**
+ * Fetch distinct canonical colors from the backend metadata endpoint
+ */
+export const fetchColors = async () => {
+  try {
+    const url = `${API_BASE_URL}/api/phones/colors`;
+    console.log(`[phoneService] Fetching colors from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const colors = await response.json();
+    console.log(`[phoneService] Received ${colors.length} colors`);
+    return colors;
+  } catch (error) {
+    console.error('[phoneService] Error fetching colors:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch distinct storage sizes (GB) from the backend metadata endpoint
+ */
+export const fetchStorageOptions = async () => {
+  try {
+    const url = `${API_BASE_URL}/api/phones/storage`;
+    console.log(`[phoneService] Fetching storage options from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const storageOptions = await response.json();
+    console.log(`[phoneService] Received ${storageOptions.length} storage options`);
+    return storageOptions;
+  } catch (error) {
+    console.error('[phoneService] Error fetching storage options:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch distinct RAM sizes (GB) from the backend metadata endpoint
+ */
+export const fetchRamOptions = async () => {
+  try {
+    const url = `${API_BASE_URL}/api/phones/ram`;
+    console.log(`[phoneService] Fetching RAM options from: ${url}`);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Backend returned status ${response.status}`);
+    }
+
+    const ramOptions = await response.json();
+    console.log(`[phoneService] Received ${ramOptions.length} RAM options`);
+    return ramOptions;
+  } catch (error) {
+    console.error('[phoneService] Error fetching RAM options:', error);
+    throw error;
+  }
+};
+
+/**
  * Fetch all matching offers for a selected phone id.
  * @param {number|string} id
  * @returns {Promise<Array<Object>>}
@@ -150,7 +240,7 @@ export const fetchProductOffers = async (id) => {
 /**
  * Fetch price-over-time history for a phone model, grouped by source.
  * @param {number|string} phoneModelId
- * @returns {Promise<Array<{source: string, points: Array<{scrapedAt: string, price: number}>}>>}
+ * @returns {Promise<Array<{source: string, points: Array<{date: string, price: number}>}>>}
  */
 export const fetchPriceHistory = async (phoneModelId) => {
   try {

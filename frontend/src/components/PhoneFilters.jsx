@@ -7,6 +7,45 @@ const SORT_OPTIONS = [
   { value: 'price,desc', label: 'Price: High → Low' },
 ];
 
+// Canonical color name -> swatch hex. Mirrors the base color vocabulary
+// ColorCanonicalizationService can produce on the backend. Unmapped names fall back to a
+// neutral swatch rather than guessing.
+const COLOR_SWATCHES = {
+  black: '#171717',
+  white: '#f5f5f5',
+  gray: '#9ca3af',
+  blue: '#3b82f6',
+  silver: '#c0c0c0',
+  green: '#22c55e',
+  pink: '#ec4899',
+  purple: '#a855f7',
+  violet: '#8b5cf6',
+  orange: '#f97316',
+  cream: '#fdf6e3',
+  graphite: '#4b5563',
+  mint: '#6ee7b7',
+  navy: '#1e3a5f',
+  teal: '#14b8a6',
+  sage: '#9caf88',
+  gold: '#d4af37',
+  red: '#ef4444',
+  coral: '#ff7f50',
+  cyan: '#06b6d4',
+  titanium: '#878681',
+  ultramarine: '#3f00ff',
+  lavender: '#b57edc',
+  yellow: '#eab308',
+  bronze: '#cd7f32',
+  olive: '#808000',
+  peach: '#ffcba4',
+  beige: '#e8d9c5',
+  turquoise: '#40e0d0',
+};
+const FALLBACK_SWATCH = '#d4d4d8';
+
+// 1024/2048 GB read far better as 1/2 TB than as raw gigabyte counts.
+const formatStorageLabel = (gb) => (gb % 1024 === 0 ? `${gb / 1024} TB` : `${gb} GB`);
+
 function SortDropdown({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -63,6 +102,9 @@ export default function PhoneFilters({
                                        filters,
                                        setFilters,
                                        availableSources = [],
+                                       availableColors = [],
+                                       availableStorage = [],
+                                       availableRam = [],
                                      }) {
   const [priceError, setPriceError] = useState('');
 
@@ -74,6 +116,39 @@ export default function PhoneFilters({
     setFilters({
       ...filters,
       sources: updatedSources,
+    });
+  };
+
+  const handleColorChange = (color) => {
+    const updatedColors = filters.colors && filters.colors.includes(color)
+        ? filters.colors.filter((c) => c !== color)
+        : [ ...(filters.colors || []), color ];
+
+    setFilters({
+      ...filters,
+      colors: updatedColors,
+    });
+  };
+
+  const handleStorageChange = (storage) => {
+    const updatedStorage = filters.storage && filters.storage.includes(storage)
+        ? filters.storage.filter((s) => s !== storage)
+        : [ ...(filters.storage || []), storage ];
+
+    setFilters({
+      ...filters,
+      storage: updatedStorage,
+    });
+  };
+
+  const handleRamChange = (ram) => {
+    const updatedRam = filters.ram && filters.ram.includes(ram)
+        ? filters.ram.filter((r) => r !== ram)
+        : [ ...(filters.ram || []), ram ];
+
+    setFilters({
+      ...filters,
+      ram: updatedRam,
     });
   };
 
@@ -144,6 +219,104 @@ export default function PhoneFilters({
                           className="h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-500"
                       />
                       <span className="capitalize">{source}</span>
+                    </label>
+                ))}
+              </div>
+          )}
+        </div>
+
+        <div>
+          <div className="mb-4">
+            <h3 className="text-sm font-semibold text-neutral-900">Color</h3>
+            <p className="mt-1 text-sm text-neutral-500">Narrow by device color.</p>
+          </div>
+          {availableColors.length === 0 ? (
+              <p className="text-sm text-neutral-500">No colors available.</p>
+          ) : (
+              <div className="flex flex-wrap gap-2">
+                {availableColors.map((color) => (
+                    <label
+                        key={color}
+                        className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-2 text-sm transition ${
+                            filters.colors && filters.colors.includes(color)
+                                ? 'border-sky-200 bg-sky-50 text-sky-700'
+                                : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50'
+                        }`}
+                    >
+                      <input
+                          type="checkbox"
+                          checked={filters.colors && filters.colors.includes(color)}
+                          onChange={() => handleColorChange(color)}
+                          className="h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-500"
+                      />
+                      <span
+                          aria-hidden="true"
+                          className="h-3 w-3 shrink-0 rounded-full border border-neutral-300"
+                          style={{ backgroundColor: COLOR_SWATCHES[color] || FALLBACK_SWATCH }}
+                      />
+                      <span className="capitalize">{color}</span>
+                    </label>
+                ))}
+              </div>
+          )}
+        </div>
+
+        <div>
+          <div className="mb-4">
+            <h3 className="text-sm font-semibold text-neutral-900">Storage</h3>
+            <p className="mt-1 text-sm text-neutral-500">Narrow by storage capacity.</p>
+          </div>
+          {availableStorage.length === 0 ? (
+              <p className="text-sm text-neutral-500">No storage options available.</p>
+          ) : (
+              <div className="flex flex-wrap gap-2">
+                {availableStorage.map((storage) => (
+                    <label
+                        key={storage}
+                        className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-2 text-sm transition ${
+                            filters.storage && filters.storage.includes(storage)
+                                ? 'border-sky-200 bg-sky-50 text-sky-700'
+                                : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50'
+                        }`}
+                    >
+                      <input
+                          type="checkbox"
+                          checked={filters.storage && filters.storage.includes(storage)}
+                          onChange={() => handleStorageChange(storage)}
+                          className="h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-500"
+                      />
+                      <span>{formatStorageLabel(storage)}</span>
+                    </label>
+                ))}
+              </div>
+          )}
+        </div>
+
+        <div>
+          <div className="mb-4">
+            <h3 className="text-sm font-semibold text-neutral-900">RAM</h3>
+            <p className="mt-1 text-sm text-neutral-500">Narrow by memory size.</p>
+          </div>
+          {availableRam.length === 0 ? (
+              <p className="text-sm text-neutral-500">No RAM options available.</p>
+          ) : (
+              <div className="flex flex-wrap gap-2">
+                {availableRam.map((ram) => (
+                    <label
+                        key={ram}
+                        className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-2 text-sm transition ${
+                            filters.ram && filters.ram.includes(ram)
+                                ? 'border-sky-200 bg-sky-50 text-sky-700'
+                                : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300 hover:bg-neutral-50'
+                        }`}
+                    >
+                      <input
+                          type="checkbox"
+                          checked={filters.ram && filters.ram.includes(ram)}
+                          onChange={() => handleRamChange(ram)}
+                          className="h-4 w-4 rounded border-neutral-300 text-sky-600 focus:ring-sky-500"
+                      />
+                      <span>{ram} GB</span>
                     </label>
                 ))}
               </div>
